@@ -1,5 +1,3 @@
-[`workflowr`]: https://github.com/jdblischak/workflowr
-
 # rss-net: add one-line summary here
 
 The present repository [^1] TBA.
@@ -20,9 +18,5 @@ this repository useful for your work, please kindly cite:
 Please follow these steps to install `rss-net`.
 
 TBA.
-
-***
-
-[^1]: This repository is managed by the [`workflowr`][] package.
 
 
