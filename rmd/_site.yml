@@ -1,5 +1,5 @@
 name: "rss-net"
-output_dir: ../doc
+output_dir: ../docs
 navbar:
   title: "rss-net"
   left:
