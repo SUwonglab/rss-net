@@ -1,5 +1,5 @@
 ---
-title: "rss-net: add one-line summary"
+title: "RSS-NET: add one-line summary"
 date: 2019-08-19
 site: workflowr::wflow_site
 output:
