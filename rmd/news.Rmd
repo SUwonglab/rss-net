@@ -1,5 +1,5 @@
 ---
-title: "Progress Update"
+title: "Progress Updates"
 output:
   workflowr::wflow_html:
     toc: false
