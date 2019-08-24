@@ -7,11 +7,22 @@ navbar:
     href: index.html
   - text: About
     href: about.html
+  - text: Setup
+    href: setup.html
+  - text: Examples
+    href: example.html
+  - text: Functions
+    href: function.html
+  - text: FAQ
+    href: faq.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    href: https://github.com/SUwonglab/rss-net
 output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
-    theme: cosmo
-    highlight: textmate
+    theme: sandstone
+    highlight: pygments
