@@ -7,4 +7,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe RSS-NET.
+The following figure provides a schematic overview of RSS-NET.
