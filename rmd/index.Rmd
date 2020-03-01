@@ -1,5 +1,6 @@
 ---
-title: "RSS-NET: add one-line summary"
+title: "RSS-NET wiki"
+author: Xiang Zhu
 date: 2019-08-19
 site: workflowr::wflow_site
 output:
@@ -10,3 +11,29 @@ editor_options:
 ---
 
 Welcome to RSS-NET wiki!
+
+This wiki hosts the following documentation pages of RSS-NET methods.
+
+## <img src="https://static.thenounproject.com/png/506997-200.png" width="48"/> [Installation](setup.html)
+
+This page provides instructions for installing RSS-NET software.
+
+## <img src="https://static.thenounproject.com/png/2018925-200.png" width="48"/> [Examples](example.html)
+
+This page gives end-to-end examples of using RSS-NET methods and software.
+
+## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functionalities](function.html)
+
+This page outlines functions and scripts associated with RSS-NET methods.
+
+## <img src="https://static.thenounproject.com/png/2069228-200.png" width="48"/> [FAQs](faq.html)
+
+This page answers frequently ask questions (FAQs) about RSS-NET methods and software.
+
+## <img src="https://static.thenounproject.com/png/51135-200.png" width="48"/> [News](https://stephenslab.github.io/rss/News)
+
+This page lists progress updates related to RSS-NET methods and software.
+
+--------
+
+<small>Icons used in this wiki are credited to the [Noun Project](https://thenounproject.com/).</small>
