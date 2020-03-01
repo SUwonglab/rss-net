@@ -15,6 +15,8 @@ navbar:
     href: function.html
   - text: FAQ
     href: faq.html
+  - text: News
+    href: https://stephenslab.github.io/rss/News.html
   - text: License
     href: license.html
   right:
