@@ -1,0 +1,23 @@
+---
+title: "RSS-NET analysis of IBD GWAS summary statistics and NK cell regulatory network"
+author: "Xiang Zhu"
+date: 2019-08-19
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+[Zhu et al (2019)]: xxx
+
+## Overview
+
+Here we describe an end-to-end RSS-NET analysis of
+inflammatory bowel disease (IBD) GWAS summary statistics
+[(Liu et al, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/26192919)
+and a gene regulatory network inferred for natural killer (NK) cells.
+This example illustrates the actual data analyses performed in [Zhu et al (2019)][].
+
+## Step-by-step illustration
+
+## More examples
+
