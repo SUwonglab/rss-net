@@ -57,6 +57,9 @@ if ~isfield(data,'snp2gene_cis_file')
   data.snp2gene_cis_file = strcat(dat_path,gwas_name,'_',cis_name,'_snp2gene_cis.mat');
 end
 
+% do not use gene expression in current RSS-NET analysis
+data.expression_file = [];
+
 % specify network-related parameters, if they are not specified 
 if ~isfield(options,'snp2gene_par')
   options.snp2gene_par = 'dist_bin';
