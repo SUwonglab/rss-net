@@ -8,6 +8,7 @@ editor_options:
 ---
 
 [Zhu et al (2019)]: xxx
+[`script_dir`]: xxx
 
 ## Overview
 
@@ -16,6 +17,10 @@ inflammatory bowel disease (IBD) GWAS summary statistics
 [(Liu et al, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/26192919)
 and a gene regulatory network inferred for natural killer (NK) cells.
 This example illustrates the actual data analyses performed in [Zhu et al (2019)][].
+
+To reproduce results of this example, please use scripts in the directory [`script_dir`][],
+and follow the step-by-step guide below. Before running any script in [`script_dir`][],
+please [install](setup.html) RSS-NET.
 
 ## Step-by-step illustration
 
