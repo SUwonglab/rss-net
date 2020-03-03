@@ -176,5 +176,22 @@ $ squeue -u xiangzhu
 
 Start at Mar 2, 2020, 3:04 PM.
 
+End at Mar 2, 2020, 11:37 PM.
+
+```
+Job ID: 62554249
+Array Job ID: 62554249_125
+Cluster: sherlock
+User/Group: xiangzhu/whwong
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 8
+CPU Utilized: 1-03:08:31
+CPU Efficiency: 74.54% of 1-12:24:40 core-walltime
+Job Wall-clock time: 04:33:05
+Memory Utilized: 26.58 GB
+Memory Efficiency: 85.06% of 31.25 GB
+```
+
 ## More examples
 
