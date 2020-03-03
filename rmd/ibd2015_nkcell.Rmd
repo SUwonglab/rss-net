@@ -35,5 +35,146 @@ Please modify scripts accordingly if a different directory is used.
 
 ## Step-by-step illustration
 
+### Download input data files
+
+#### 1. `ibd2015_sumstat.mat`: processed IBD GWAS summary statistics and LD matrix estimates.
+
+This file is large (43G) because it has a LD matrix of 1.1 million common SNPs.
+Please contact me (`xiangzhu[at]stanford.edu`) if you have trouble accessing this file.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum ibd2015_sumstat.mat
+ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat
+
+$ du -sh ibd2015_sumstat.mat                                             
+43G	ibd2015_sumstat.mat
+```
+
+Let's look at the contents of `ibd2015_sumstat.mat`.
+
+```matlab
+>> sumstat = matfile('ibd2015_sumstat.mat');
+>> sumstat
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_sumstat.mat'
+    Properties.Writable: false                                                          
+                     BR: [22x1 cell]                                                    
+                      R: [22x1 cell]                                                    
+                  SiRiS: [22x1 cell]                                                    
+                betahat: [22x1 cell]                                                    
+                    chr: [22x1 cell]                                                    
+                    pos: [22x1 cell]                                                    
+                     se: [22x1 cell]
+```
+
+GWAS summary statistics and LD estimates are stored as
+[cell arrays](https://www.mathworks.com/help/matlab/cell-arrays.html).
+RSS-NET only uses the following variables:
+
+- `betahat{j,1}`, single-SNP effect size estimates of all SNPs on chromosome `j`;
+- `se{j,1}`, standard errors of `betahat{j, 1}`;
+- `chr{j,1}` and `pos{j, 1}`, physical positions of these SNPs (GRCh37 build);
+- `SiRiS{j,1}`, a [sparse matrix](https://www.mathworks.com/help/matlab/sparse-matrices.html),
+defined as `repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)`, where `R` is the estimated LD matrix of these `p` SNPs.
+
+#### 2. `ibd2015_snp2gene.mat`: physical distance between SNPs and genes
+
+This file contains the physical distance between
+each GWAS SNP and each protein-coding gene, within 1 Mb.
+This file corresponds to ${\bf G}_j$ in the RSS-NET model.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum ibd2015_snp2gene.mat 
+7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat
+
+$ du -sh ibd2015_snp2gene.mat 
+224M	ibd2015_snp2gene.mat
+```
+
+In this example, there are 18334 SNPs and 1081481 genes.
+
+```matlab
+>> snp2gene = matfile('ibd2015_snp2gene.mat');
+>> snp2gene                                   
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_snp2gene.mat'
+    Properties.Writable: false                                                                
+                    chr: [1081481x1  int32]                                                   
+                  colid: [14126805x1 int32]                                                   
+                numgene: [1x1        int32]                                                   
+                 numsnp: [1x1        int32]                                                   
+                    pos: [1081481x1  int32]                                                   
+                  rowid: [14126805x1 int32]                                                   
+                    val: [14126805x1 double]
+
+>> [snp2gene.numgene snp2gene.numsnp]                                                              
+     18334   1081481
+```
+
+The SNP-to-gene distance information is captured
+by a three-column matrix `[colid rowid val]`.
+For example, the distance between gene `1` and SNP `6` is `978947` bps. 
+
+
+```matlab
+>> colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;
+>> [colid(6) rowid(6) val(6)]
+        1        6   978947
+```
+
+#### 3. `Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat`: gene regulatory network
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat 
+35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat
+
+$ du -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat
+1.7M	Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat
+```
+
+```matlab
+>> gene2gene = matfile('Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat');
+>> gene2gene
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat'
+    Properties.Writable: false                                                                                                            
+                  colid: [110733x1 int32]                                                                                                 
+                numgene: [1x1      int32]                                                                                                 
+                  rowid: [110733x1 int32]                                                                                                 
+                    val: [110733x1 double]
+```
+
+```matlab
+>> colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             
+>> [sum(colid==rowid) unique(val(colid==rowid))]
+       18334           1
+```
+
+```matlab
+>> colid=gene2gene.colid; rowid=gene2gene.rowid;
+>> [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]
+        3105         376
+```
+
+```zsh
+$ sbatch ibd2015_nkcell.sbatch
+```
+
+```zsh
+$ squeue -u xiangzhu
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12
+      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12
+      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08
+      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18
+      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33
+      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30
+```
+
+Start at Mar 2, 2020, 3:04 PM.
+
 ## More examples
 
