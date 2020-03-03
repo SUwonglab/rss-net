@@ -29,6 +29,97 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -409,10 +500,10 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-01
+<strong>Last updated:</strong> 2020-03-02
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>rss-net/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -440,10 +531,70 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebda738237a2d508843d9cf3bf62634dc16b8c024targetblankbda7382a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/bda738237a2d508843d9cf3bf62634dc16b8c024" target="_blank">bda7382</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebda738237a2d508843d9cf3bf62634dc16b8c024targetblankbda7382a" class="panel-collapse collapse">
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190823code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20190823)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20190823code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20190823)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreea16d453c7ab14ff07600ea8da1ec63c538d151b2targetblanka16d453a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/a16d453c7ab14ff07600ea8da1ec63c538d151b2" target="_blank">a16d453</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreea16d453c7ab14ff07600ea8da1ec63c538d151b2targetblanka16d453a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -490,6 +641,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/a16d453c7ab14ff07600ea8da1ec63c538d151b2/rmd/ibd2015_nkcell.Rmd" target="_blank">a16d453</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-02
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/785a4239838914d0a47318f9190c42c4b6275ae2/docs/ibd2015_nkcell.html" target="_blank">785a423</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-01
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -591,9 +776,176 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </div>
 <div id="step-by-step-illustration" class="section level2">
 <h2>Step-by-step illustration</h2>
+<div id="download-input-data-files" class="section level3">
+<h3>Download input data files</h3>
+<div id="ibd2015_sumstat.mat-processed-ibd-gwas-summary-statistics-and-ld-matrix-estimates." class="section level4">
+<h4>1. <code>ibd2015_sumstat.mat</code>: processed IBD GWAS summary statistics and LD matrix estimates.</h4>
+<p>This file is large (43G) because it has a LD matrix of 1.1 million common SNPs. Please contact me (<code>xiangzhu[at]stanford.edu</code>) if you have trouble accessing this file.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb1-1" title="1">$ md5sum ibd2015_sumstat.mat</a>
+<a class="sourceLine" id="cb1-2" title="2">ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">$ <span class="kw">du</span> -sh ibd2015_sumstat.mat                                             </a>
+<a class="sourceLine" id="cb1-5" title="5">43G ibd2015_sumstat.mat</a></code></pre></div>
+<p>Let’s look at the contents of <code>ibd2015_sumstat.mat</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb2-1" title="1">&gt;&gt; sumstat = matfile(<span class="st">&#39;ibd2015_sumstat.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb2-2" title="2">&gt;&gt; sumstat</a>
+<a class="sourceLine" id="cb2-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb2-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb2-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_sumstat.mat&#39;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    Properties.Writable: false                                                          </a>
+<a class="sourceLine" id="cb2-7" title="7">                     BR: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb2-8" title="8">                      R: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb2-9" title="9">                  SiRiS: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb2-10" title="10">                betahat: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb2-11" title="11">                    chr: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb2-12" title="12">                    pos: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb2-13" title="13">                     se: [<span class="fl">22</span>x1 cell]</a></code></pre></div>
+<p>GWAS summary statistics and LD estimates are stored as <a href="https://www.mathworks.com/help/matlab/cell-arrays.html">cell arrays</a>. RSS-NET only uses the following variables:</p>
+<ul>
+<li><code>betahat{j,1}</code>, single-SNP effect size estimates of all SNPs on chromosome <code>j</code>;</li>
+<li><code>se{j,1}</code>, standard errors of <code>betahat{j, 1}</code>;</li>
+<li><code>chr{j,1}</code> and <code>pos{j, 1}</code>, physical positions of these SNPs (GRCh37 build);</li>
+<li><code>SiRiS{j,1}</code>, a <a href="https://www.mathworks.com/help/matlab/sparse-matrices.html">sparse matrix</a>, defined as <code>repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)</code>, where <code>R</code> is the estimated LD matrix of these <code>p</code> SNPs.</li>
+</ul>
+</div>
+<div id="ibd2015_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
+<h4>2. <code>ibd2015_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
+<p>This file contains the physical distance between each GWAS SNP and each protein-coding gene, within 1 Mb. This file corresponds to <span class="math inline">\({\bf G}_j\)</span> in the RSS-NET model.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb3-1" title="1">$ md5sum ibd2015_snp2gene.mat </a>
+<a class="sourceLine" id="cb3-2" title="2">7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </a>
+<a class="sourceLine" id="cb3-5" title="5">224M    ibd2015_snp2gene.mat</a></code></pre></div>
+<p>In this example, there are 18334 SNPs and 1081481 genes.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb4-1" title="1">&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb4-2" title="2">&gt;&gt; snp2gene                                   </a>
+<a class="sourceLine" id="cb4-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb4-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb4-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_snp2gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    Properties.Writable: false                                                                </a>
+<a class="sourceLine" id="cb4-7" title="7">                    chr: [<span class="fl">1081481</span>x1  int32]                                                   </a>
+<a class="sourceLine" id="cb4-8" title="8">                  colid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
+<a class="sourceLine" id="cb4-9" title="9">                numgene: [<span class="fl">1</span>x1        int32]                                                   </a>
+<a class="sourceLine" id="cb4-10" title="10">                 numsnp: [<span class="fl">1</span>x1        int32]                                                   </a>
+<a class="sourceLine" id="cb4-11" title="11">                    pos: [<span class="fl">1081481</span>x1  int32]                                                   </a>
+<a class="sourceLine" id="cb4-12" title="12">                  rowid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
+<a class="sourceLine" id="cb4-13" title="13">                    val: [<span class="fl">14126805</span>x1 double]</a>
+<a class="sourceLine" id="cb4-14" title="14"></a>
+<a class="sourceLine" id="cb4-15" title="15">&gt;&gt; [snp2gene.numgene snp2gene.numsnp]                                                              </a>
+<a class="sourceLine" id="cb4-16" title="16">     <span class="fl">18334</span>   <span class="fl">1081481</span></a></code></pre></div>
+<p>The SNP-to-gene distance information is captured by a three-column matrix <code>[colid rowid val]</code>. For example, the distance between gene <code>1</code> and SNP <code>6</code> is <code>978947</code> bps.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb5-1" title="1">&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</a>
+<a class="sourceLine" id="cb5-2" title="2">&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></a></code></pre></div>
+</div>
+<div id="primary_natural_killer_cells_from_peripheral_blood_gene2gene.mat-gene-regulatory-network" class="section level4">
+<h4>3. <code>Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</code>: gene regulatory network</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb6-1" title="1">$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </a>
+<a class="sourceLine" id="cb6-2" title="2">35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4">$ <span class="kw">du</span> -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb6-5" title="5">1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb7-1" title="1">&gt;&gt; gene2gene = matfile(<span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb7-2" title="2">&gt;&gt; gene2gene</a>
+<a class="sourceLine" id="cb7-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb7-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb7-5" title="5">      Properties.Source: <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    Properties.Writable: false                                                                                                            </a>
+<a class="sourceLine" id="cb7-7" title="7">                  colid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
+<a class="sourceLine" id="cb7-8" title="8">                numgene: [<span class="fl">1</span>x1      int32]                                                                                                 </a>
+<a class="sourceLine" id="cb7-9" title="9">                  rowid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
+<a class="sourceLine" id="cb7-10" title="10">                    val: [<span class="fl">110733</span>x1 double]</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb8-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </a>
+<a class="sourceLine" id="cb8-2" title="2">&gt;&gt; [sum(colid==rowid) unique(val(colid==rowid))]</a>
+<a class="sourceLine" id="cb8-3" title="3">       <span class="fl">18334</span>           <span class="fl">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb9-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid;</a>
+<a class="sourceLine" id="cb9-2" title="2">&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</a>
+<a class="sourceLine" id="cb9-3" title="3">        <span class="fl">3105</span>         <span class="fl">376</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb10-1" title="1">$ sbatch ibd2015_nkcell.sbatch</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb11-1" title="1">$ squeue -u xiangzhu</a>
+<a class="sourceLine" id="cb11-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
+<a class="sourceLine" id="cb11-3" title="3">      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
+<a class="sourceLine" id="cb11-4" title="4">      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
+<a class="sourceLine" id="cb11-5" title="5">      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</a>
+<a class="sourceLine" id="cb11-6" title="6">      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</a>
+<a class="sourceLine" id="cb11-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
+<a class="sourceLine" id="cb11-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
+<p>Start at Mar 2, 2020, 3:04 PM.</p>
+</div>
+</div>
 </div>
 <div id="more-examples" class="section level2">
 <h2>More examples</h2>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value                       
+ version  R version 3.6.3 (2020-02-29)
+ os       Ubuntu 18.04.4 LTS          
+ system   x86_64, linux-gnu           
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ ctype    en_US.UTF-8                 
+ tz       America/Los_Angeles         
+ date     2020-03-02                  
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version date       lib source        
+ assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.0)
+ backports     1.1.5   2019-10-02 [1] CRAN (R 3.6.1)
+ callr         3.4.1   2020-01-24 [1] CRAN (R 3.6.2)
+ cli           2.0.1   2020-01-08 [1] CRAN (R 3.6.2)
+ crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.0)
+ desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.0)
+ devtools      2.2.1   2019-09-24 [1] CRAN (R 3.6.1)
+ digest        0.6.23  2019-11-23 [1] CRAN (R 3.6.1)
+ ellipsis      0.3.0   2019-09-20 [1] CRAN (R 3.6.1)
+ evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.0)
+ fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.2)
+ fs            1.3.1   2019-05-06 [1] CRAN (R 3.6.0)
+ git2r         0.26.1  2019-06-29 [1] CRAN (R 3.6.0)
+ glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)
+ htmltools     0.4.0   2019-10-04 [1] CRAN (R 3.6.1)
+ httpuv        1.5.2   2019-09-11 [1] CRAN (R 3.6.1)
+ knitr         1.28    2020-02-06 [1] CRAN (R 3.6.2)
+ later         1.0.0   2019-10-04 [1] CRAN (R 3.6.1)
+ magrittr      1.5     2014-11-22 [1] CRAN (R 3.6.0)
+ memoise       1.1.0   2017-04-21 [1] CRAN (R 3.6.0)
+ pkgbuild      1.0.6   2019-10-09 [1] CRAN (R 3.6.1)
+ pkgload       1.0.2   2018-10-29 [1] CRAN (R 3.6.0)
+ prettyunits   1.1.1   2020-01-24 [1] CRAN (R 3.6.2)
+ processx      3.4.1   2019-07-18 [1] CRAN (R 3.6.1)
+ promises      1.1.0   2019-10-04 [1] CRAN (R 3.6.1)
+ ps            1.3.0   2018-12-21 [1] CRAN (R 3.6.0)
+ R6            2.4.1   2019-11-12 [1] CRAN (R 3.6.1)
+ Rcpp          1.0.3   2019-11-08 [1] CRAN (R 3.6.1)
+ remotes       2.1.0   2019-06-24 [1] CRAN (R 3.6.0)
+ rlang         0.4.4   2020-01-28 [1] CRAN (R 3.6.2)
+ rmarkdown     2.1     2020-01-20 [1] CRAN (R 3.6.2)
+ rprojroot     1.3-2   2018-01-03 [1] CRAN (R 3.6.0)
+ sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.6.0)
+ stringi       1.4.5   2020-01-11 [1] CRAN (R 3.6.2)
+ stringr       1.4.0   2019-02-10 [1] CRAN (R 3.6.0)
+ testthat      2.3.1   2019-12-01 [1] CRAN (R 3.6.2)
+ usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.1)
+ whisker       0.4     2019-08-28 [1] CRAN (R 3.6.1)
+ withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)
+ workflowr   * 1.6.0   2019-12-19 [1] CRAN (R 3.6.2)
+ xfun          0.12    2020-01-13 [1] CRAN (R 3.6.2)
+ yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.2)
+
+[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/3.6
+[2] /usr/local/lib/R/site-library
+[3] /usr/lib/R/site-library
+[4] /usr/lib/R/library</code></pre>
+</div>
 </div>
 
 
