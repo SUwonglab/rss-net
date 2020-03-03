@@ -106,6 +106,9 @@ if (length(alpha0) ~= data.num_snp) || (length(mu0) ~= data.num_snp)
   error('Inconsistent number of SNPs in baseline results ...');
 end
 
+options.alpha = alpha0;
+options.mu    = mu0;
+
 clear base_file rsse_base alpha0* mu0* logw0 mi;
 
 % specify hyper-parameters for RSS-NET, using `make_hpgrid.m`
