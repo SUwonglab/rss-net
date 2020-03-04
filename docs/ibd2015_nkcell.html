@@ -15,6 +15,7 @@
 
 <title>RSS-NET analysis of IBD GWAS summary statistics and NK cell regulatory network</title>
 
+<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
@@ -31,26 +32,27 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -59,9 +61,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -469,6 +471,8 @@ div.section {
 }
 </style>
 
+
+
 <div class="fluid-row" id="header">
 
 
@@ -591,10 +595,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree4a13f45807786aacfa63dc4ed0ca2e2067abcf76targetblank4a13f45a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/4a13f45807786aacfa63dc4ed0ca2e2067abcf76" target="_blank">4a13f45</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree6520dbc09be84af5b1f4a9d9ca38f95a50650970targetblank6520dbca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/6520dbc09be84af5b1f4a9d9ca38f95a50650970" target="_blank">6520dbc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree4a13f45807786aacfa63dc4ed0ca2e2067abcf76targetblank4a13f45a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree6520dbc09be84af5b1f4a9d9ca38f95a50650970targetblank6520dbca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -641,6 +645,74 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/6520dbc09be84af5b1f4a9d9ca38f95a50650970/rmd/ibd2015_nkcell.Rmd" target="_blank">6520dbc</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2020-03-03
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/be857e069dc51bc5b7779dccb04c93d11525339a/docs/ibd2015_nkcell.html" target="_blank">be857e0</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2020-03-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/69e47725c025a6a5e226aa986c15246e24c13b90/rmd/ibd2015_nkcell.Rmd" target="_blank">69e4772</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2020-03-03
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/5974d280da0308a0da739741c17bc3ecb45562fe/docs/ibd2015_nkcell.html" target="_blank">5974d28</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -812,28 +884,28 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <h2>Step-by-step illustration</h2>
 <div id="download-input-data-files" class="section level3">
 <h3>Download input data files</h3>
-<div id="ibd2015_sumstat.mat-processed-ibd-gwas-summary-statistics-and-ld-matrix-estimates." class="section level4">
-<h4>1. <code>ibd2015_sumstat.mat</code>: processed IBD GWAS summary statistics and LD matrix estimates.</h4>
+<div id="ibd2015_sumstat.mat-processed-gwas-summary-statistics-and-ld-matrix-estimates" class="section level4">
+<h4>1. <code>ibd2015_sumstat.mat</code>: processed GWAS summary statistics and LD matrix estimates</h4>
 <p>This file is large (43G) because it has a LD matrix of 1.1 million common SNPs. Please contact me (<code>xiangzhu[at]stanford.edu</code>) if you have trouble accessing this file.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb1-1" title="1">$ md5sum ibd2015_sumstat.mat</a>
-<a class="sourceLine" id="cb1-2" title="2">ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4">$ <span class="kw">du</span> -sh ibd2015_sumstat.mat                                             </a>
-<a class="sourceLine" id="cb1-5" title="5">43G ibd2015_sumstat.mat</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1"></a>$ md5sum ibd2015_sumstat.mat</span>
+<span id="cb1-2"><a href="#cb1-2"></a>ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>$ <span class="kw">du</span> -sh ibd2015_sumstat.mat                                             </span>
+<span id="cb1-5"><a href="#cb1-5"></a>43G ibd2015_sumstat.mat</span></code></pre></div>
 <p>Let’s look at the contents of <code>ibd2015_sumstat.mat</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb2-1" title="1">&gt;&gt; sumstat = matfile(<span class="st">&#39;ibd2015_sumstat.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb2-2" title="2">&gt;&gt; sumstat</a>
-<a class="sourceLine" id="cb2-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb2-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb2-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_sumstat.mat&#39;</span></a>
-<a class="sourceLine" id="cb2-6" title="6">    Properties.Writable: false                                                          </a>
-<a class="sourceLine" id="cb2-7" title="7">                     BR: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-8" title="8">                      R: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-9" title="9">                  SiRiS: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-10" title="10">                betahat: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-11" title="11">                    chr: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-12" title="12">                    pos: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-13" title="13">                     se: [<span class="fl">22</span>x1 cell]</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1"></a>&gt;&gt; sumstat = matfile(<span class="st">&#39;ibd2015_sumstat.mat&#39;</span>);</span>
+<span id="cb2-2"><a href="#cb2-2"></a>&gt;&gt; sumstat</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  matlab.io.MatFile</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  Properties:</span>
+<span id="cb2-5"><a href="#cb2-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_sumstat.mat&#39;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    Properties.Writable: false                                                          </span>
+<span id="cb2-7"><a href="#cb2-7"></a>                     BR: [<span class="fl">22</span>x1 cell]                                                    </span>
+<span id="cb2-8"><a href="#cb2-8"></a>                      R: [<span class="fl">22</span>x1 cell]                                                    </span>
+<span id="cb2-9"><a href="#cb2-9"></a>                  SiRiS: [<span class="fl">22</span>x1 cell]                                                    </span>
+<span id="cb2-10"><a href="#cb2-10"></a>                betahat: [<span class="fl">22</span>x1 cell]                                                    </span>
+<span id="cb2-11"><a href="#cb2-11"></a>                    chr: [<span class="fl">22</span>x1 cell]                                                    </span>
+<span id="cb2-12"><a href="#cb2-12"></a>                    pos: [<span class="fl">22</span>x1 cell]                                                    </span>
+<span id="cb2-13"><a href="#cb2-13"></a>                     se: [<span class="fl">22</span>x1 cell]</span></code></pre></div>
 <p>GWAS summary statistics and LD estimates are stored as <a href="https://www.mathworks.com/help/matlab/cell-arrays.html">cell arrays</a>. RSS-NET only uses the following variables:</p>
 <ul>
 <li><code>betahat{j,1}</code>, single-SNP effect size estimates of all SNPs on chromosome <code>j</code>;</li>
@@ -845,65 +917,145 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <div id="ibd2015_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
 <h4>2. <code>ibd2015_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
 <p>This file contains the physical distance between each GWAS SNP and each protein-coding gene, within 1 Mb. This file corresponds to <span class="math inline">\({\bf G}_j\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb3-1" title="1">$ md5sum ibd2015_snp2gene.mat </a>
-<a class="sourceLine" id="cb3-2" title="2">7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</a>
-<a class="sourceLine" id="cb3-3" title="3"></a>
-<a class="sourceLine" id="cb3-4" title="4">$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </a>
-<a class="sourceLine" id="cb3-5" title="5">224M    ibd2015_snp2gene.mat</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb3-1"><a href="#cb3-1"></a>$ md5sum ibd2015_snp2gene.mat </span>
+<span id="cb3-2"><a href="#cb3-2"></a>7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </span>
+<span id="cb3-5"><a href="#cb3-5"></a>224M    ibd2015_snp2gene.mat</span></code></pre></div>
 <p>In this example, there are 18334 SNPs and 1081481 genes.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb4-1" title="1">&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb4-2" title="2">&gt;&gt; snp2gene                                   </a>
-<a class="sourceLine" id="cb4-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb4-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb4-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_snp2gene.mat&#39;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">    Properties.Writable: false                                                                </a>
-<a class="sourceLine" id="cb4-7" title="7">                    chr: [<span class="fl">1081481</span>x1  int32]                                                   </a>
-<a class="sourceLine" id="cb4-8" title="8">                  colid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
-<a class="sourceLine" id="cb4-9" title="9">                numgene: [<span class="fl">1</span>x1        int32]                                                   </a>
-<a class="sourceLine" id="cb4-10" title="10">                 numsnp: [<span class="fl">1</span>x1        int32]                                                   </a>
-<a class="sourceLine" id="cb4-11" title="11">                    pos: [<span class="fl">1081481</span>x1  int32]                                                   </a>
-<a class="sourceLine" id="cb4-12" title="12">                  rowid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
-<a class="sourceLine" id="cb4-13" title="13">                    val: [<span class="fl">14126805</span>x1 double]</a>
-<a class="sourceLine" id="cb4-14" title="14"></a>
-<a class="sourceLine" id="cb4-15" title="15">&gt;&gt; [snp2gene.numgene snp2gene.numsnp]                                                              </a>
-<a class="sourceLine" id="cb4-16" title="16">     <span class="fl">18334</span>   <span class="fl">1081481</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1"></a>&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</span>
+<span id="cb4-2"><a href="#cb4-2"></a>&gt;&gt; snp2gene                                   </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  matlab.io.MatFile</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  Properties:</span>
+<span id="cb4-5"><a href="#cb4-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_snp2gene.mat&#39;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>    Properties.Writable: false                                                                </span>
+<span id="cb4-7"><a href="#cb4-7"></a>                    chr: [<span class="fl">1081481</span>x1  int32]                                                   </span>
+<span id="cb4-8"><a href="#cb4-8"></a>                  colid: [<span class="fl">14126805</span>x1 int32]                                                   </span>
+<span id="cb4-9"><a href="#cb4-9"></a>                numgene: [<span class="fl">1</span>x1        int32]                                                   </span>
+<span id="cb4-10"><a href="#cb4-10"></a>                 numsnp: [<span class="fl">1</span>x1        int32]                                                   </span>
+<span id="cb4-11"><a href="#cb4-11"></a>                    pos: [<span class="fl">1081481</span>x1  int32]                                                   </span>
+<span id="cb4-12"><a href="#cb4-12"></a>                  rowid: [<span class="fl">14126805</span>x1 int32]                                                   </span>
+<span id="cb4-13"><a href="#cb4-13"></a>                    val: [<span class="fl">14126805</span>x1 double]</span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a>&gt;&gt; [snp2gene.numgene snp2gene.numsnp]                                                              </span>
+<span id="cb4-16"><a href="#cb4-16"></a>     <span class="fl">18334</span>   <span class="fl">1081481</span></span></code></pre></div>
 <p>The SNP-to-gene distance information is captured by a three-column matrix <code>[colid rowid val]</code>. For example, the distance between gene <code>1</code> and SNP <code>6</code> is <code>978947</code> bps.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb5-1" title="1">&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</a>
-<a class="sourceLine" id="cb5-2" title="2">&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</a>
-<a class="sourceLine" id="cb5-3" title="3">        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1"></a>&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</span>
+<span id="cb5-2"><a href="#cb5-2"></a>&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></span></code></pre></div>
 </div>
 <div id="primary_natural_killer_cells_from_peripheral_blood_gene2gene.mat-gene-regulatory-network" class="section level4">
 <h4>3. <code>Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</code>: gene regulatory network</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb6-1" title="1">$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </a>
-<a class="sourceLine" id="cb6-2" title="2">35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
-<a class="sourceLine" id="cb6-3" title="3"></a>
-<a class="sourceLine" id="cb6-4" title="4">$ <span class="kw">du</span> -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
-<a class="sourceLine" id="cb6-5" title="5">1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb7-1" title="1">&gt;&gt; gene2gene = matfile(<span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb7-2" title="2">&gt;&gt; gene2gene</a>
-<a class="sourceLine" id="cb7-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb7-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb7-5" title="5">      Properties.Source: <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></a>
-<a class="sourceLine" id="cb7-6" title="6">    Properties.Writable: false                                                                                                            </a>
-<a class="sourceLine" id="cb7-7" title="7">                  colid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
-<a class="sourceLine" id="cb7-8" title="8">                numgene: [<span class="fl">1</span>x1      int32]                                                                                                 </a>
-<a class="sourceLine" id="cb7-9" title="9">                  rowid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
-<a class="sourceLine" id="cb7-10" title="10">                    val: [<span class="fl">110733</span>x1 double]</a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb8-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </a>
-<a class="sourceLine" id="cb8-2" title="2">&gt;&gt; [sum(colid==rowid) unique(val(colid==rowid))]</a>
-<a class="sourceLine" id="cb8-3" title="3">       <span class="fl">18334</span>           <span class="fl">1</span></a></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb9-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid;</a>
-<a class="sourceLine" id="cb9-2" title="2">&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</a>
-<a class="sourceLine" id="cb9-3" title="3">        <span class="fl">3105</span>         <span class="fl">376</span></a></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb10-1" title="1">$ sbatch ibd2015_nkcell.sbatch</a></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb11-1" title="1">$ squeue -u xiangzhu</a>
-<a class="sourceLine" id="cb11-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
-<a class="sourceLine" id="cb11-3" title="3">      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
-<a class="sourceLine" id="cb11-4" title="4">      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
-<a class="sourceLine" id="cb11-5" title="5">      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</a>
-<a class="sourceLine" id="cb11-6" title="6">      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</a>
-<a class="sourceLine" id="cb11-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
-<a class="sourceLine" id="cb11-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
+<p>This file contains information of gene-to-gene connections in a given regulatory network.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb6-1"><a href="#cb6-1"></a>$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </span>
+<span id="cb6-2"><a href="#cb6-2"></a>35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>$ <span class="kw">du</span> -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
+<span id="cb6-5"><a href="#cb6-5"></a>1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1"></a>&gt;&gt; gene2gene = matfile(<span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</span>
+<span id="cb7-2"><a href="#cb7-2"></a>&gt;&gt; gene2gene</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  matlab.io.MatFile</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  Properties:</span>
+<span id="cb7-5"><a href="#cb7-5"></a>      Properties.Source: <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>    Properties.Writable: false                                                                                                            </span>
+<span id="cb7-7"><a href="#cb7-7"></a>                  colid: [<span class="fl">110733</span>x1 int32]                                                                                                 </span>
+<span id="cb7-8"><a href="#cb7-8"></a>                numgene: [<span class="fl">1</span>x1      int32]                                                                                                 </span>
+<span id="cb7-9"><a href="#cb7-9"></a>                  rowid: [<span class="fl">110733</span>x1 int32]                                                                                                 </span>
+<span id="cb7-10"><a href="#cb7-10"></a>                    val: [<span class="fl">110733</span>x1 double]</span></code></pre></div>
+<p>For implementation convenience, this file contains the trivial case where each gene is mapped to itself with <code>val=1</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1"></a>&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </span>
+<span id="cb8-2"><a href="#cb8-2"></a>&gt;&gt; [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]</span>
+<span id="cb8-3"><a href="#cb8-3"></a>   <span class="fl">18334</span>   <span class="fl">18334</span>       <span class="fl">1</span></span></code></pre></div>
+<p>For a given network, transcription factors (TFs) are stored in <code>rowid</code> and target genes (TGs) are stored in <code>colid</code>. In this example there are 3105 TGs and 376 TFs. Among these TFs and TGs, there are 92399 edges. The edge weights range from 0.61 to 1. These TF-to-TG connections and edge weights correspond to <span class="math inline">\(\{{\bf T}_g,v_{gt}\}\)</span> in the RSS-NET model.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb9-1"><a href="#cb9-1"></a>&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</span>
+<span id="cb9-2"><a href="#cb9-2"></a>        <span class="fl">3105</span>         <span class="fl">376</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>&gt;&gt; [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]</span>
+<span id="cb9-4"><a href="#cb9-4"></a>       <span class="fl">92399</span>       <span class="fl">92399</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a>&gt;&gt; val_tftg = val(colid ~= rowid);</span>
+<span id="cb9-7"><a href="#cb9-7"></a>&gt;&gt; [min(val_tftg) quantile(val_tftg, <span class="fl">0.25</span>) median(val_tftg) quantile(val_tftg, <span class="fl">0.75</span>) max(val_tftg)]</span>
+<span id="cb9-8"><a href="#cb9-8"></a>    <span class="fl">0.6138</span>    <span class="fl">0.6324</span>    <span class="fl">0.6568</span>    <span class="fl">0.6949</span>    <span class="fl">1.0000</span>       </span></code></pre></div>
+</div>
+<div id="ibd2015_primary_natural_killer_cells_from_peripheral_blood_snp2net.mat-snp-to-network-proximity-annotation" class="section level4">
+<h4>4. <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</code>: SNP-to-network proximity annotation</h4>
+<p>This file contains binary annotations whether a SNP is “near” the given network, that is, within 100 kb of any network element (TF, TG or associated regulatory elements).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb10-1"><a href="#cb10-1"></a>$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb10-2"><a href="#cb10-2"></a>d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>$ <span class="kw">du</span> -sh ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb10-5"><a href="#cb10-5"></a>21M ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span></code></pre></div>
+<p>In this example, there are 1081481 GWAS SNPs and 382443 of them are near the NK cell network (i.e. <code>val=1</code>).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb11-1"><a href="#cb11-1"></a>&gt;&gt; snp2net = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span>);</span>
+<span id="cb11-2"><a href="#cb11-2"></a>&gt;&gt; snp2net</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  matlab.io.MatFile</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  Properties:</span>
+<span id="cb11-5"><a href="#cb11-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>    Properties.Writable: false</span>
+<span id="cb11-7"><a href="#cb11-7"></a>                    chr: [<span class="fl">1081481</span>x1 int32]</span>
+<span id="cb11-8"><a href="#cb11-8"></a>                    pos: [<span class="fl">1081481</span>x1 int32]</span>
+<span id="cb11-9"><a href="#cb11-9"></a>                  snpid: [<span class="fl">1081481</span>x1 int32]</span>
+<span id="cb11-10"><a href="#cb11-10"></a>                    val: [<span class="fl">1081481</span>x1 double]</span>
+<span id="cb11-11"><a href="#cb11-11"></a>                 window: [<span class="fl">1</span>x1       double]</span>
+<span id="cb11-12"><a href="#cb11-12"></a>                 </span>
+<span id="cb11-13"><a href="#cb11-13"></a>&gt;&gt; [length(snp2net.val) sum(snp2net.val) snp2net.window]</span>
+<span id="cb11-14"><a href="#cb11-14"></a>     <span class="fl">1081481</span>      <span class="fl">382443</span>      <span class="fl">100000</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>&gt;&gt; unique(snp2net.val)&#39;</span>
+<span id="cb11-16"><a href="#cb11-16"></a>     <span class="fl">0</span>     <span class="fl">1</span>     </span></code></pre></div>
+</div>
+<div id="ibd2015_nk_snp2gene_cis.mat-snp-to-gene-cis-regulation" class="section level4">
+<h4>5. <code>ibd2015_NK_snp2gene_cis.mat</code>: SNP-to-gene cis regulation</h4>
+<p>This file contains the SNP-to-gene cis regulation scores derived from context-matching cis eQTL studies. This file corresponds to <span class="math inline">\((c_{jg}-1)\)</span> in the RSS-NET model.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb12-1"><a href="#cb12-1"></a>$ md5sum ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb12-2"><a href="#cb12-2"></a>dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>$ <span class="kw">du</span> -sh ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb12-5"><a href="#cb12-5"></a>165M    ibd2015_NK_snp2gene_cis.mat</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb13-1"><a href="#cb13-1"></a>&gt;&gt; snp2gene_cis = matfile(<span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span>);</span>
+<span id="cb13-2"><a href="#cb13-2"></a>&gt;&gt; snp2gene_cis</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  matlab.io.MatFile</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  Properties:</span>
+<span id="cb13-5"><a href="#cb13-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>    Properties.Writable: false</span>
+<span id="cb13-7"><a href="#cb13-7"></a>                  colid: [<span class="fl">10790012</span>x1 int32]</span>
+<span id="cb13-8"><a href="#cb13-8"></a>                numgene: [<span class="fl">1</span>x1        int32]</span>
+<span id="cb13-9"><a href="#cb13-9"></a>                 numsnp: [<span class="fl">1</span>x1        int32]</span>
+<span id="cb13-10"><a href="#cb13-10"></a>                  rowid: [<span class="fl">10790012</span>x1 int32]</span>
+<span id="cb13-11"><a href="#cb13-11"></a>                    val: [<span class="fl">10790012</span>x1 double]</span></code></pre></div>
+<p>In this example, there are 10790012 SNP-gene pairs with cis regulation scores available, consiting of 829280 SNPs and 18230 genes. The cis regulation scores (<code>val</code>) range from 0 to 0.76.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb14-1"><a href="#cb14-1"></a>&gt;&gt; [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]</span>
+<span id="cb14-2"><a href="#cb14-2"></a>   <span class="fl">1081481</span>    <span class="fl">829280</span>     <span class="fl">18334</span>     <span class="fl">18230</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>   </span>
+<span id="cb14-4"><a href="#cb14-4"></a>&gt;&gt; val=snp2gene_cis.val;</span>
+<span id="cb14-5"><a href="#cb14-5"></a>&gt;&gt; [min(val) quantile(val, <span class="fl">0.25</span>) median(val) quantile(val, <span class="fl">0.75</span>) max(val)]</span>
+<span id="cb14-6"><a href="#cb14-6"></a>         <span class="fl">0</span>    <span class="fl">0.0226</span>    <span class="fl">0.0636</span>    <span class="fl">0.1172</span>    <span class="fl">0.7622</span>   </span></code></pre></div>
+</div>
+</div>
+<div id="run-rss-net-analysis" class="section level3">
+<h3>Run RSS-NET analysis</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb15-1"><a href="#cb15-1"></a>$ <span class="kw">pwd</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a>$ tree -f</span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="kw">.</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>├── ./analysis_template.m</span>
+<span id="cb15-7"><a href="#cb15-7"></a>├── ./ibd2015_nkcell.m</span>
+<span id="cb15-8"><a href="#cb15-8"></a>└── ./ibd2015_nkcell.sbatch</span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a>0 directories, 3 files</span></code></pre></div>
+<div id="submit-job-arrays" class="section level4">
+<h4>3. Submit job arrays</h4>
+<p>For a given GWAS and a given regulatory network, all RSS-NET analysis tasks are almost identical and they only differs in hyper-parameter values. To exploit this, we run one RSS-NET analysis as a job array with multiple tasks that run in parallel.</p>
+<p>To this end, we write a simple sbatch script <a href="xxx"><code>ibd2015_nkcell.sbatch</code></a>, and submit it to a cluster with <a href="https://slurm.schedmd.com/"><code>Slurm</code></a> available.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb16-1"><a href="#cb16-1"></a>$ sbatch ibd2015_nkcell.sbatch</span></code></pre></div>
+<p>After the submission, multiple jobs should run in different nodes simultaneously.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb17-1"><a href="#cb17-1"></a>$ squeue -u xiangzhu</span>
+<span id="cb17-2"><a href="#cb17-2"></a>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</span>
+<span id="cb17-4"><a href="#cb17-4"></a>      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</span>
+<span id="cb17-5"><a href="#cb17-5"></a>      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</span>
+<span id="cb17-6"><a href="#cb17-6"></a>      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</span>
+<span id="cb17-7"><a href="#cb17-7"></a>      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</span>
+<span id="cb17-8"><a href="#cb17-8"></a>      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</span></code></pre></div>
 <p>Start at Mar 2, 2020, 3:04 PM.</p>
 <p>End at Mar 2, 2020, 11:37 PM.</p>
 <pre><code>Job ID: 62554249
@@ -930,12 +1082,12 @@ Memory Efficiency: 85.06% of 31.25 GB</code></pre>
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>devtools<span class="op">::</span><span class="kw">session_info</span>()</span></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
- version  R version 3.6.3 (2020-02-29)
- os       Ubuntu 18.04.4 LTS          
- system   x86_64, linux-gnu           
+ version  R version 3.6.2 (2019-12-12)
+ os       macOS Catalina 10.15.3      
+ system   x86_64, darwin15.6.0        
  ui       X11                         
  language (EN)                        
  collate  en_US.UTF-8                 
@@ -946,52 +1098,49 @@ Memory Efficiency: 85.06% of 31.25 GB</code></pre>
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.0)
- backports     1.1.5   2019-10-02 [1] CRAN (R 3.6.1)
- callr         3.4.1   2020-01-24 [1] CRAN (R 3.6.2)
- cli           2.0.1   2020-01-08 [1] CRAN (R 3.6.2)
+ backports     1.1.5   2019-10-02 [1] CRAN (R 3.6.0)
+ callr         3.4.2   2020-02-12 [1] CRAN (R 3.6.0)
+ cli           2.0.2   2020-02-28 [1] CRAN (R 3.6.0)
  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.0)
  desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.0)
- devtools      2.2.1   2019-09-24 [1] CRAN (R 3.6.1)
- digest        0.6.23  2019-11-23 [1] CRAN (R 3.6.1)
- ellipsis      0.3.0   2019-09-20 [1] CRAN (R 3.6.1)
+ devtools      2.2.2   2020-02-17 [1] CRAN (R 3.6.0)
+ digest        0.6.25  2020-02-23 [1] CRAN (R 3.6.0)
+ ellipsis      0.3.0   2019-09-20 [1] CRAN (R 3.6.0)
  evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.0)
- fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.2)
+ fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.0)
  fs            1.3.1   2019-05-06 [1] CRAN (R 3.6.0)
  git2r         0.26.1  2019-06-29 [1] CRAN (R 3.6.0)
  glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)
- htmltools     0.4.0   2019-10-04 [1] CRAN (R 3.6.1)
- httpuv        1.5.2   2019-09-11 [1] CRAN (R 3.6.1)
- knitr         1.28    2020-02-06 [1] CRAN (R 3.6.2)
- later         1.0.0   2019-10-04 [1] CRAN (R 3.6.1)
+ htmltools     0.4.0   2019-10-04 [1] CRAN (R 3.6.0)
+ httpuv        1.5.2   2019-09-11 [1] CRAN (R 3.6.0)
+ knitr         1.28    2020-02-06 [1] CRAN (R 3.6.0)
+ later         1.0.0   2019-10-04 [1] CRAN (R 3.6.0)
  magrittr      1.5     2014-11-22 [1] CRAN (R 3.6.0)
  memoise       1.1.0   2017-04-21 [1] CRAN (R 3.6.0)
- pkgbuild      1.0.6   2019-10-09 [1] CRAN (R 3.6.1)
+ pkgbuild      1.0.6   2019-10-09 [1] CRAN (R 3.6.0)
  pkgload       1.0.2   2018-10-29 [1] CRAN (R 3.6.0)
- prettyunits   1.1.1   2020-01-24 [1] CRAN (R 3.6.2)
- processx      3.4.1   2019-07-18 [1] CRAN (R 3.6.1)
- promises      1.1.0   2019-10-04 [1] CRAN (R 3.6.1)
- ps            1.3.0   2018-12-21 [1] CRAN (R 3.6.0)
+ prettyunits   1.1.1   2020-01-24 [1] CRAN (R 3.6.0)
+ processx      3.4.2   2020-02-09 [1] CRAN (R 3.6.0)
+ promises      1.1.0   2019-10-04 [1] CRAN (R 3.6.0)
+ ps            1.3.2   2020-02-13 [1] CRAN (R 3.6.0)
  R6            2.4.1   2019-11-12 [1] CRAN (R 3.6.1)
- Rcpp          1.0.3   2019-11-08 [1] CRAN (R 3.6.1)
- remotes       2.1.0   2019-06-24 [1] CRAN (R 3.6.0)
- rlang         0.4.4   2020-01-28 [1] CRAN (R 3.6.2)
- rmarkdown     2.1     2020-01-20 [1] CRAN (R 3.6.2)
+ Rcpp          1.0.3   2019-11-08 [1] CRAN (R 3.6.0)
+ remotes       2.1.1   2020-02-15 [1] CRAN (R 3.6.0)
+ rlang         0.4.5   2020-03-01 [1] CRAN (R 3.6.0)
+ rmarkdown     2.1     2020-01-20 [1] CRAN (R 3.6.0)
  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 3.6.0)
  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.6.0)
- stringi       1.4.5   2020-01-11 [1] CRAN (R 3.6.2)
+ stringi       1.4.6   2020-02-17 [1] CRAN (R 3.6.0)
  stringr       1.4.0   2019-02-10 [1] CRAN (R 3.6.0)
- testthat      2.3.1   2019-12-01 [1] CRAN (R 3.6.2)
- usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.1)
- whisker       0.4     2019-08-28 [1] CRAN (R 3.6.1)
+ testthat      2.3.2   2020-03-02 [1] CRAN (R 3.6.2)
+ usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.0)
+ whisker       0.4     2019-08-28 [1] CRAN (R 3.6.0)
  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)
- workflowr   * 1.6.0   2019-12-19 [1] CRAN (R 3.6.2)
- xfun          0.12    2020-01-13 [1] CRAN (R 3.6.2)
- yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.2)
+ workflowr   * 1.6.0   2019-12-19 [1] CRAN (R 3.6.0)
+ xfun          0.12    2020-01-13 [1] CRAN (R 3.6.0)
+ yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.0)
 
-[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/3.6
-[2] /usr/local/lib/R/site-library
-[3] /usr/lib/R/site-library
-[4] /usr/lib/R/library</code></pre>
+[1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library</code></pre>
 </div>
 </div>
 
@@ -1007,6 +1156,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 </div>

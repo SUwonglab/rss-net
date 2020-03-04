@@ -10,6 +10,7 @@ editor_options:
 [Zhu et al (2019)]: xxx
 [`script_dir`]: xxx
 [simulation example]: xxx
+[`ibd2015_nkcell.sbatch`]: xxx
 
 ## Overview
 
@@ -37,10 +38,12 @@ Please modify scripts accordingly if a different directory is used.
 
 ### Download input data files
 
-#### 1. `ibd2015_sumstat.mat`: processed IBD GWAS summary statistics and LD matrix estimates.
+#### 1. `ibd2015_sumstat.mat`: processed GWAS summary statistics and LD matrix estimates
 
-This file is large (43G) because it has a LD matrix of 1.1 million common SNPs.
-Please contact me (`xiangzhu[at]stanford.edu`) if you have trouble accessing this file.
+This file is large (43G) because
+it has a LD matrix of 1.1 million common SNPs.
+Please contact me (`xiangzhu[at]stanford.edu`)
+if you have trouble accessing this file.
 
 ```{r, eval=FALSE, engine='zsh'}
 $ md5sum ibd2015_sumstat.mat
@@ -76,7 +79,8 @@ RSS-NET only uses the following variables:
 - `se{j,1}`, standard errors of `betahat{j, 1}`;
 - `chr{j,1}` and `pos{j, 1}`, physical positions of these SNPs (GRCh37 build);
 - `SiRiS{j,1}`, a [sparse matrix](https://www.mathworks.com/help/matlab/sparse-matrices.html),
-defined as `repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)`, where `R` is the estimated LD matrix of these `p` SNPs.
+defined as `repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)`,
+where `R` is the estimated LD matrix of these `p` SNPs.
 
 #### 2. `ibd2015_snp2gene.mat`: physical distance between SNPs and genes
 
@@ -126,6 +130,9 @@ For example, the distance between gene `1` and SNP `6` is `978947` bps.
 
 #### 3. `Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat`: gene regulatory network
 
+This file contains information of gene-to-gene
+connections in a given regulatory network.
+
 ```{r, eval=FALSE, engine='zsh'}
 $ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat 
 35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat
@@ -147,23 +154,147 @@ $ du -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat
                     val: [110733x1 double]
 ```
 
+For implementation convenience, this file contains the trivial case
+where each gene is mapped to itself with `val=1`.
+
 ```matlab
 >> colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             
->> [sum(colid==rowid) unique(val(colid==rowid))]
-       18334           1
+>> [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]
+   18334   18334       1
+```
+
+For a given network, transcription factors (TFs) are stored in `rowid`
+and target genes (TGs) are stored in `colid`.
+In this example there are 3105 TGs and 376 TFs.
+Among these TFs and TGs, there are 92399 edges.
+The edge weights range from 0.61 to 1.
+These TF-to-TG connections and edge weights correspond to
+$\{{\bf T}_g,v_{gt}\}$ in the RSS-NET model.
+
+```matlab
+>> [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]
+        3105         376
+>> [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]
+       92399       92399
+
+>> val_tftg = val(colid ~= rowid);
+>> [min(val_tftg) quantile(val_tftg, 0.25) median(val_tftg) quantile(val_tftg, 0.75) max(val_tftg)]
+    0.6138    0.6324    0.6568    0.6949    1.0000       
+```
+
+#### 4. `ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat`: SNP-to-network proximity annotation
+
+This file contains binary annotations
+whether a SNP is "near" the given network,
+that is, within 100 kb of any network element
+(TF, TG or associated regulatory elements).
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat
+d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat
+
+$ du -sh ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat
+21M	ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat
+```
+
+In this example, there are 1081481 GWAS SNPs and
+382443 of them are near the NK cell network (i.e. `val=1`).  
+
+```matlab
+>> snp2net = matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat');
+>> snp2net
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat'
+    Properties.Writable: false
+                    chr: [1081481x1 int32]
+                    pos: [1081481x1 int32]
+                  snpid: [1081481x1 int32]
+                    val: [1081481x1 double]
+                 window: [1x1       double]
+                 
+>> [length(snp2net.val) sum(snp2net.val) snp2net.window]
+     1081481      382443      100000
+>> unique(snp2net.val)'
+     0     1     
+```
+
+#### 5. `ibd2015_NK_snp2gene_cis.mat`: SNP-to-gene cis regulation
+
+This file contains the SNP-to-gene cis regulation scores
+derived from context-matching cis eQTL studies.
+This file corresponds to $(c_{jg}-1)$ in the RSS-NET model.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum ibd2015_NK_snp2gene_cis.mat
+dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat
+
+$ du -sh ibd2015_NK_snp2gene_cis.mat
+165M	ibd2015_NK_snp2gene_cis.mat
 ```
 
 ```matlab
->> colid=gene2gene.colid; rowid=gene2gene.rowid;
->> [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]
-        3105         376
+>> snp2gene_cis = matfile('ibd2015_NK_snp2gene_cis.mat');
+>> snp2gene_cis
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_NK_snp2gene_cis.mat'
+    Properties.Writable: false
+                  colid: [10790012x1 int32]
+                numgene: [1x1        int32]
+                 numsnp: [1x1        int32]
+                  rowid: [10790012x1 int32]
+                    val: [10790012x1 double]
 ```
 
-```zsh
+In this example, there are 10790012 SNP-gene pairs
+with cis regulation scores available,
+consiting of 829280 SNPs and 18230 genes.
+The cis regulation scores (`val`) range from 0 to 0.76.
+
+```matlab
+>> [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]
+   1081481    829280     18334     18230
+   
+>> val=snp2gene_cis.val;
+>> [min(val) quantile(val, 0.25) median(val) quantile(val, 0.75) max(val)]
+         0    0.0226    0.0636    0.1172    0.7622   
+```
+
+### Run RSS-NET analysis
+
+```{r, eval=FALSE, engine='zsh'}
+$ pwd
+/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell
+
+$ tree -f
+.
+├── ./analysis_template.m
+├── ./ibd2015_nkcell.m
+└── ./ibd2015_nkcell.sbatch
+
+0 directories, 3 files
+```
+
+#### 3. Submit job arrays
+
+For a given GWAS and a given regulatory network,
+all RSS-NET analysis tasks are almost identical
+and they only differs in hyper-parameter values.
+To exploit this, we run one RSS-NET analysis as
+a job array with multiple tasks that run in parallel.
+
+To this end, we write a simple sbatch script
+[`ibd2015_nkcell.sbatch`][],
+and submit it to a cluster with [`Slurm`](https://slurm.schedmd.com/) available.
+
+```{r, eval=FALSE, engine='zsh'}
 $ sbatch ibd2015_nkcell.sbatch
 ```
 
-```zsh
+After the submission, multiple jobs should run in different nodes simultaneously.
+
+```{r, eval=FALSE, engine='zsh'}
 $ squeue -u xiangzhu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
       62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12

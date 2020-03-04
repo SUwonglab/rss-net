@@ -85,31 +85,29 @@ if ~isfield(options,'snp2gene_cis_opt')
   options.snp2gene_cis_opt = [];
 end
 
-% specify RSS-E whole-genome baseline results
-% source: https://doi.org/10.1038/s41467-018-06805-x
-base_file = strcat(dat_path,gwas_name,'_null_seed_459_squarem_step2.mat');
+% initialize RSS-NET with RSS-E baseline results, if provided
+if exist(base_file,'file') == 2
+  rsse_base = matfile(base_file);
 
-% initialize RSS-NET with RSS-E baseline results
-rsse_base = matfile(base_file);
+  logw0_vec  = rsse_base.logw;
+  alpha0_mat = rsse_base.alpha;
+  mu0_mat    = rsse_base.mu;
 
-logw0_vec  = rsse_base.logw;
-alpha0_mat = rsse_base.alpha;
-mu0_mat    = rsse_base.mu;
+  data.num_snp = size(mu0_mat,1); % total # of genome-wide SNPs
 
-data.num_snp = size(mu0_mat,1); % total # of genome-wide SNPs
+  [~,mi] = max(logw0_vec(:));
+  alpha0 = alpha0_mat(:,mi);
+  mu0    = mu0_mat(:,mi);
 
-[~,mi] = max(logw0_vec(:));
-alpha0 = alpha0_mat(:,mi);
-mu0    = mu0_mat(:,mi);
+  if (length(alpha0) ~= data.num_snp) || (length(mu0) ~= data.num_snp)
+    error('Inconsistent number of SNPs in baseline results ...');
+  end
 
-if (length(alpha0) ~= data.num_snp) || (length(mu0) ~= data.num_snp)
-  error('Inconsistent number of SNPs in baseline results ...');
+  options.alpha = alpha0;
+  options.mu    = mu0;
+
+  clear base_file rsse_base alpha0* mu0* logw0 mi;
 end
-
-options.alpha = alpha0;
-options.mu    = mu0;
-
-clear base_file rsse_base alpha0* mu0* logw0 mi;
 
 % specify hyper-parameters for RSS-NET, using `make_hpgrid.m`
 param_data = make_hpgrid(hyper_data);

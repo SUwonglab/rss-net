@@ -32,6 +32,10 @@ hyper_data.rho    = rho_set;
 
 clear *_set;
 
+% OPTIONAL: specify RSS-E whole-genome baseline results
+% source: https://doi.org/10.1038/s41467-018-06805-x
+base_file = strcat(dat_path,gwas_name,'_null_seed_459_squarem_step2.mat');
+
 % run RSS-NET
 run('analysis_template.m');
 
