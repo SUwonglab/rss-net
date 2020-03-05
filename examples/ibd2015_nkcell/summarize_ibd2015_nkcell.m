@@ -17,7 +17,7 @@ gwas_name = 'ibd2015';
 res_path = strcat(res_path,gwas_name,'_',net_name,'_',cis_name,'/');
 
 % specify hyper-parameter size
-par_set = 125;
+par_set = (1:125);
 
 % run RSS-NET
 run('summary_template.m');
