@@ -7,7 +7,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-[Zhu et al (2019)]: xxx
+[Zhu et al (2020)]: xxx
+[Supplementary Notes]: xxx
 [`script_dir`]: xxx
 [simulation example]: xxx
 [`ibd2015_nkcell.sbatch`]: xxx
@@ -18,7 +19,7 @@ Here we describe an end-to-end RSS-NET analysis of
 inflammatory bowel disease (IBD) GWAS summary statistics
 [(Liu et al, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/26192919)
 and a gene regulatory network inferred for natural killer (NK) cells.
-This example illustrates the actual data analyses performed in [Zhu et al (2019)][].
+This example illustrates the actual data analyses performed in [Zhu et al (2020)][].
 
 To reproduce results of this example,
 please use scripts in the directory [`script_dir`][],
@@ -38,7 +39,7 @@ Please modify scripts accordingly if a different directory is used.
 
 ### Download input data files
 
-#### 1. `ibd2015_sumstat.mat`: processed GWAS summary statistics and LD matrix estimates
+#### 1. `${gwas}_sumstat.mat`: processed GWAS summary statistics and LD matrix estimates
 
 This file is large (43G) because
 it has a LD matrix of 1.1 million common SNPs.
@@ -82,7 +83,7 @@ RSS-NET only uses the following variables:
 defined as `repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)`,
 where `R` is the estimated LD matrix of these `p` SNPs.
 
-#### 2. `ibd2015_snp2gene.mat`: physical distance between SNPs and genes
+#### 2. `${gwas}_snp2gene.mat`: physical distance between SNPs and genes
 
 This file contains the physical distance between
 each GWAS SNP and each protein-coding gene, within 1 Mb.
@@ -128,7 +129,7 @@ For example, the distance between gene `1` and SNP `6` is `978947` bps.
         1        6   978947
 ```
 
-#### 3. `Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat`: gene regulatory network
+#### 3. `${net}_gene2gene.mat`: gene regulatory network
 
 This file contains information of gene-to-gene
 connections in a given regulatory network.
@@ -182,7 +183,7 @@ $\{{\bf T}_g,v_{gt}\}$ in the RSS-NET model.
     0.6138    0.6324    0.6568    0.6949    1.0000       
 ```
 
-#### 4. `ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat`: SNP-to-network proximity annotation
+#### 4. `${gwas}_${net}_snp2net.mat`: SNP-to-network proximity annotation
 
 This file contains binary annotations
 whether a SNP is "near" the given network,
@@ -219,7 +220,7 @@ In this example, there are 1081481 GWAS SNPs and
      0     1     
 ```
 
-#### 5. `ibd2015_NK_snp2gene_cis.mat`: SNP-to-gene cis regulation
+#### 5. `${gwas}_${cis}_snp2gene_cis.mat`: SNP-to-gene cis regulation
 
 This file contains the SNP-to-gene cis regulation scores
 derived from context-matching cis eQTL studies.
@@ -305,26 +306,105 @@ $ squeue -u xiangzhu
       62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30
 ```
 
-Start at Mar 2, 2020, 3:04 PM.
+For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory
+and set the maximum job wall-clock time as 12.5 hours.
+The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB).
+The actual running time per task ranges from xx to xx, with median being xx.
 
-End at Mar 2, 2020, 11:37 PM.
+Each task of the job array outputs results in a
+[Version 7 MAT-file](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html).
+Each MAT-file contains variational estimates for a given set of hyper-parameter values.
+For example, the following MAT-file
+`ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat`
+stores RSS-NET results based on the 66-th row of hyper-parameter data frame.
 
+```matlab
+>> res = matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat');
+>> res
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat'
+    Properties.Writable: false                                                                                                                            
+                  alpha: [1081481x1 double]                                                                                                               
+                   logw: [1x1       double]                                                                                                               
+                     mu: [1081481x1 double]                                                                                                               
+               run_time: [1x1       double]                                                                                                               
+                      s: [1081481x1 double]                                                                                                               
+                   sigb: [1x1       double]                                                                                                               
+                   sige: [1x1       double]                                                                                                               
+                  theta: [1x1       double]                                                                                                               
+                 theta0: [1x1       double]
 ```
-Job ID: 62554249
-Array Job ID: 62554249_125
-Cluster: sherlock
-User/Group: xiangzhu/whwong
-State: COMPLETED (exit code 0)
-Nodes: 1
-Cores per node: 8
-CPU Utilized: 1-03:08:31
-CPU Efficiency: 74.54% of 1-12:24:40 core-walltime
-Job Wall-clock time: 04:33:05
-Memory Utilized: 26.58 GB
-Memory Efficiency: 85.06% of 31.25 GB
+
+Here `[alpha mu s]` correspond to the optimal variational parameters
+$\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}$ for the given hyper-parameters,
+`logw` corresponds to the variational lower bound $F^\star$ and
+`[theta0 theta sigb sige]` corresponds to $\{\theta_0,\theta,\sigma_0,\sigma\}$.
+Please see [Supplementary Notes][] of [Zhu et al (2020)][] for definitions. 
+
+### Summarize RSS-NET results
+
+```matlab
+>> run summarize_ibd2015_nkcell.m;
 ```
+
+#### 1. `${gwas}_${net}_${cis}_results_model.mat`: network-level enrichments
+
+```matlab
+>> model_res = matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet');
+>> model_res
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat'
+    Properties.Writable: false                                                                                                                                                    
+               log10_bf: [1x1   double]                                                                                                                                           
+            log10_bf_ns: [1x1   double]                                                                                                                                           
+            log10_bf_nt: [1x1   double]                                                                                                                                           
+            log10_bf_ts: [1x1   double]                                                                                                                                           
+                   logw: [125x1 double]                                                                                                                                           
+                   sigb: [125x1 double]                                                                                                                                           
+                   sige: [125x1 double]                                                                                                                                           
+                  theta: [125x1 double]                                                                                                                                           
+                 theta0: [125x1 double]                                                                                                                                           
+                   time: [125x1 double]
+```
+
+Let $M_0:\theta=0~\text{and}~\sigma^2=0$ denote the baseline model in RSS-NET.
+Here `log10_bf*` are log 10 BFs comparing the flollowing 4 enrichment models against $M_0$.
+
+- `log10_bf`: $M_1:\theta>0~\text{or}~\sigma^2>0$;
+- `log10_bf_ns`: $M_{11}:\theta>0~\text{and}~\sigma^2=0$; 
+- `log10_bf_nt`: $M_{12}:\theta=0~\text{and}~\sigma^2>0$;
+- `log10_bf_ts`: $M_{13}:\theta>0~\text{and}~\sigma^2>0$.
+
+Because $M_1$ is more flexible than other models,
+we mainly use `log10_bf` as recommended by [Zhu et al (2020)][].
+
+#### 2. `${gwas}_${net}_${cis}_results_gene.mat`: locus-level associations
+
+```matlab
+>> gene_res=matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat');
+>> gene_res
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat'
+    Properties.Writable: false                                                                                                                                                   
+                P1_gene: [18334x1 double]                                                                                                                                        
+               gene_chr: [18334x1 double]                                                                                                                                        
+             gene_start: [18334x1 double]                                                                                                                                        
+              gene_stop: [18334x1 double]
+```
+
+Here `P1_gene` corresponds to $P_1^{\sf net}$ and `[gene_chr gene_start gene_stop]`
+denote physicial position of genes based on GRCh37. 
 
 ## More examples
+
+The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks
+reported in [Zhu et al (2020)][] are essentially 684 modified rerun of the example above
+(with different input GWAS and/or network data).
+Our full analysis results are publicly available at
+<https://xiangzhu.github.io/rss-peca>.
 
 ## Appendix
 
