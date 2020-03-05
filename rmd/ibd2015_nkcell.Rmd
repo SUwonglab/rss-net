@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-[zenodo-ibd2015nkcell]: xxx
+[zenodo-ibd2015nkcell]: https://doi.org/10.5281/zenodo.3698240
 [Zhu et al (2020)]: xxx
 [Supplementary Notes]: xxx
 [`script_dir`]: xxx
@@ -47,7 +47,7 @@ Please modify scripts accordingly if a different directory is used.
 ### Download data files
 
 All data files required to run this example are freely available at Zenodo
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1473807.svg)][zenodo-ibd2015nkcell].
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3698240.svg)][zenodo-ibd2015nkcell].
 Please contact me (`xiangzhu[at]stanford.edu`)
 if you have any trouble accessing these files.
 After a complete download, you should see the following files.
