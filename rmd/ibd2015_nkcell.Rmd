@@ -11,7 +11,10 @@ editor_options:
 [Supplementary Notes]: xxx
 [`script_dir`]: xxx
 [simulation example]: xxx
+[`analysis_template.m`]: xxx
+[`ibd2015_nkcell.m`]: xxx
 [`ibd2015_nkcell.sbatch`]: xxx
+[`summary_template.m`]: xxx
 [`summarize_ibd2015_nkcell.m`]: xxx
 
 ## Overview
@@ -265,20 +268,36 @@ The cis regulation scores (`val`) range from 0 to 0.76.
 
 ### Run RSS-NET analysis
 
-```{r, eval=FALSE, engine='zsh'}
-$ pwd
-/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell
+To facilitate running RSS-NET on real data,
+I provide a generic script [`analysis_template.m`][].
+For the present example, the RSS-NET analysis is implemented by
+[`ibd2015_nkcell.m`][] and [`ibd2015_nkcell.sbatch`][].
 
-$ tree -f
+```zsh
+/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell
 .
 ├── ./analysis_template.m
 ├── ./ibd2015_nkcell.m
 └── ./ibd2015_nkcell.sbatch
-
-0 directories, 3 files
 ```
 
-#### 3. Submit job arrays
+#### 1. Specify analysis-specific variables
+
+We need to specify a few analysis-specific variables
+that are required by [`analysis_template.m`][],
+a template script that fits RSS-NET to the given data.
+For this example, we use [`ibd2015_nkcell.m`][] for the specification.
+In brief, the following variables are specified.
+
+- Data names: `gwas_name`, `net_name`, `cis_name`;
+- GWAS sample size and number of genes: `nsam`, `ngene`;
+- Hyper-parameter grid: `eta_set`, `rho_set`, `theta0_set`, `theta_set`.
+
+In general, if you want to use RSS-NET to analyze a different GWAS
+and/or network, simply modify [`ibd2015_nkcell.m`][]
+and there is no need to change [`analysis_template.m`][].
+
+#### 2. Submit job arrays
 
 For a given GWAS and a given regulatory network,
 all RSS-NET analysis tasks are almost identical
@@ -316,6 +335,13 @@ The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB)
 Across all 125 tasks, the actual running time per task ranges
 from 5 minutes to 8.9 hours, with median being 2.1 hours.
 
+We request 8 CPUs for each task because RSS-NET takes advantage of
+[`parfor`](https://www.mathworks.com/help/parallel-computing/parfor.html) in the
+[MATLAB Parallel Computing Toolbox](https://www.mathworks.com/help/distcomp/index.html).
+If this toolbox is not available in your environment,
+you can still run the same RSS-NET codes on this example (in a serial manner),
+with longer computation time per task.
+
 Each task of the job array saves results in a
 [Version 7 MAT-file](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html),
 `${gwas}_${net}_${cis}_out_${id}.mat`.
@@ -350,9 +376,25 @@ Please see [Supplementary Notes][] of [Zhu et al (2020)][] for definitions.
 
 ### Summarize RSS-NET results
 
-The RSS-NET result files `${gwas}_${net}_${cis}_out_${id}.mat` shown above
-can be further summarized into network-level and gene-level statistics
-reported in [Zhu et al (2020)][].
+The RSS-NET result files `${gwas}_${net}_${cis}_out_${id}.mat`
+shown above can be further summarized into
+both network-level and gene-level statistics
+as reported in [Zhu et al (2020)][].
+To facilitate summarizing RSS-NET results,
+we provide a generic script [`summary_template.m`][].
+For the present example, the RSS-NET summary is
+implemented by [`summarize_ibd2015_nkcell.m`][].
+If you need to summarize a different RSS-NET analysis,
+simply modify [`summarize_ibd2015_nkcell.m`][]
+and there is no need to change [`summary_template.m`][]. 
+
+```zsh
+/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell
+.
+├── ./summary_template.m
+├── ./summarize_ibd2015_nkcell.m
+```
+
 For this example, simply run the following line in a Matlab console.
 
 ```matlab
