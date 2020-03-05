@@ -313,7 +313,8 @@ The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB)
 The actual running time per task ranges from xx to xx, with median being xx.
 
 Each task of the job array outputs results in a
-[Version 7 MAT-file](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html).
+[Version 7 MAT-file](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html),
+`${gwas}_${net}_${cis}_out_${id}.mat`.
 Each MAT-file contains variational estimates for a given set of hyper-parameter values.
 For example, the following MAT-file
 `ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat`
@@ -345,16 +346,18 @@ Please see [Supplementary Notes][] of [Zhu et al (2020)][] for definitions.
 
 ### Summarize RSS-NET results
 
+The RSS-NET result files `${gwas}_${net}_${cis}_out_${id}.mat` shown above
+can be further summarized into network-level and gene-level statistics
+reported in [Zhu et al (2020)][].
 For this example, simply run the following line in a Matlab console.
-After running [`summarize_ibd2015_nkcell.m`][] 
-network-level enrichment results are stored
-in a MAT-file `${gwas}_${net}_${cis}_results_model.mat`.
-and locus-level association results are stored
-in a MAT-file `${gwas}_${net}_${cis}_results_gene.mat`. 
 
 ```matlab
 >> run summarize_ibd2015_nkcell.m;
 ```
+
+Running [`summarize_ibd2015_nkcell.m`][] yields two (much smaller) MAT-files:
+`${gwas}_${net}_${cis}_results_model.mat` that stores network-level enrichment results,
+and `${gwas}_${net}_${cis}_results_gene.mat` that stores locus-level association results. 
 
 #### 1. `${gwas}_${net}_${cis}_results_model.mat`: network-level enrichments
 
@@ -393,6 +396,10 @@ the flollowing 4 enrichment models against $M_0$.
 
 Because $M_1$ is more flexible than other models,
 we mainly use `log10_bf` as recommended by [Zhu et al (2020)][].
+
+```matlab
+TBA
+```
 
 #### 2. `${gwas}_${net}_${cis}_results_gene.mat`: locus-level associations
 
