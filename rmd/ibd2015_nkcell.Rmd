@@ -283,8 +283,9 @@ $ tree -f
 For a given GWAS and a given regulatory network,
 all RSS-NET analysis tasks are almost identical
 and they only differs in hyper-parameter values.
-To exploit this, we run one RSS-NET analysis as
-a job array with multiple tasks that run in parallel.
+To exploit this feature, we run one RSS-NET analysis as
+a [job array](https://slurm.schedmd.com/job_array.html)
+with multiple tasks that run in parallel.
 
 To this end, we write a simple sbatch script
 [`ibd2015_nkcell.sbatch`][],
@@ -294,7 +295,8 @@ and submit it to a cluster with [`Slurm`](https://slurm.schedmd.com/) available.
 $ sbatch ibd2015_nkcell.sbatch
 ```
 
-After the submission, multiple jobs should run in different nodes simultaneously.
+After the submission, 125 tasks are created.
+As shown below, multiple tasks should run in different nodes simultaneously.
 
 ```{r, eval=FALSE, engine='zsh'}
 $ squeue -u xiangzhu
@@ -308,17 +310,19 @@ $ squeue -u xiangzhu
 ```
 
 For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory
-and set the maximum job wall-clock time as 12.5 hours.
+and set the maximum job wall-clock time as 12.5 hours
+(see [`ibd2015_nkcell.sbatch`][] for details).
 The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB).
-The actual running time per task ranges from 5 minutes to 8.9 hours, with median being 2.1 hours.
+Across all 125 tasks, the actual running time per task ranges
+from 5 minutes to 8.9 hours, with median being 2.1 hours.
 
-Each task of the job array outputs results in a
+Each task of the job array saves results in a
 [Version 7 MAT-file](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html),
 `${gwas}_${net}_${cis}_out_${id}.mat`.
 Each MAT-file contains variational estimates for a given set of hyper-parameter values.
 For example, the following MAT-file
 `ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat`
-stores RSS-NET results based on the 66-th row of hyper-parameter data frame.
+stores RSS-NET results based on the 66-th set of hyper-parameter values from the grid.
 
 ```matlab
 >> res = matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat');
@@ -400,6 +404,8 @@ we mainly use `log10_bf` as recommended by [Zhu et al (2020)][].
 By running this example, we reproduce the enrichment BFs of
 [IBD GWAS and NK cell network](https://xiangzhu.github.io/rss-peca/ibd2015_net.html)
 reported in [Zhu et al (2020)][].
+The NK cell network shows strong enrichment of IBD genetic associations,
+which seems consistent with the role of NK cell in autoimmune diseases like IBD.
 
 ```matlab
 >> load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat
@@ -409,7 +415,7 @@ reported in [Zhu et al (2020)][].
 
 Let's perform a more rigorous check of reproducibility.
 For the same hyper-parameter values, we compare the resulting
-variational lower bound from my previous run with that of the current run.
+variational lower bounds from my previous run and from the current run.
 Differences are numerical negligible.
 
 ```matlab
@@ -452,7 +458,7 @@ The locus definition is provided in `ibd2015_gene_grch37.mat`.
 Here `P1_gene` corresponds to $P_1^{\sf net}$ and `[gene_chr gene_start gene_stop]`
 denote physicial position of genes based on GRCh37.
 
-Let's perform a similar reproducibility check for gene-level results.
+Let's perform a reproducibility check for gene-level results.
 Again, my previous analysis and the current analysis yield
 numerically identical answers.
 
@@ -472,8 +478,9 @@ numerically identical answers.
 ## More examples
 
 The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks
-reported in [Zhu et al (2020)][] are essentially 684 modified rerun of the example above
-(with different input GWAS and/or network data, and different hyper-parameter grids).
+reported in [Zhu et al (2020)][] are essentially 684 modified reruns
+of the example above (with different input GWAS and/or network data,
+and different hyper-parameter grids).
 Our full analysis results are publicly available at
 <https://xiangzhu.github.io/rss-peca>.
 
