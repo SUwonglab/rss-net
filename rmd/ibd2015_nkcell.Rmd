@@ -310,7 +310,7 @@ $ squeue -u xiangzhu
 For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory
 and set the maximum job wall-clock time as 12.5 hours.
 The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB).
-The actual running time per task ranges from xx to xx, with median being xx.
+The actual running time per task ranges from 5 minutes to 8.9 hours, with median being 2.1 hours.
 
 Each task of the job array outputs results in a
 [Version 7 MAT-file](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html),
@@ -397,8 +397,31 @@ the flollowing 4 enrichment models against $M_0$.
 Because $M_1$ is more flexible than other models,
 we mainly use `log10_bf` as recommended by [Zhu et al (2020)][].
 
+By running this example, we reproduce the enrichment BFs of
+[IBD GWAS and NK cell network](https://xiangzhu.github.io/rss-peca/ibd2015_net.html)
+reported in [Zhu et al (2020)][].
+
 ```matlab
-TBA
+>> load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat
+>> [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]
+   35.7048   29.4216   15.1461   35.8986
+```
+
+Let's perform a more rigorous check of reproducibility.
+For the same hyper-parameter values, we compare the resulting
+variational lower bound from my previous run with that of the current run.
+Differences are numerical negligible.
+
+```matlab
+>> res_file = 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat';               
+>> old_path = '~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/';
+>> new_path = '~/GitHub/rss-net/examples/ibd2015_nkcell/results/';                                             
+>> old_res = matfile(strcat(old_path,res_file));                                                               
+>> new_res = matfile(strcat(new_path,res_file));
+
+>> [min(old_res.logw - new_res.logw) median(old_res.logw - new_res.logw) max(old_res.logw - new_res.logw)]
+   1.0e-10 *
+   -0.0568         0    0.1592
 ```
 
 #### 2. `${gwas}_${net}_${cis}_results_gene.mat`: locus-level associations
@@ -427,7 +450,24 @@ The locus definition is provided in `ibd2015_gene_grch37.mat`.
 ```
 
 Here `P1_gene` corresponds to $P_1^{\sf net}$ and `[gene_chr gene_start gene_stop]`
-denote physicial position of genes based on GRCh37. 
+denote physicial position of genes based on GRCh37.
+
+Let's perform a similar reproducibility check for gene-level results.
+Again, my previous analysis and the current analysis yield
+numerically identical answers.
+
+```matlab
+>> res_file = 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat'; 
+>> old_path = '~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/'; 
+>> new_path = '~/GitHub/rss-net/examples/ibd2015_nkcell/results/';
+>> old_res = matfile(strcat(old_path,res_file));                                                              
+>> new_res = matfile(strcat(new_path,res_file));
+
+>> [min(old_res.P1_gene - new_res.P1_gene) median(old_res.P1_gene - new_res.P1_gene) max(old_res.P1_gene - new_res.P1_gene)]                  
+   1.0e-15 *
+   -0.2220    0.0278    0.5551
+
+```
 
 ## More examples
 
