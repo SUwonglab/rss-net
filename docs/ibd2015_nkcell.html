@@ -615,10 +615,10 @@ examples/ibd2015_nkcell/results
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreedccb92cf2a834ca2e940dc44f01cb774cbc39747targetblankdccb92ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/dccb92cf2a834ca2e940dc44f01cb774cbc39747" target="_blank">dccb92c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree793e39e48f5b4d42d3ec610a59695c3a37201b42targetblank793e39ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/793e39e48f5b4d42d3ec610a59695c3a37201b42" target="_blank">793e39e</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreedccb92cf2a834ca2e940dc44f01cb774cbc39747targetblankdccb92ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree793e39e48f5b4d42d3ec610a59695c3a37201b42targetblank793e39ea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -670,6 +670,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/793e39e48f5b4d42d3ec610a59695c3a37201b42/rmd/ibd2015_nkcell.Rmd" target="_blank">793e39e</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-05
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/269dbf17edbd2889bca74d4644bb24ab9b598a13/docs/ibd2015_nkcell.html" target="_blank">269dbf1</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1104,37 +1138,58 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </div>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>Here we describe an end-to-end RSS-NET analysis of inflammatory bowel disease (IBD) GWAS summary statistics <a href="https://www.ncbi.nlm.nih.gov/pubmed/26192919">(Liu et al, 2015)</a> and a gene regulatory network inferred for natural killer (NK) cells. This example illustrates the actual data analyses performed in <a href="xxx">Zhu et al (2020)</a>.</p>
+<p>Here we describe an end-to-end RSS-NET analysis of inflammatory bowel disease (IBD) GWAS summary statistics <a href="https://doi.org/10.1038/ng.3359">(Liu et al, 2015)</a> and a gene regulatory network inferred for natural killer (NK) cells <a href="https://doi.org/10.1038/nature11247">(ENCODE Project Consortium, 2012)</a>. This example illustrates the actual data analyses performed in <a href="xxx">Zhu et al (2020)</a>.</p>
 <p>To reproduce results of this example, please use scripts in the directory <a href="xxx"><code>script_dir</code></a>, and follow the step-by-step guide below. Before running any script in <a href="xxx"><code>script_dir</code></a>, please <a href="setup.html">install</a> RSS-NET.</p>
 <p>Since a real genome-wide analysis is conducted here, this example is more complicated than the previous <a href="xxx">simulation example</a>. It is advisable to go through the previous <a href="xxx">simulation example</a> before diving into this real data example.</p>
 <p>Note that the working directory here is assumed to be <code>wdtba</code>. Please modify scripts accordingly if a different directory is used.</p>
 </div>
 <div id="step-by-step-illustration" class="section level2">
 <h2>Step-by-step illustration</h2>
-<div id="download-input-data-files" class="section level3">
-<h3>Download input data files</h3>
+<div id="download-data-files" class="section level3">
+<h3>Download data files</h3>
+<p>All data files required to run this example are freely available at Zenodo <a href="xxx"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1473807.svg" alt="DOI" /></a>. Please contact me (<code>xiangzhu[at]stanford.edu</code>) if you have any trouble accessing these files. After a complete download, you should see the following files.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb1-1" title="1">$ tree <span class="kw">.</span> </a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">.</span></a>
+<a class="sourceLine" id="cb1-3" title="3">├── ibd2015_gene_grch37.mat</a>
+<a class="sourceLine" id="cb1-4" title="4">├── ibd2015_nkcell_data.md5</a>
+<a class="sourceLine" id="cb1-5" title="5">├── ibd2015_nkcell_full_results.zip</a>
+<a class="sourceLine" id="cb1-6" title="6">├── ibd2015_nkcell_summary_results.zip</a>
+<a class="sourceLine" id="cb1-7" title="7">├── ibd2015_NK_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb1-8" title="8">├── ibd2015_null_seed_459_squarem_step2.mat</a>
+<a class="sourceLine" id="cb1-9" title="9">├── ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb1-10" title="10">├── ibd2015_snp2gene.mat</a>
+<a class="sourceLine" id="cb1-11" title="11">├── ibd2015_sumstat.mat</a>
+<a class="sourceLine" id="cb1-12" title="12">└── Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb1-13" title="13"></a>
+<a class="sourceLine" id="cb1-14" title="14">0 directories, 10 files</a></code></pre></div>
+<p>To help readers confirm if they use the same files as we do, we report 128-bit MD5 hashes of all files in <code>ibd2015_nkcell_data.md5</code>.</p>
+<p>To help readers confirm if they can reproduce results of this example, we also provide the full results (<code>ibd2015_nkcell_full_results.zip</code>) and summarized results (<code>ibd2015_nkcell_summary_results.zip</code>) in the same Zenodo deposit.</p>
+<p>For simplicity and generality, we introduce the following short-hand notations.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb2-1" title="1">gwas = <span class="st">&#39;ibd2015&#39;</span>;</a>
+<a class="sourceLine" id="cb2-2" title="2">net  = <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood&#39;</span>; </a>
+<a class="sourceLine" id="cb2-3" title="3">cis  = <span class="st">&#39;NK&#39;</span>;</a></code></pre></div>
 <div id="gwas_sumstat.mat-processed-gwas-summary-statistics-and-ld-matrix-estimates" class="section level4">
 <h4>1. <code>${gwas}_sumstat.mat</code>: processed GWAS summary statistics and LD matrix estimates</h4>
-<p>This file is large (43G) because it has a LD matrix of 1.1 million common SNPs. Please contact me (<code>xiangzhu[at]stanford.edu</code>) if you have trouble accessing this file.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb1-1" title="1">$ md5sum ibd2015_sumstat.mat</a>
-<a class="sourceLine" id="cb1-2" title="2">ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4">$ <span class="kw">du</span> -sh ibd2015_sumstat.mat                                             </a>
-<a class="sourceLine" id="cb1-5" title="5">43G ibd2015_sumstat.mat</a></code></pre></div>
+<p>This file is large (43G) because it has a LD matrix of 1.1 million common SNPs.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb3-1" title="1">$ md5sum ibd2015_sumstat.mat</a>
+<a class="sourceLine" id="cb3-2" title="2">ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">$ <span class="kw">du</span> -sh ibd2015_sumstat.mat                                             </a>
+<a class="sourceLine" id="cb3-5" title="5">43G ibd2015_sumstat.mat</a></code></pre></div>
 <p>Let’s look at the contents of <code>ibd2015_sumstat.mat</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb2-1" title="1">&gt;&gt; sumstat = matfile(<span class="st">&#39;ibd2015_sumstat.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb2-2" title="2">&gt;&gt; sumstat</a>
-<a class="sourceLine" id="cb2-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb2-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb2-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_sumstat.mat&#39;</span></a>
-<a class="sourceLine" id="cb2-6" title="6">    Properties.Writable: false                                                          </a>
-<a class="sourceLine" id="cb2-7" title="7">                     BR: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-8" title="8">                      R: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-9" title="9">                  SiRiS: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-10" title="10">                betahat: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-11" title="11">                    chr: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-12" title="12">                    pos: [<span class="fl">22</span>x1 cell]                                                    </a>
-<a class="sourceLine" id="cb2-13" title="13">                     se: [<span class="fl">22</span>x1 cell]</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb4-1" title="1">&gt;&gt; sumstat = matfile(<span class="st">&#39;ibd2015_sumstat.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb4-2" title="2">&gt;&gt; sumstat</a>
+<a class="sourceLine" id="cb4-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb4-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb4-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_sumstat.mat&#39;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    Properties.Writable: false                                                          </a>
+<a class="sourceLine" id="cb4-7" title="7">                     BR: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb4-8" title="8">                      R: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb4-9" title="9">                  SiRiS: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb4-10" title="10">                betahat: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb4-11" title="11">                    chr: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb4-12" title="12">                    pos: [<span class="fl">22</span>x1 cell]                                                    </a>
+<a class="sourceLine" id="cb4-13" title="13">                     se: [<span class="fl">22</span>x1 cell]</a></code></pre></div>
 <p>GWAS summary statistics and LD estimates are stored as <a href="https://www.mathworks.com/help/matlab/cell-arrays.html">cell arrays</a>. RSS-NET only uses the following variables:</p>
 <ul>
 <li><code>betahat{j,1}</code>, single-SNP effect size estimates of all SNPs on chromosome <code>j</code>;</li>
@@ -1146,127 +1201,127 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <div id="gwas_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
 <h4>2. <code>${gwas}_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
 <p>This file contains the physical distance between each GWAS SNP and each protein-coding gene, within 1 Mb. This file corresponds to <span class="math inline">\({\bf G}_j\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb3-1" title="1">$ md5sum ibd2015_snp2gene.mat </a>
-<a class="sourceLine" id="cb3-2" title="2">7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</a>
-<a class="sourceLine" id="cb3-3" title="3"></a>
-<a class="sourceLine" id="cb3-4" title="4">$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </a>
-<a class="sourceLine" id="cb3-5" title="5">224M    ibd2015_snp2gene.mat</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb5-1" title="1">$ md5sum ibd2015_snp2gene.mat </a>
+<a class="sourceLine" id="cb5-2" title="2">7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4">$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </a>
+<a class="sourceLine" id="cb5-5" title="5">224M    ibd2015_snp2gene.mat</a></code></pre></div>
 <p>In this example, there are 18334 SNPs and 1081481 genes.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb4-1" title="1">&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb4-2" title="2">&gt;&gt; snp2gene                                   </a>
-<a class="sourceLine" id="cb4-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb4-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb4-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_snp2gene.mat&#39;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">    Properties.Writable: false                                                                </a>
-<a class="sourceLine" id="cb4-7" title="7">                    chr: [<span class="fl">1081481</span>x1  int32]                                                   </a>
-<a class="sourceLine" id="cb4-8" title="8">                  colid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
-<a class="sourceLine" id="cb4-9" title="9">                numgene: [<span class="fl">1</span>x1        int32]                                                   </a>
-<a class="sourceLine" id="cb4-10" title="10">                 numsnp: [<span class="fl">1</span>x1        int32]                                                   </a>
-<a class="sourceLine" id="cb4-11" title="11">                    pos: [<span class="fl">1081481</span>x1  int32]                                                   </a>
-<a class="sourceLine" id="cb4-12" title="12">                  rowid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
-<a class="sourceLine" id="cb4-13" title="13">                    val: [<span class="fl">14126805</span>x1 double]</a>
-<a class="sourceLine" id="cb4-14" title="14"></a>
-<a class="sourceLine" id="cb4-15" title="15">&gt;&gt; [snp2gene.numgene snp2gene.numsnp]                                                              </a>
-<a class="sourceLine" id="cb4-16" title="16">     <span class="fl">18334</span>   <span class="fl">1081481</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb6-1" title="1">&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb6-2" title="2">&gt;&gt; snp2gene                                   </a>
+<a class="sourceLine" id="cb6-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb6-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb6-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_snp2gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">    Properties.Writable: false                                                                </a>
+<a class="sourceLine" id="cb6-7" title="7">                    chr: [<span class="fl">1081481</span>x1  int32]                                                   </a>
+<a class="sourceLine" id="cb6-8" title="8">                  colid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
+<a class="sourceLine" id="cb6-9" title="9">                numgene: [<span class="fl">1</span>x1        int32]                                                   </a>
+<a class="sourceLine" id="cb6-10" title="10">                 numsnp: [<span class="fl">1</span>x1        int32]                                                   </a>
+<a class="sourceLine" id="cb6-11" title="11">                    pos: [<span class="fl">1081481</span>x1  int32]                                                   </a>
+<a class="sourceLine" id="cb6-12" title="12">                  rowid: [<span class="fl">14126805</span>x1 int32]                                                   </a>
+<a class="sourceLine" id="cb6-13" title="13">                    val: [<span class="fl">14126805</span>x1 double]</a>
+<a class="sourceLine" id="cb6-14" title="14"></a>
+<a class="sourceLine" id="cb6-15" title="15">&gt;&gt; [snp2gene.numgene snp2gene.numsnp]                                                              </a>
+<a class="sourceLine" id="cb6-16" title="16">     <span class="fl">18334</span>   <span class="fl">1081481</span></a></code></pre></div>
 <p>The SNP-to-gene distance information is captured by a three-column matrix <code>[colid rowid val]</code>. For example, the distance between gene <code>1</code> and SNP <code>6</code> is <code>978947</code> bps.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb5-1" title="1">&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</a>
-<a class="sourceLine" id="cb5-2" title="2">&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</a>
-<a class="sourceLine" id="cb5-3" title="3">        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb7-1" title="1">&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</a>
+<a class="sourceLine" id="cb7-2" title="2">&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</a>
+<a class="sourceLine" id="cb7-3" title="3">        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></a></code></pre></div>
 </div>
 <div id="net_gene2gene.mat-gene-regulatory-network" class="section level4">
 <h4>3. <code>${net}_gene2gene.mat</code>: gene regulatory network</h4>
 <p>This file contains information of gene-to-gene connections in a given regulatory network.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb6-1" title="1">$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </a>
-<a class="sourceLine" id="cb6-2" title="2">35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
-<a class="sourceLine" id="cb6-3" title="3"></a>
-<a class="sourceLine" id="cb6-4" title="4">$ <span class="kw">du</span> -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
-<a class="sourceLine" id="cb6-5" title="5">1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb7-1" title="1">&gt;&gt; gene2gene = matfile(<span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb7-2" title="2">&gt;&gt; gene2gene</a>
-<a class="sourceLine" id="cb7-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb7-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb7-5" title="5">      Properties.Source: <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></a>
-<a class="sourceLine" id="cb7-6" title="6">    Properties.Writable: false                                                                                                            </a>
-<a class="sourceLine" id="cb7-7" title="7">                  colid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
-<a class="sourceLine" id="cb7-8" title="8">                numgene: [<span class="fl">1</span>x1      int32]                                                                                                 </a>
-<a class="sourceLine" id="cb7-9" title="9">                  rowid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
-<a class="sourceLine" id="cb7-10" title="10">                    val: [<span class="fl">110733</span>x1 double]</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb8-1" title="1">$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </a>
+<a class="sourceLine" id="cb8-2" title="2">35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4">$ <span class="kw">du</span> -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb8-5" title="5">1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb9-1" title="1">&gt;&gt; gene2gene = matfile(<span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb9-2" title="2">&gt;&gt; gene2gene</a>
+<a class="sourceLine" id="cb9-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb9-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb9-5" title="5">      Properties.Source: <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    Properties.Writable: false                                                                                                            </a>
+<a class="sourceLine" id="cb9-7" title="7">                  colid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
+<a class="sourceLine" id="cb9-8" title="8">                numgene: [<span class="fl">1</span>x1      int32]                                                                                                 </a>
+<a class="sourceLine" id="cb9-9" title="9">                  rowid: [<span class="fl">110733</span>x1 int32]                                                                                                 </a>
+<a class="sourceLine" id="cb9-10" title="10">                    val: [<span class="fl">110733</span>x1 double]</a></code></pre></div>
 <p>For implementation convenience, this file contains the trivial case where each gene is mapped to itself with <code>val=1</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb8-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </a>
-<a class="sourceLine" id="cb8-2" title="2">&gt;&gt; [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]</a>
-<a class="sourceLine" id="cb8-3" title="3">   <span class="fl">18334</span>   <span class="fl">18334</span>       <span class="fl">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb10-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </a>
+<a class="sourceLine" id="cb10-2" title="2">&gt;&gt; [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]</a>
+<a class="sourceLine" id="cb10-3" title="3">   <span class="fl">18334</span>   <span class="fl">18334</span>       <span class="fl">1</span></a></code></pre></div>
 <p>For a given network, transcription factors (TFs) are stored in <code>rowid</code> and target genes (TGs) are stored in <code>colid</code>. In this example there are 3105 TGs and 376 TFs. Among these TFs and TGs, there are 92399 edges. The edge weights range from 0.61 to 1. These TF-to-TG connections and edge weights correspond to <span class="math inline">\(\{{\bf T}_g,v_{gt}\}\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb9-1" title="1">&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</a>
-<a class="sourceLine" id="cb9-2" title="2">        <span class="fl">3105</span>         <span class="fl">376</span></a>
-<a class="sourceLine" id="cb9-3" title="3">&gt;&gt; [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]</a>
-<a class="sourceLine" id="cb9-4" title="4">       <span class="fl">92399</span>       <span class="fl">92399</span></a>
-<a class="sourceLine" id="cb9-5" title="5"></a>
-<a class="sourceLine" id="cb9-6" title="6">&gt;&gt; val_tftg = val(colid ~= rowid);</a>
-<a class="sourceLine" id="cb9-7" title="7">&gt;&gt; [min(val_tftg) quantile(val_tftg, <span class="fl">0.25</span>) median(val_tftg) quantile(val_tftg, <span class="fl">0.75</span>) max(val_tftg)]</a>
-<a class="sourceLine" id="cb9-8" title="8">    <span class="fl">0.6138</span>    <span class="fl">0.6324</span>    <span class="fl">0.6568</span>    <span class="fl">0.6949</span>    <span class="fl">1.0000</span>       </a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb11-1" title="1">&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</a>
+<a class="sourceLine" id="cb11-2" title="2">        <span class="fl">3105</span>         <span class="fl">376</span></a>
+<a class="sourceLine" id="cb11-3" title="3">&gt;&gt; [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]</a>
+<a class="sourceLine" id="cb11-4" title="4">       <span class="fl">92399</span>       <span class="fl">92399</span></a>
+<a class="sourceLine" id="cb11-5" title="5"></a>
+<a class="sourceLine" id="cb11-6" title="6">&gt;&gt; val_tftg = val(colid ~= rowid);</a>
+<a class="sourceLine" id="cb11-7" title="7">&gt;&gt; [min(val_tftg) quantile(val_tftg, <span class="fl">0.25</span>) median(val_tftg) quantile(val_tftg, <span class="fl">0.75</span>) max(val_tftg)]</a>
+<a class="sourceLine" id="cb11-8" title="8">    <span class="fl">0.6138</span>    <span class="fl">0.6324</span>    <span class="fl">0.6568</span>    <span class="fl">0.6949</span>    <span class="fl">1.0000</span>       </a></code></pre></div>
 </div>
 <div id="gwas_net_snp2net.mat-snp-to-network-proximity-annotation" class="section level4">
 <h4>4. <code>${gwas}_${net}_snp2net.mat</code>: SNP-to-network proximity annotation</h4>
 <p>This file contains binary annotations whether a SNP is “near” the given network, that is, within 100 kb of any network element (TF, TG or associated regulatory elements).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb10-1" title="1">$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
-<a class="sourceLine" id="cb10-2" title="2">d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
-<a class="sourceLine" id="cb10-3" title="3"></a>
-<a class="sourceLine" id="cb10-4" title="4">$ <span class="kw">du</span> -sh ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
-<a class="sourceLine" id="cb10-5" title="5">21M ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb12-1" title="1">$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb12-2" title="2">d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb12-3" title="3"></a>
+<a class="sourceLine" id="cb12-4" title="4">$ <span class="kw">du</span> -sh ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb12-5" title="5">21M ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a></code></pre></div>
 <p>In this example, there are 1081481 GWAS SNPs and 382443 of them are near the NK cell network (i.e. <code>val=1</code>).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb11-1" title="1">&gt;&gt; snp2net = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb11-2" title="2">&gt;&gt; snp2net</a>
-<a class="sourceLine" id="cb11-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb11-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb11-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span></a>
-<a class="sourceLine" id="cb11-6" title="6">    Properties.Writable: false</a>
-<a class="sourceLine" id="cb11-7" title="7">                    chr: [<span class="fl">1081481</span>x1 int32]</a>
-<a class="sourceLine" id="cb11-8" title="8">                    pos: [<span class="fl">1081481</span>x1 int32]</a>
-<a class="sourceLine" id="cb11-9" title="9">                  snpid: [<span class="fl">1081481</span>x1 int32]</a>
-<a class="sourceLine" id="cb11-10" title="10">                    val: [<span class="fl">1081481</span>x1 double]</a>
-<a class="sourceLine" id="cb11-11" title="11">                 window: [<span class="fl">1</span>x1       double]</a>
-<a class="sourceLine" id="cb11-12" title="12">                 </a>
-<a class="sourceLine" id="cb11-13" title="13">&gt;&gt; [length(snp2net.val) sum(snp2net.val) snp2net.window]</a>
-<a class="sourceLine" id="cb11-14" title="14">     <span class="fl">1081481</span>      <span class="fl">382443</span>      <span class="fl">100000</span></a>
-<a class="sourceLine" id="cb11-15" title="15">&gt;&gt; unique(snp2net.val)&#39;</a>
-<a class="sourceLine" id="cb11-16" title="16">     <span class="fl">0</span>     <span class="fl">1</span>     </a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb13-1" title="1">&gt;&gt; snp2net = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb13-2" title="2">&gt;&gt; snp2net</a>
+<a class="sourceLine" id="cb13-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb13-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb13-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span></a>
+<a class="sourceLine" id="cb13-6" title="6">    Properties.Writable: false</a>
+<a class="sourceLine" id="cb13-7" title="7">                    chr: [<span class="fl">1081481</span>x1 int32]</a>
+<a class="sourceLine" id="cb13-8" title="8">                    pos: [<span class="fl">1081481</span>x1 int32]</a>
+<a class="sourceLine" id="cb13-9" title="9">                  snpid: [<span class="fl">1081481</span>x1 int32]</a>
+<a class="sourceLine" id="cb13-10" title="10">                    val: [<span class="fl">1081481</span>x1 double]</a>
+<a class="sourceLine" id="cb13-11" title="11">                 window: [<span class="fl">1</span>x1       double]</a>
+<a class="sourceLine" id="cb13-12" title="12">                 </a>
+<a class="sourceLine" id="cb13-13" title="13">&gt;&gt; [length(snp2net.val) sum(snp2net.val) snp2net.window]</a>
+<a class="sourceLine" id="cb13-14" title="14">     <span class="fl">1081481</span>      <span class="fl">382443</span>      <span class="fl">100000</span></a>
+<a class="sourceLine" id="cb13-15" title="15">&gt;&gt; unique(snp2net.val)&#39;</a>
+<a class="sourceLine" id="cb13-16" title="16">     <span class="fl">0</span>     <span class="fl">1</span>     </a></code></pre></div>
 </div>
 <div id="gwas_cis_snp2gene_cis.mat-snp-to-gene-cis-regulation" class="section level4">
 <h4>5. <code>${gwas}_${cis}_snp2gene_cis.mat</code>: SNP-to-gene cis regulation</h4>
 <p>This file contains the SNP-to-gene cis regulation scores derived from context-matching cis eQTL studies. This file corresponds to <span class="math inline">\((c_{jg}-1)\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb12-1" title="1">$ md5sum ibd2015_NK_snp2gene_cis.mat</a>
-<a class="sourceLine" id="cb12-2" title="2">dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat</a>
-<a class="sourceLine" id="cb12-3" title="3"></a>
-<a class="sourceLine" id="cb12-4" title="4">$ <span class="kw">du</span> -sh ibd2015_NK_snp2gene_cis.mat</a>
-<a class="sourceLine" id="cb12-5" title="5">165M    ibd2015_NK_snp2gene_cis.mat</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb13-1" title="1">&gt;&gt; snp2gene_cis = matfile(<span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb13-2" title="2">&gt;&gt; snp2gene_cis</a>
-<a class="sourceLine" id="cb13-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb13-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb13-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span></a>
-<a class="sourceLine" id="cb13-6" title="6">    Properties.Writable: false</a>
-<a class="sourceLine" id="cb13-7" title="7">                  colid: [<span class="fl">10790012</span>x1 int32]</a>
-<a class="sourceLine" id="cb13-8" title="8">                numgene: [<span class="fl">1</span>x1        int32]</a>
-<a class="sourceLine" id="cb13-9" title="9">                 numsnp: [<span class="fl">1</span>x1        int32]</a>
-<a class="sourceLine" id="cb13-10" title="10">                  rowid: [<span class="fl">10790012</span>x1 int32]</a>
-<a class="sourceLine" id="cb13-11" title="11">                    val: [<span class="fl">10790012</span>x1 double]</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb14-1" title="1">$ md5sum ibd2015_NK_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb14-2" title="2">dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb14-3" title="3"></a>
+<a class="sourceLine" id="cb14-4" title="4">$ <span class="kw">du</span> -sh ibd2015_NK_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb14-5" title="5">165M    ibd2015_NK_snp2gene_cis.mat</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb15-1" title="1">&gt;&gt; snp2gene_cis = matfile(<span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb15-2" title="2">&gt;&gt; snp2gene_cis</a>
+<a class="sourceLine" id="cb15-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb15-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb15-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span></a>
+<a class="sourceLine" id="cb15-6" title="6">    Properties.Writable: false</a>
+<a class="sourceLine" id="cb15-7" title="7">                  colid: [<span class="fl">10790012</span>x1 int32]</a>
+<a class="sourceLine" id="cb15-8" title="8">                numgene: [<span class="fl">1</span>x1        int32]</a>
+<a class="sourceLine" id="cb15-9" title="9">                 numsnp: [<span class="fl">1</span>x1        int32]</a>
+<a class="sourceLine" id="cb15-10" title="10">                  rowid: [<span class="fl">10790012</span>x1 int32]</a>
+<a class="sourceLine" id="cb15-11" title="11">                    val: [<span class="fl">10790012</span>x1 double]</a></code></pre></div>
 <p>In this example, there are 10790012 SNP-gene pairs with cis regulation scores available, consiting of 829280 SNPs and 18230 genes. The cis regulation scores (<code>val</code>) range from 0 to 0.76.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb14-1" title="1">&gt;&gt; [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]</a>
-<a class="sourceLine" id="cb14-2" title="2">   <span class="fl">1081481</span>    <span class="fl">829280</span>     <span class="fl">18334</span>     <span class="fl">18230</span></a>
-<a class="sourceLine" id="cb14-3" title="3">   </a>
-<a class="sourceLine" id="cb14-4" title="4">&gt;&gt; val=snp2gene_cis.val;</a>
-<a class="sourceLine" id="cb14-5" title="5">&gt;&gt; [min(val) quantile(val, <span class="fl">0.25</span>) median(val) quantile(val, <span class="fl">0.75</span>) max(val)]</a>
-<a class="sourceLine" id="cb14-6" title="6">         <span class="fl">0</span>    <span class="fl">0.0226</span>    <span class="fl">0.0636</span>    <span class="fl">0.1172</span>    <span class="fl">0.7622</span>   </a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb16-1" title="1">&gt;&gt; [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]</a>
+<a class="sourceLine" id="cb16-2" title="2">   <span class="fl">1081481</span>    <span class="fl">829280</span>     <span class="fl">18334</span>     <span class="fl">18230</span></a>
+<a class="sourceLine" id="cb16-3" title="3">   </a>
+<a class="sourceLine" id="cb16-4" title="4">&gt;&gt; val=snp2gene_cis.val;</a>
+<a class="sourceLine" id="cb16-5" title="5">&gt;&gt; [min(val) quantile(val, <span class="fl">0.25</span>) median(val) quantile(val, <span class="fl">0.75</span>) max(val)]</a>
+<a class="sourceLine" id="cb16-6" title="6">         <span class="fl">0</span>    <span class="fl">0.0226</span>    <span class="fl">0.0636</span>    <span class="fl">0.1172</span>    <span class="fl">0.7622</span>   </a></code></pre></div>
 </div>
 </div>
 <div id="run-rss-net-analysis" class="section level3">
 <h3>Run RSS-NET analysis</h3>
 <p>To facilitate running RSS-NET on real data, I provide a generic script <a href="xxx"><code>analysis_template.m</code></a>. For the present example, the RSS-NET analysis is implemented by <a href="xxx"><code>ibd2015_nkcell.m</code></a> and <a href="xxx"><code>ibd2015_nkcell.sbatch</code></a>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb15-1" title="1">/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="kw">.</span></a>
-<a class="sourceLine" id="cb15-3" title="3">├── ./analysis_template.m</a>
-<a class="sourceLine" id="cb15-4" title="4">├── ./ibd2015_nkcell.m</a>
-<a class="sourceLine" id="cb15-5" title="5">└── ./ibd2015_nkcell.sbatch</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb17-1" title="1">/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="kw">.</span></a>
+<a class="sourceLine" id="cb17-3" title="3">├── ./analysis_template.m</a>
+<a class="sourceLine" id="cb17-4" title="4">├── ./ibd2015_nkcell.m</a>
+<a class="sourceLine" id="cb17-5" title="5">└── ./ibd2015_nkcell.sbatch</a></code></pre></div>
 <div id="specify-analysis-specific-variables" class="section level4">
 <h4>1. Specify analysis-specific variables</h4>
 <p>We need to specify a few analysis-specific variables that are required by <a href="xxx"><code>analysis_template.m</code></a>, a template script that fits RSS-NET to the given data. For this example, we use <a href="xxx"><code>ibd2015_nkcell.m</code></a> for the specification. In brief, the following variables are specified.</p>
@@ -1281,66 +1336,66 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <h4>2. Submit job arrays</h4>
 <p>For a given GWAS and a given regulatory network, all RSS-NET analysis tasks are almost identical and they only differs in hyper-parameter values. To exploit this feature, we run one RSS-NET analysis as a <a href="https://slurm.schedmd.com/job_array.html">job array</a> with multiple tasks that run in parallel.</p>
 <p>To this end, we write a simple sbatch script <a href="xxx"><code>ibd2015_nkcell.sbatch</code></a>, and submit it to a cluster with <a href="https://slurm.schedmd.com/"><code>Slurm</code></a> available.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb16-1" title="1">$ sbatch ibd2015_nkcell.sbatch</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb18-1" title="1">$ sbatch ibd2015_nkcell.sbatch</a></code></pre></div>
 <p>After the submission, 125 tasks are created. As shown below, multiple tasks should run in different nodes simultaneously.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb17-1" title="1">$ squeue -u xiangzhu</a>
-<a class="sourceLine" id="cb17-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
-<a class="sourceLine" id="cb17-3" title="3">      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
-<a class="sourceLine" id="cb17-4" title="4">      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
-<a class="sourceLine" id="cb17-5" title="5">      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</a>
-<a class="sourceLine" id="cb17-6" title="6">      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</a>
-<a class="sourceLine" id="cb17-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
-<a class="sourceLine" id="cb17-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb19-1" title="1">$ squeue -u xiangzhu</a>
+<a class="sourceLine" id="cb19-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
+<a class="sourceLine" id="cb19-3" title="3">      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
+<a class="sourceLine" id="cb19-4" title="4">      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
+<a class="sourceLine" id="cb19-5" title="5">      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</a>
+<a class="sourceLine" id="cb19-6" title="6">      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</a>
+<a class="sourceLine" id="cb19-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
+<a class="sourceLine" id="cb19-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
 <p>For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory and set the maximum job wall-clock time as 12.5 hours (see <a href="xxx"><code>ibd2015_nkcell.sbatch</code></a> for details). The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB). Across all 125 tasks, the actual running time per task ranges from 5 minutes to 8.9 hours, with median being 2.1 hours.</p>
 <p>We request 8 CPUs for each task because RSS-NET takes advantage of <a href="https://www.mathworks.com/help/parallel-computing/parfor.html"><code>parfor</code></a> in the <a href="https://www.mathworks.com/help/distcomp/index.html">MATLAB Parallel Computing Toolbox</a>. If this toolbox is not available in your environment, you can still run the same RSS-NET codes on this example (in a serial manner), with longer computation time per task.</p>
 <p>Each task of the job array saves results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>, <code>${gwas}_${net}_${cis}_out_${id}.mat</code>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th set of hyper-parameter values from the grid.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb18-1" title="1">&gt;&gt; res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb18-2" title="2">&gt;&gt; res</a>
-<a class="sourceLine" id="cb18-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb18-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb18-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span></a>
-<a class="sourceLine" id="cb18-6" title="6">    Properties.Writable: false                                                                                                                            </a>
-<a class="sourceLine" id="cb18-7" title="7">                  alpha: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-8" title="8">                   logw: [<span class="fl">1</span>x1       double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-9" title="9">                     mu: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-10" title="10">               run_time: [<span class="fl">1</span>x1       double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-11" title="11">                      s: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-12" title="12">                   sigb: [<span class="fl">1</span>x1       double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-13" title="13">                   sige: [<span class="fl">1</span>x1       double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-14" title="14">                  theta: [<span class="fl">1</span>x1       double]                                                                                                               </a>
-<a class="sourceLine" id="cb18-15" title="15">                 theta0: [<span class="fl">1</span>x1       double]</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb20-1" title="1">&gt;&gt; res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb20-2" title="2">&gt;&gt; res</a>
+<a class="sourceLine" id="cb20-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb20-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb20-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span></a>
+<a class="sourceLine" id="cb20-6" title="6">    Properties.Writable: false                                                                                                                            </a>
+<a class="sourceLine" id="cb20-7" title="7">                  alpha: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-8" title="8">                   logw: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-9" title="9">                     mu: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-10" title="10">               run_time: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-11" title="11">                      s: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-12" title="12">                   sigb: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-13" title="13">                   sige: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-14" title="14">                  theta: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb20-15" title="15">                 theta0: [<span class="fl">1</span>x1       double]</a></code></pre></div>
 <p>Here <code>[alpha mu s]</code> correspond to the optimal variational parameters <span class="math inline">\(\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}\)</span> for the given hyper-parameters, <code>logw</code> corresponds to the variational lower bound <span class="math inline">\(F^\star\)</span> and <code>[theta0 theta sigb sige]</code> corresponds to <span class="math inline">\(\{\theta_0,\theta,\sigma_0,\sigma\}\)</span>. Please see <a href="xxx">Supplementary Notes</a> of <a href="xxx">Zhu et al (2020)</a> for definitions.</p>
 </div>
 </div>
 <div id="summarize-rss-net-results" class="section level3">
 <h3>Summarize RSS-NET results</h3>
 <p>The RSS-NET result files <code>${gwas}_${net}_${cis}_out_${id}.mat</code> shown above can be further summarized into both network-level and gene-level statistics as reported in <a href="xxx">Zhu et al (2020)</a>. To facilitate summarizing RSS-NET results, we provide a generic script <a href="xxx"><code>summary_template.m</code></a>. For the present example, the RSS-NET summary is implemented by <a href="xxx"><code>summarize_ibd2015_nkcell.m</code></a>. If you need to summarize a different RSS-NET analysis, simply modify <a href="xxx"><code>summarize_ibd2015_nkcell.m</code></a> and there is no need to change <a href="xxx"><code>summary_template.m</code></a>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb19-1" title="1">/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="kw">.</span></a>
-<a class="sourceLine" id="cb19-3" title="3">├── ./summary_template.m</a>
-<a class="sourceLine" id="cb19-4" title="4">├── ./summarize_ibd2015_nkcell.m</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb21-1" title="1">/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell</a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="kw">.</span></a>
+<a class="sourceLine" id="cb21-3" title="3">├── ./summary_template.m</a>
+<a class="sourceLine" id="cb21-4" title="4">├── ./summarize_ibd2015_nkcell.m</a></code></pre></div>
 <p>For this example, simply run the following line in a Matlab console.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb20-1" title="1">&gt;&gt; run summarize_ibd2015_nkcell.m;</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb22-1" title="1">&gt;&gt; run summarize_ibd2015_nkcell.m;</a></code></pre></div>
 <p>Running <a href="xxx"><code>summarize_ibd2015_nkcell.m</code></a> yields two (much smaller) MAT-files: <code>${gwas}_${net}_${cis}_results_model.mat</code> that stores network-level enrichment results, and <code>${gwas}_${net}_${cis}_results_gene.mat</code> that stores locus-level association results.</p>
 <div id="gwas_net_cis_results_model.mat-network-level-enrichments" class="section level4">
 <h4>1. <code>${gwas}_${net}_${cis}_results_model.mat</code>: network-level enrichments</h4>
 <p>To assess whether a regulatory network is enriched for genetic associations with a trait, we evaluate a Bayes factor (BF) comparing the baseline model (<span class="math inline">\(M_0:\theta=0~\text{and}~\sigma^2=0\)</span>) in RSS-NET with an enrichment model.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">&gt;&gt; model_res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet&#39;</span>);</a>
-<a class="sourceLine" id="cb21-2" title="2">&gt;&gt; model_res</a>
-<a class="sourceLine" id="cb21-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb21-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb21-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span></a>
-<a class="sourceLine" id="cb21-6" title="6">    Properties.Writable: false                                                                                                                                                    </a>
-<a class="sourceLine" id="cb21-7" title="7">               log10_bf: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-8" title="8">            log10_bf_ns: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-9" title="9">            log10_bf_nt: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-10" title="10">            log10_bf_ts: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-11" title="11">                   logw: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-12" title="12">                   sigb: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-13" title="13">                   sige: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-14" title="14">                  theta: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-15" title="15">                 theta0: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
-<a class="sourceLine" id="cb21-16" title="16">                   time: [<span class="fl">125</span>x1 double]</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb23-1" title="1">&gt;&gt; model_res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet&#39;</span>);</a>
+<a class="sourceLine" id="cb23-2" title="2">&gt;&gt; model_res</a>
+<a class="sourceLine" id="cb23-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb23-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb23-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span></a>
+<a class="sourceLine" id="cb23-6" title="6">    Properties.Writable: false                                                                                                                                                    </a>
+<a class="sourceLine" id="cb23-7" title="7">               log10_bf: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-8" title="8">            log10_bf_ns: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-9" title="9">            log10_bf_nt: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-10" title="10">            log10_bf_ts: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-11" title="11">                   logw: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-12" title="12">                   sigb: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-13" title="13">                   sige: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-14" title="14">                  theta: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-15" title="15">                 theta0: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb23-16" title="16">                   time: [<span class="fl">125</span>x1 double]</a></code></pre></div>
 <p>Here <code>log10_bf*</code> are log 10 BFs comparing the flollowing 4 enrichment models against <span class="math inline">\(M_0\)</span>.</p>
 <ul>
 <li><code>log10_bf</code>: <span class="math inline">\(M_1:\theta&gt;0~\text{or}~\sigma^2&gt;0\)</span>;</li>
@@ -1350,46 +1405,46 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </ul>
 <p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="xxx">Zhu et al (2020)</a>.</p>
 <p>By running this example, we reproduce the enrichment BFs of <a href="https://xiangzhu.github.io/rss-peca/ibd2015_net.html">IBD GWAS and NK cell network</a> reported in <a href="xxx">Zhu et al (2020)</a>. The NK cell network shows strong enrichment of IBD genetic associations, which seems consistent with the role of NK cell in autoimmune diseases like IBD.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb22-1" title="1">&gt;&gt; load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat</a>
-<a class="sourceLine" id="cb22-2" title="2">&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</a>
-<a class="sourceLine" id="cb22-3" title="3">   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb24-1" title="1">&gt;&gt; load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat</a>
+<a class="sourceLine" id="cb24-2" title="2">&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</a>
+<a class="sourceLine" id="cb24-3" title="3">   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></a></code></pre></div>
 <p>Let’s perform a more rigorous check of reproducibility. For the same hyper-parameter values, we compare the resulting variational lower bounds from my previous run and from the current run. Differences are numerical negligible.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb23-1" title="1">&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span>;               </a>
-<a class="sourceLine" id="cb23-2" title="2">&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/&#39;</span>;</a>
-<a class="sourceLine" id="cb23-3" title="3">&gt;&gt; new_path = <span class="st">&#39;~/GitHub/rss-net/examples/ibd2015_nkcell/results/&#39;</span>;                                             </a>
-<a class="sourceLine" id="cb23-4" title="4">&gt;&gt; old_res = matfile(strcat(old_path,res_file));                                                               </a>
-<a class="sourceLine" id="cb23-5" title="5">&gt;&gt; new_res = matfile(strcat(new_path,res_file));</a>
-<a class="sourceLine" id="cb23-6" title="6"></a>
-<a class="sourceLine" id="cb23-7" title="7">&gt;&gt; [min(old_res.logw - new_res.logw) median(old_res.logw - new_res.logw) max(old_res.logw - new_res.logw)]</a>
-<a class="sourceLine" id="cb23-8" title="8">   <span class="fl">1.0e-10</span> *</a>
-<a class="sourceLine" id="cb23-9" title="9">   -<span class="fl">0.0568</span>         <span class="fl">0</span>    <span class="fl">0.1592</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb25-1" title="1">&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span>;               </a>
+<a class="sourceLine" id="cb25-2" title="2">&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/&#39;</span>;</a>
+<a class="sourceLine" id="cb25-3" title="3">&gt;&gt; new_path = <span class="st">&#39;~/GitHub/rss-net/examples/ibd2015_nkcell/results/&#39;</span>;                                             </a>
+<a class="sourceLine" id="cb25-4" title="4">&gt;&gt; old_res = matfile(strcat(old_path,res_file));                                                               </a>
+<a class="sourceLine" id="cb25-5" title="5">&gt;&gt; new_res = matfile(strcat(new_path,res_file));</a>
+<a class="sourceLine" id="cb25-6" title="6"></a>
+<a class="sourceLine" id="cb25-7" title="7">&gt;&gt; [min(old_res.logw - new_res.logw) median(old_res.logw - new_res.logw) max(old_res.logw - new_res.logw)]</a>
+<a class="sourceLine" id="cb25-8" title="8">   <span class="fl">1.0e-10</span> *</a>
+<a class="sourceLine" id="cb25-9" title="9">   -<span class="fl">0.0568</span>         <span class="fl">0</span>    <span class="fl">0.1592</span></a></code></pre></div>
 </div>
 <div id="gwas_net_cis_results_gene.mat-locus-level-associations" class="section level4">
 <h4>2. <code>${gwas}_${net}_${cis}_results_gene.mat</code>: locus-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 \]</span> As in <a href="xxx">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb uptream and downstream. The locus definition is provided in <code>ibd2015_gene_grch37.mat</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb24-1" title="1">&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb24-2" title="2">&gt;&gt; gene_res</a>
-<a class="sourceLine" id="cb24-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb24-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb24-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></a>
-<a class="sourceLine" id="cb24-6" title="6">    Properties.Writable: false                                                                                                                                                   </a>
-<a class="sourceLine" id="cb24-7" title="7">                P1_gene: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
-<a class="sourceLine" id="cb24-8" title="8">               gene_chr: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
-<a class="sourceLine" id="cb24-9" title="9">             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
-<a class="sourceLine" id="cb24-10" title="10">              gene_stop: [<span class="fl">18334</span>x1 double]</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb26-1" title="1">&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb26-2" title="2">&gt;&gt; gene_res</a>
+<a class="sourceLine" id="cb26-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb26-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb26-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb26-6" title="6">    Properties.Writable: false                                                                                                                                                   </a>
+<a class="sourceLine" id="cb26-7" title="7">                P1_gene: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb26-8" title="8">               gene_chr: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb26-9" title="9">             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb26-10" title="10">              gene_stop: [<span class="fl">18334</span>x1 double]</a></code></pre></div>
 <p>Here <code>P1_gene</code> corresponds to <span class="math inline">\(P_1^{\sf net}\)</span> and <code>[gene_chr gene_start gene_stop]</code> denote physicial position of genes based on GRCh37.</p>
 <p>Let’s perform a reproducibility check for gene-level results. Again, my previous analysis and the current analysis yield numerically identical answers.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb25-1" title="1">&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>; </a>
-<a class="sourceLine" id="cb25-2" title="2">&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/&#39;</span>; </a>
-<a class="sourceLine" id="cb25-3" title="3">&gt;&gt; new_path = <span class="st">&#39;~/GitHub/rss-net/examples/ibd2015_nkcell/results/&#39;</span>;</a>
-<a class="sourceLine" id="cb25-4" title="4">&gt;&gt; old_res = matfile(strcat(old_path,res_file));                                                              </a>
-<a class="sourceLine" id="cb25-5" title="5">&gt;&gt; new_res = matfile(strcat(new_path,res_file));</a>
-<a class="sourceLine" id="cb25-6" title="6"></a>
-<a class="sourceLine" id="cb25-7" title="7">&gt;&gt; [min(old_res.P1_gene - new_res.P1_gene) median(old_res.P1_gene - new_res.P1_gene) max(old_res.P1_gene - new_res.P1_gene)]                  </a>
-<a class="sourceLine" id="cb25-8" title="8">   <span class="fl">1.0e-15</span> *</a>
-<a class="sourceLine" id="cb25-9" title="9">   -<span class="fl">0.2220</span>    <span class="fl">0.0278</span>    <span class="fl">0.5551</span></a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb27-1" title="1">&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>; </a>
+<a class="sourceLine" id="cb27-2" title="2">&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/&#39;</span>; </a>
+<a class="sourceLine" id="cb27-3" title="3">&gt;&gt; new_path = <span class="st">&#39;~/GitHub/rss-net/examples/ibd2015_nkcell/results/&#39;</span>;</a>
+<a class="sourceLine" id="cb27-4" title="4">&gt;&gt; old_res = matfile(strcat(old_path,res_file));                                                              </a>
+<a class="sourceLine" id="cb27-5" title="5">&gt;&gt; new_res = matfile(strcat(new_path,res_file));</a>
+<a class="sourceLine" id="cb27-6" title="6"></a>
+<a class="sourceLine" id="cb27-7" title="7">&gt;&gt; [min(old_res.P1_gene - new_res.P1_gene) median(old_res.P1_gene - new_res.P1_gene) max(old_res.P1_gene - new_res.P1_gene)]                  </a>
+<a class="sourceLine" id="cb27-8" title="8">   <span class="fl">1.0e-15</span> *</a>
+<a class="sourceLine" id="cb27-9" title="9">   -<span class="fl">0.2220</span>    <span class="fl">0.0278</span>    <span class="fl">0.5551</span></a></code></pre></div>
 </div>
 </div>
 </div>
@@ -1399,6 +1454,14 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
+<p>Careful readers may notice an optional input data file <code>ibd2015_null_seed_459_squarem_step2.mat</code> specified in <a href="xxx"><code>ibd2015_nkcell.m</code></a> and used in <a href="xxx"><code>analysis_template.m</code></a>. This file provides the <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> fitting results of IBD GWAS data. If this file is available, <a href="xxx"><code>analysis_template.m</code></a> uses the optimal <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> results to initialize RSS-NET. If not, RSS-NET uses a random initialization.</p>
+<p>For this example, here are the enrichment BFs based on using the optimal <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> results to initialize RSS-NET.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb28-1" title="1">&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</a>
+<a class="sourceLine" id="cb28-2" title="2">   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></a></code></pre></div>
+<p>Here are the enrichment BFs based on random initialization, which are consistent with, but smaller than previous results.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb29-1" title="1">&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</a>
+<a class="sourceLine" id="cb29-2" title="2">   <span class="fl">32.1495</span>   <span class="fl">29.5295</span>   <span class="fl">11.0758</span>   <span class="fl">32.3432</span></a></code></pre></div>
+<p>Using optimal <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> results to initialize RSS-NET is not required, but highly recommended in practice, because this often yields a better fit as shown above. Please see <a href="https://stephenslab.github.io/rss/Example-5B">this tutorial</a> for more details of fitting <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> on GWAS data.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1406,7 +1469,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
