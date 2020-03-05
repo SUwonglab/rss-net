@@ -7,6 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
+[zenodo-ibd2015nkcell]: xxx
 [Zhu et al (2020)]: xxx
 [Supplementary Notes]: xxx
 [`script_dir`]: xxx
@@ -16,13 +17,15 @@ editor_options:
 [`ibd2015_nkcell.sbatch`]: xxx
 [`summary_template.m`]: xxx
 [`summarize_ibd2015_nkcell.m`]: xxx
+[RSS-E baseline model]: https://doi.org/10.1038/s41467-018-06805-x
 
 ## Overview
 
 Here we describe an end-to-end RSS-NET analysis of
 inflammatory bowel disease (IBD) GWAS summary statistics
-[(Liu et al, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/26192919)
-and a gene regulatory network inferred for natural killer (NK) cells.
+[(Liu et al, 2015)](https://doi.org/10.1038/ng.3359)
+and a gene regulatory network inferred for natural killer (NK) cells
+[(ENCODE Project Consortium, 2012)](https://doi.org/10.1038/nature11247).
 This example illustrates the actual data analyses performed in [Zhu et al (2020)][].
 
 To reproduce results of this example,
@@ -41,14 +44,52 @@ Please modify scripts accordingly if a different directory is used.
 
 ## Step-by-step illustration
 
-### Download input data files
+### Download data files
+
+All data files required to run this example are freely available at Zenodo
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1473807.svg)][zenodo-ibd2015nkcell].
+Please contact me (`xiangzhu[at]stanford.edu`)
+if you have any trouble accessing these files.
+After a complete download, you should see the following files.
+
+```{r, eval=FALSE, engine='zsh'}
+$ tree . 
+.
+├── ibd2015_gene_grch37.mat
+├── ibd2015_nkcell_data.md5
+├── ibd2015_nkcell_full_results.zip
+├── ibd2015_nkcell_summary_results.zip
+├── ibd2015_NK_snp2gene_cis.mat
+├── ibd2015_null_seed_459_squarem_step2.mat
+├── ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat
+├── ibd2015_snp2gene.mat
+├── ibd2015_sumstat.mat
+└── Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat
+
+0 directories, 10 files
+```
+
+To help readers confirm if they use the same files as we do,
+we report 128-bit MD5 hashes of all files in `ibd2015_nkcell_data.md5`.
+
+To help readers confirm if they can reproduce results of this example,
+we also provide the full results (`ibd2015_nkcell_full_results.zip`)
+and summarized results (`ibd2015_nkcell_summary_results.zip`)
+in the same Zenodo deposit.
+
+For simplicity and generality,
+we introduce the following short-hand notations.
+
+```matlab
+gwas = 'ibd2015';
+net  = 'Primary_Natural_Killer_cells_from_peripheral_blood'; 
+cis  = 'NK';
+```
 
 #### 1. `${gwas}_sumstat.mat`: processed GWAS summary statistics and LD matrix estimates
 
 This file is large (43G) because
 it has a LD matrix of 1.1 million common SNPs.
-Please contact me (`xiangzhu[at]stanford.edu`)
-if you have trouble accessing this file.
 
 ```{r, eval=FALSE, engine='zsh'}
 $ md5sum ibd2015_sumstat.mat
@@ -527,4 +568,34 @@ Our full analysis results are publicly available at
 <https://xiangzhu.github.io/rss-peca>.
 
 ## Appendix
+
+Careful readers may notice an optional input data file
+`ibd2015_null_seed_459_squarem_step2.mat` specified in
+[`ibd2015_nkcell.m`][] and used in [`analysis_template.m`][].
+This file provides the [RSS-E baseline model][] fitting results of IBD GWAS data.
+If this file is available, [`analysis_template.m`][] uses
+the optimal [RSS-E baseline model][] results to initialize RSS-NET.
+If not, RSS-NET uses a random initialization.
+
+For this example, here are the enrichment BFs based on using
+the optimal [RSS-E baseline model][] results to initialize RSS-NET.
+
+```matlab
+>> [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]
+   35.7048   29.4216   15.1461   35.8986
+```
+
+Here are the enrichment BFs based on random initialization,
+which are consistent with, but smaller than previous results.
+
+```matlab
+>> [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]
+   32.1495   29.5295   11.0758   32.3432
+```
+
+Using optimal [RSS-E baseline model][] results to initialize RSS-NET
+is not required, but highly recommended in practice,
+because this often yields a better fit as shown above.
+Please see [this tutorial](https://stephenslab.github.io/rss/Example-5B)
+for more details of fitting [RSS-E baseline model][] on GWAS data.
 
