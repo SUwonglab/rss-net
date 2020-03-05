@@ -500,7 +500,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-03
+<strong>Last updated:</strong> 2020-03-04
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -591,10 +591,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeeb9c07307a05543199d274a3405f2b45fb1e95a0targetblankeb9c073a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/eb9c07307a05543199d274a3405f2b45fb1e95a0" target="_blank">eb9c073</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree6b97ae57677f1ecf48f6e4b9a33ee373a9b3c074targetblank6b97ae5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/6b97ae57677f1ecf48f6e4b9a33ee373a9b3c074" target="_blank">6b97ae5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeeb9c07307a05543199d274a3405f2b45fb1e95a0targetblankeb9c073a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree6b97ae57677f1ecf48f6e4b9a33ee373a9b3c074targetblank6b97ae5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -603,6 +603,9 @@ Great! You are using Git for version control. Tracking code development and conn
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
+    Ignored:    examples/ibd2015_nkcell/randinit_results/
+    Ignored:    examples/ibd2015_nkcell/results/
 
 </code></pre>
 <p>
@@ -641,6 +644,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/6b97ae57677f1ecf48f6e4b9a33ee373a9b3c074/rmd/ibd2015_nkcell.Rmd" target="_blank">6b97ae5</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-04
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/0e9e3a212cc95f2261c627c626031a6cea574580/docs/ibd2015_nkcell.html" target="_blank">0e9e3a2</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -871,7 +908,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </div>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>Here we describe an end-to-end RSS-NET analysis of inflammatory bowel disease (IBD) GWAS summary statistics <a href="https://www.ncbi.nlm.nih.gov/pubmed/26192919">(Liu et al, 2015)</a> and a gene regulatory network inferred for natural killer (NK) cells. This example illustrates the actual data analyses performed in <a href="xxx">Zhu et al (2019)</a>.</p>
+<p>Here we describe an end-to-end RSS-NET analysis of inflammatory bowel disease (IBD) GWAS summary statistics <a href="https://www.ncbi.nlm.nih.gov/pubmed/26192919">(Liu et al, 2015)</a> and a gene regulatory network inferred for natural killer (NK) cells. This example illustrates the actual data analyses performed in <a href="xxx">Zhu et al (2020)</a>.</p>
 <p>To reproduce results of this example, please use scripts in the directory <a href="xxx"><code>script_dir</code></a>, and follow the step-by-step guide below. Before running any script in <a href="xxx"><code>script_dir</code></a>, please <a href="setup.html">install</a> RSS-NET.</p>
 <p>Since a real genome-wide analysis is conducted here, this example is more complicated than the previous <a href="xxx">simulation example</a>. It is advisable to go through the previous <a href="xxx">simulation example</a> before diving into this real data example.</p>
 <p>Note that the working directory here is assumed to be <code>wdtba</code>. Please modify scripts accordingly if a different directory is used.</p>
@@ -880,8 +917,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <h2>Step-by-step illustration</h2>
 <div id="download-input-data-files" class="section level3">
 <h3>Download input data files</h3>
-<div id="ibd2015_sumstat.mat-processed-gwas-summary-statistics-and-ld-matrix-estimates" class="section level4">
-<h4>1. <code>ibd2015_sumstat.mat</code>: processed GWAS summary statistics and LD matrix estimates</h4>
+<div id="gwas_sumstat.mat-processed-gwas-summary-statistics-and-ld-matrix-estimates" class="section level4">
+<h4>1. <code>${gwas}_sumstat.mat</code>: processed GWAS summary statistics and LD matrix estimates</h4>
 <p>This file is large (43G) because it has a LD matrix of 1.1 million common SNPs. Please contact me (<code>xiangzhu[at]stanford.edu</code>) if you have trouble accessing this file.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb1-1" title="1">$ md5sum ibd2015_sumstat.mat</a>
 <a class="sourceLine" id="cb1-2" title="2">ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</a>
@@ -910,8 +947,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <li><code>SiRiS{j,1}</code>, a <a href="https://www.mathworks.com/help/matlab/sparse-matrices.html">sparse matrix</a>, defined as <code>repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)</code>, where <code>R</code> is the estimated LD matrix of these <code>p</code> SNPs.</li>
 </ul>
 </div>
-<div id="ibd2015_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
-<h4>2. <code>ibd2015_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
+<div id="gwas_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
+<h4>2. <code>${gwas}_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
 <p>This file contains the physical distance between each GWAS SNP and each protein-coding gene, within 1 Mb. This file corresponds to <span class="math inline">\({\bf G}_j\)</span> in the RSS-NET model.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb3-1" title="1">$ md5sum ibd2015_snp2gene.mat </a>
 <a class="sourceLine" id="cb3-2" title="2">7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</a>
@@ -940,8 +977,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb5-2" title="2">&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</a>
 <a class="sourceLine" id="cb5-3" title="3">        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></a></code></pre></div>
 </div>
-<div id="primary_natural_killer_cells_from_peripheral_blood_gene2gene.mat-gene-regulatory-network" class="section level4">
-<h4>3. <code>Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</code>: gene regulatory network</h4>
+<div id="net_gene2gene.mat-gene-regulatory-network" class="section level4">
+<h4>3. <code>${net}_gene2gene.mat</code>: gene regulatory network</h4>
 <p>This file contains information of gene-to-gene connections in a given regulatory network.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb6-1" title="1">$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </a>
 <a class="sourceLine" id="cb6-2" title="2">35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</a>
@@ -972,8 +1009,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb9-7" title="7">&gt;&gt; [min(val_tftg) quantile(val_tftg, <span class="fl">0.25</span>) median(val_tftg) quantile(val_tftg, <span class="fl">0.75</span>) max(val_tftg)]</a>
 <a class="sourceLine" id="cb9-8" title="8">    <span class="fl">0.6138</span>    <span class="fl">0.6324</span>    <span class="fl">0.6568</span>    <span class="fl">0.6949</span>    <span class="fl">1.0000</span>       </a></code></pre></div>
 </div>
-<div id="ibd2015_primary_natural_killer_cells_from_peripheral_blood_snp2net.mat-snp-to-network-proximity-annotation" class="section level4">
-<h4>4. <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</code>: SNP-to-network proximity annotation</h4>
+<div id="gwas_net_snp2net.mat-snp-to-network-proximity-annotation" class="section level4">
+<h4>4. <code>${gwas}_${net}_snp2net.mat</code>: SNP-to-network proximity annotation</h4>
 <p>This file contains binary annotations whether a SNP is “near” the given network, that is, within 100 kb of any network element (TF, TG or associated regulatory elements).</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb10-1" title="1">$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
 <a class="sourceLine" id="cb10-2" title="2">d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</a>
@@ -998,8 +1035,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb11-15" title="15">&gt;&gt; unique(snp2net.val)&#39;</a>
 <a class="sourceLine" id="cb11-16" title="16">     <span class="fl">0</span>     <span class="fl">1</span>     </a></code></pre></div>
 </div>
-<div id="ibd2015_nk_snp2gene_cis.mat-snp-to-gene-cis-regulation" class="section level4">
-<h4>5. <code>ibd2015_NK_snp2gene_cis.mat</code>: SNP-to-gene cis regulation</h4>
+<div id="gwas_cis_snp2gene_cis.mat-snp-to-gene-cis-regulation" class="section level4">
+<h4>5. <code>${gwas}_${cis}_snp2gene_cis.mat</code>: SNP-to-gene cis regulation</h4>
 <p>This file contains the SNP-to-gene cis regulation scores derived from context-matching cis eQTL studies. This file corresponds to <span class="math inline">\((c_{jg}-1)\)</span> in the RSS-NET model.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb12-1" title="1">$ md5sum ibd2015_NK_snp2gene_cis.mat</a>
 <a class="sourceLine" id="cb12-2" title="2">dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat</a>
@@ -1052,25 +1089,75 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb17-6" title="6">      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</a>
 <a class="sourceLine" id="cb17-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
 <a class="sourceLine" id="cb17-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
-<p>Start at Mar 2, 2020, 3:04 PM.</p>
-<p>End at Mar 2, 2020, 11:37 PM.</p>
-<pre><code>Job ID: 62554249
-Array Job ID: 62554249_125
-Cluster: sherlock
-User/Group: xiangzhu/whwong
-State: COMPLETED (exit code 0)
-Nodes: 1
-Cores per node: 8
-CPU Utilized: 1-03:08:31
-CPU Efficiency: 74.54% of 1-12:24:40 core-walltime
-Job Wall-clock time: 04:33:05
-Memory Utilized: 26.58 GB
-Memory Efficiency: 85.06% of 31.25 GB</code></pre>
+<p>For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory and set the maximum job wall-clock time as 12.5 hours. The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB). The actual running time per task ranges from xx to xx, with median being xx.</p>
+<p>Each task of the job array outputs results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th row of hyper-parameter data frame.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb18-1" title="1">&gt;&gt; res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb18-2" title="2">&gt;&gt; res</a>
+<a class="sourceLine" id="cb18-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb18-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb18-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span></a>
+<a class="sourceLine" id="cb18-6" title="6">    Properties.Writable: false                                                                                                                            </a>
+<a class="sourceLine" id="cb18-7" title="7">                  alpha: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-8" title="8">                   logw: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-9" title="9">                     mu: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-10" title="10">               run_time: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-11" title="11">                      s: [<span class="fl">1081481</span>x1 double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-12" title="12">                   sigb: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-13" title="13">                   sige: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-14" title="14">                  theta: [<span class="fl">1</span>x1       double]                                                                                                               </a>
+<a class="sourceLine" id="cb18-15" title="15">                 theta0: [<span class="fl">1</span>x1       double]</a></code></pre></div>
+<p>Here <code>[alpha mu s]</code> correspond to the optimal variational parameters <span class="math inline">\(\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}\)</span> for the given hyper-parameters, <code>logw</code> corresponds to the variational lower bound <span class="math inline">\(F^\star\)</span> and <code>[theta0 theta sigb sige]</code> corresponds to <span class="math inline">\(\{\theta_0,\theta,\sigma_0,\sigma\}\)</span>. Please see <a href="xxx">Supplementary Notes</a> of <a href="xxx">Zhu et al (2020)</a> for definitions.</p>
+</div>
+</div>
+<div id="summarize-rss-net-results" class="section level3">
+<h3>Summarize RSS-NET results</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb19-1" title="1">&gt;&gt; run summarize_ibd2015_nkcell.m;</a></code></pre></div>
+<div id="gwas_net_cis_results_model.mat-network-level-enrichments" class="section level4">
+<h4>1. <code>${gwas}_${net}_${cis}_results_model.mat</code>: network-level enrichments</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb20-1" title="1">&gt;&gt; model_res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet&#39;</span>);</a>
+<a class="sourceLine" id="cb20-2" title="2">&gt;&gt; model_res</a>
+<a class="sourceLine" id="cb20-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb20-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb20-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span></a>
+<a class="sourceLine" id="cb20-6" title="6">    Properties.Writable: false                                                                                                                                                    </a>
+<a class="sourceLine" id="cb20-7" title="7">               log10_bf: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-8" title="8">            log10_bf_ns: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-9" title="9">            log10_bf_nt: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-10" title="10">            log10_bf_ts: [<span class="fl">1</span>x1   double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-11" title="11">                   logw: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-12" title="12">                   sigb: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-13" title="13">                   sige: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-14" title="14">                  theta: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-15" title="15">                 theta0: [<span class="fl">125</span>x1 double]                                                                                                                                           </a>
+<a class="sourceLine" id="cb20-16" title="16">                   time: [<span class="fl">125</span>x1 double]</a></code></pre></div>
+<p>Let <span class="math inline">\(M_0:\theta=0~\text{and}~\sigma^2=0\)</span> denote the baseline model in RSS-NET. Here <code>log10_bf*</code> are log 10 BFs comparing the flollowing 4 enrichment models against <span class="math inline">\(M_0\)</span>.</p>
+<ul>
+<li><code>log10_bf</code>: <span class="math inline">\(M_1:\theta&gt;0~\text{or}~\sigma^2&gt;0\)</span>;</li>
+<li><code>log10_bf_ns</code>: <span class="math inline">\(M_{11}:\theta&gt;0~\text{and}~\sigma^2=0\)</span>;</li>
+<li><code>log10_bf_nt</code>: <span class="math inline">\(M_{12}:\theta=0~\text{and}~\sigma^2&gt;0\)</span>;</li>
+<li><code>log10_bf_ts</code>: <span class="math inline">\(M_{13}:\theta&gt;0~\text{and}~\sigma^2&gt;0\)</span>.</li>
+</ul>
+<p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="xxx">Zhu et al (2020)</a>.</p>
+</div>
+<div id="gwas_net_cis_results_gene.mat-locus-level-associations" class="section level4">
+<h4>2. <code>${gwas}_${net}_${cis}_results_gene.mat</code>: locus-level associations</h4>
+<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb21-2" title="2">&gt;&gt; gene_res</a>
+<a class="sourceLine" id="cb21-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb21-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb21-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb21-6" title="6">    Properties.Writable: false                                                                                                                                                   </a>
+<a class="sourceLine" id="cb21-7" title="7">                P1_gene: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb21-8" title="8">               gene_chr: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb21-9" title="9">             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb21-10" title="10">              gene_stop: [<span class="fl">18334</span>x1 double]</a></code></pre></div>
+<p>Here <code>P1_gene</code> corresponds to <span class="math inline">\(P_1^{\sf net}\)</span> and <code>[gene_chr gene_start gene_stop]</code> denote physicial position of genes based on GRCh37.</p>
 </div>
 </div>
 </div>
 <div id="more-examples" class="section level2">
 <h2>More examples</h2>
+<p>The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks reported in <a href="xxx">Zhu et al (2020)</a> are essentially 684 modified rerun of the example above (with different input GWAS and/or network data). Our full analysis results are publicly available at <a href="https://xiangzhu.github.io/rss-peca" class="uri">https://xiangzhu.github.io/rss-peca</a>.</p>
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
@@ -1081,7 +1168,7 @@ Memory Efficiency: 85.06% of 31.25 GB</code></pre>
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
@@ -1092,7 +1179,7 @@ Memory Efficiency: 85.06% of 31.25 GB</code></pre>
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
  tz       America/Los_Angeles         
- date     2020-03-03                  
+ date     2020-03-04                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
