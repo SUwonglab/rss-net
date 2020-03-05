@@ -591,10 +591,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree08f4c538cd3a32ac60fdf91273e45cb105b922detargetblank08f4c53a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/08f4c538cd3a32ac60fdf91273e45cb105b922de" target="_blank">08f4c53</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeea4499bee6140677fced879e9874830d8d533ff2targetblankea4499ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/ea4499bee6140677fced879e9874830d8d533ff2" target="_blank">ea4499b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree08f4c538cd3a32ac60fdf91273e45cb105b922detargetblank08f4c53a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeea4499bee6140677fced879e9874830d8d533ff2targetblankea4499ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -606,6 +606,9 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
+
+Unstaged changes:
+    Modified:   src/calc_bf.m
 
 </code></pre>
 <p>
@@ -644,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/ea4499bee6140677fced879e9874830d8d533ff2/rmd/ibd2015_nkcell.Rmd" target="_blank">ea4499b</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-04
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/e454742bb18d7b9a3045ab358fefe3547c01c5b1/docs/ibd2015_nkcell.html" target="_blank">e454742</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1124,7 +1161,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb17-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
 <a class="sourceLine" id="cb17-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
 <p>For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory and set the maximum job wall-clock time as 12.5 hours. The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB). The actual running time per task ranges from xx to xx, with median being xx.</p>
-<p>Each task of the job array outputs results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th row of hyper-parameter data frame.</p>
+<p>Each task of the job array outputs results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>, <code>${gwas}_${net}_${cis}_out_${id}.mat</code>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th row of hyper-parameter data frame.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb18-1" title="1">&gt;&gt; res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>);</a>
 <a class="sourceLine" id="cb18-2" title="2">&gt;&gt; res</a>
 <a class="sourceLine" id="cb18-3" title="3">  matlab.io.MatFile</a>
@@ -1145,8 +1182,9 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </div>
 <div id="summarize-rss-net-results" class="section level3">
 <h3>Summarize RSS-NET results</h3>
-<p>For this example, simply run the following line in a Matlab console. After running <a href="xxx"><code>summarize_ibd2015_nkcell.m</code></a> network-level enrichment results are stored in a MAT-file <code>${gwas}_${net}_${cis}_results_model.mat</code>. and locus-level association results are stored in a MAT-file <code>${gwas}_${net}_${cis}_results_gene.mat</code>.</p>
+<p>The RSS-NET result files <code>${gwas}_${net}_${cis}_out_${id}.mat</code> shown above can be further summarized into network-level and gene-level statistics reported in <a href="xxx">Zhu et al (2020)</a>. For this example, simply run the following line in a Matlab console.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb19-1" title="1">&gt;&gt; run summarize_ibd2015_nkcell.m;</a></code></pre></div>
+<p>Running <a href="xxx"><code>summarize_ibd2015_nkcell.m</code></a> yields two (much smaller) MAT-files: <code>${gwas}_${net}_${cis}_results_model.mat</code> that stores network-level enrichment results, and <code>${gwas}_${net}_${cis}_results_gene.mat</code> that stores locus-level association results.</p>
 <div id="gwas_net_cis_results_model.mat-network-level-enrichments" class="section level4">
 <h4>1. <code>${gwas}_${net}_${cis}_results_model.mat</code>: network-level enrichments</h4>
 <p>To assess whether a regulatory network is enriched for genetic associations with a trait, we evaluate a Bayes factor (BF) comparing the baseline model (<span class="math inline">\(M_0:\theta=0~\text{and}~\sigma^2=0\)</span>) in RSS-NET with an enrichment model.</p>
@@ -1174,22 +1212,23 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <li><code>log10_bf_ts</code>: <span class="math inline">\(M_{13}:\theta&gt;0~\text{and}~\sigma^2&gt;0\)</span>.</li>
 </ul>
 <p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="xxx">Zhu et al (2020)</a>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">TBA</a></code></pre></div>
 </div>
 <div id="gwas_net_cis_results_gene.mat-locus-level-associations" class="section level4">
 <h4>2. <code>${gwas}_${net}_${cis}_results_gene.mat</code>: locus-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 \]</span> As in <a href="xxx">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb uptream and downstream. The locus definition is provided in <code>ibd2015_gene_grch37.mat</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</a>
-<a class="sourceLine" id="cb21-2" title="2">&gt;&gt; gene_res</a>
-<a class="sourceLine" id="cb21-3" title="3">  matlab.io.MatFile</a>
-<a class="sourceLine" id="cb21-4" title="4">  Properties:</a>
-<a class="sourceLine" id="cb21-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></a>
-<a class="sourceLine" id="cb21-6" title="6">    Properties.Writable: false                                                                                                                                                   </a>
-<a class="sourceLine" id="cb21-7" title="7">                P1_gene: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
-<a class="sourceLine" id="cb21-8" title="8">               gene_chr: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
-<a class="sourceLine" id="cb21-9" title="9">             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
-<a class="sourceLine" id="cb21-10" title="10">              gene_stop: [<span class="fl">18334</span>x1 double]</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb22-1" title="1">&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb22-2" title="2">&gt;&gt; gene_res</a>
+<a class="sourceLine" id="cb22-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb22-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb22-5" title="5">      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb22-6" title="6">    Properties.Writable: false                                                                                                                                                   </a>
+<a class="sourceLine" id="cb22-7" title="7">                P1_gene: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb22-8" title="8">               gene_chr: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb22-9" title="9">             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
+<a class="sourceLine" id="cb22-10" title="10">              gene_stop: [<span class="fl">18334</span>x1 double]</a></code></pre></div>
 <p>Here <code>P1_gene</code> corresponds to <span class="math inline">\(P_1^{\sf net}\)</span> and <code>[gene_chr gene_start gene_stop]</code> denote physicial position of genes based on GRCh37.</p>
 </div>
 </div>
@@ -1207,7 +1246,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
