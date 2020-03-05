@@ -30,8 +30,8 @@ function [log10_bf,log10_bf_nt,log10_bf_ns,log10_bf_ts] = calc_bf(logw,param)
   loglik_nn = avg_logw(logw(nn));
 
   % Estimate log marginal likelihoods of three reduced models.
-  loglik_nt = avg_logw(logw(nt));
-  loglik_ns = avg_logw(logw(ns));
+  loglik_nt = avg_logw(logw(nt & (~ns)));
+  loglik_ns = avg_logw(logw(ns & (~nt)));
   loglik_ts = avg_logw(logw(ts));
 
   % Estimate log marginal likelihood of the full model.
