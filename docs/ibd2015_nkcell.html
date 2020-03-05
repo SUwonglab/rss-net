@@ -500,7 +500,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-04
+<strong>Last updated:</strong> 2020-03-05
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -615,10 +615,10 @@ examples/ibd2015_nkcell/results
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeb464c143b4c1dd1508ce1656eb386e0f89740337targetblankb464c14a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/b464c143b4c1dd1508ce1656eb386e0f89740337" target="_blank">b464c14</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreede5a209a474ca927685d75d99d601d8277f8477atargetblankde5a209a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/de5a209a474ca927685d75d99d601d8277f8477a" target="_blank">de5a209</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeb464c143b4c1dd1508ce1656eb386e0f89740337targetblankb464c14a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreede5a209a474ca927685d75d99d601d8277f8477atargetblankde5a209a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -668,6 +668,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/de5a209a474ca927685d75d99d601d8277f8477a/rmd/ibd2015_nkcell.Rmd" target="_blank">de5a209</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-05
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/19bd6c5f4389d8f5d923bcd5de1aa72823ca9ff0/docs/ibd2015_nkcell.html" target="_blank">19bd6c5</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1203,10 +1237,10 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb15-10" title="10">0 directories, 3 files</a></code></pre></div>
 <div id="submit-job-arrays" class="section level4">
 <h4>3. Submit job arrays</h4>
-<p>For a given GWAS and a given regulatory network, all RSS-NET analysis tasks are almost identical and they only differs in hyper-parameter values. To exploit this, we run one RSS-NET analysis as a job array with multiple tasks that run in parallel.</p>
+<p>For a given GWAS and a given regulatory network, all RSS-NET analysis tasks are almost identical and they only differs in hyper-parameter values. To exploit this feature, we run one RSS-NET analysis as a <a href="https://slurm.schedmd.com/job_array.html">job array</a> with multiple tasks that run in parallel.</p>
 <p>To this end, we write a simple sbatch script <a href="xxx"><code>ibd2015_nkcell.sbatch</code></a>, and submit it to a cluster with <a href="https://slurm.schedmd.com/"><code>Slurm</code></a> available.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb16-1" title="1">$ sbatch ibd2015_nkcell.sbatch</a></code></pre></div>
-<p>After the submission, multiple jobs should run in different nodes simultaneously.</p>
+<p>After the submission, 125 tasks are created. As shown below, multiple tasks should run in different nodes simultaneously.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb17-1" title="1">$ squeue -u xiangzhu</a>
 <a class="sourceLine" id="cb17-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
 <a class="sourceLine" id="cb17-3" title="3">      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</a>
@@ -1215,8 +1249,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb17-6" title="6">      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</a>
 <a class="sourceLine" id="cb17-7" title="7">      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</a>
 <a class="sourceLine" id="cb17-8" title="8">      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</a></code></pre></div>
-<p>For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory and set the maximum job wall-clock time as 12.5 hours. The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB). The actual running time per task ranges from 5 minutes to 8.9 hours, with median being 2.1 hours.</p>
-<p>Each task of the job array outputs results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>, <code>${gwas}_${net}_${cis}_out_${id}.mat</code>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th row of hyper-parameter data frame.</p>
+<p>For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory and set the maximum job wall-clock time as 12.5 hours (see <a href="xxx"><code>ibd2015_nkcell.sbatch</code></a> for details). The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB). Across all 125 tasks, the actual running time per task ranges from 5 minutes to 8.9 hours, with median being 2.1 hours.</p>
+<p>Each task of the job array saves results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>, <code>${gwas}_${net}_${cis}_out_${id}.mat</code>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th set of hyper-parameter values from the grid.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb18-1" title="1">&gt;&gt; res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>);</a>
 <a class="sourceLine" id="cb18-2" title="2">&gt;&gt; res</a>
 <a class="sourceLine" id="cb18-3" title="3">  matlab.io.MatFile</a>
@@ -1267,11 +1301,11 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <li><code>log10_bf_ts</code>: <span class="math inline">\(M_{13}:\theta&gt;0~\text{and}~\sigma^2&gt;0\)</span>.</li>
 </ul>
 <p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="xxx">Zhu et al (2020)</a>.</p>
-<p>By running this example, we reproduce the enrichment BFs of <a href="https://xiangzhu.github.io/rss-peca/ibd2015_net.html">IBD GWAS and NK cell network</a> reported in <a href="xxx">Zhu et al (2020)</a>.</p>
+<p>By running this example, we reproduce the enrichment BFs of <a href="https://xiangzhu.github.io/rss-peca/ibd2015_net.html">IBD GWAS and NK cell network</a> reported in <a href="xxx">Zhu et al (2020)</a>. The NK cell network shows strong enrichment of IBD genetic associations, which seems consistent with the role of NK cell in autoimmune diseases like IBD.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">&gt;&gt; load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat</a>
 <a class="sourceLine" id="cb21-2" title="2">&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</a>
 <a class="sourceLine" id="cb21-3" title="3">   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></a></code></pre></div>
-<p>Let’s perform a more rigorous check of reproducibility. For the same hyper-parameter values, we compare the resulting variational lower bound from my previous run with that of the current run. Differences are numerical negligible.</p>
+<p>Let’s perform a more rigorous check of reproducibility. For the same hyper-parameter values, we compare the resulting variational lower bounds from my previous run and from the current run. Differences are numerical negligible.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb22-1" title="1">&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span>;               </a>
 <a class="sourceLine" id="cb22-2" title="2">&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/&#39;</span>;</a>
 <a class="sourceLine" id="cb22-3" title="3">&gt;&gt; new_path = <span class="st">&#39;~/GitHub/rss-net/examples/ibd2015_nkcell/results/&#39;</span>;                                             </a>
@@ -1298,7 +1332,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 <a class="sourceLine" id="cb23-9" title="9">             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </a>
 <a class="sourceLine" id="cb23-10" title="10">              gene_stop: [<span class="fl">18334</span>x1 double]</a></code></pre></div>
 <p>Here <code>P1_gene</code> corresponds to <span class="math inline">\(P_1^{\sf net}\)</span> and <code>[gene_chr gene_start gene_stop]</code> denote physicial position of genes based on GRCh37.</p>
-<p>Let’s perform a similar reproducibility check for gene-level results. Again, my previous analysis and the current analysis yield numerically identical answers.</p>
+<p>Let’s perform a reproducibility check for gene-level results. Again, my previous analysis and the current analysis yield numerically identical answers.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb24-1" title="1">&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>; </a>
 <a class="sourceLine" id="cb24-2" title="2">&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/&#39;</span>; </a>
 <a class="sourceLine" id="cb24-3" title="3">&gt;&gt; new_path = <span class="st">&#39;~/GitHub/rss-net/examples/ibd2015_nkcell/results/&#39;</span>;</a>
@@ -1313,7 +1347,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </div>
 <div id="more-examples" class="section level2">
 <h2>More examples</h2>
-<p>The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks reported in <a href="xxx">Zhu et al (2020)</a> are essentially 684 modified rerun of the example above (with different input GWAS and/or network data, and different hyper-parameter grids). Our full analysis results are publicly available at <a href="https://xiangzhu.github.io/rss-peca" class="uri">https://xiangzhu.github.io/rss-peca</a>.</p>
+<p>The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks reported in <a href="xxx">Zhu et al (2020)</a> are essentially 684 modified reruns of the example above (with different input GWAS and/or network data, and different hyper-parameter grids). Our full analysis results are publicly available at <a href="https://xiangzhu.github.io/rss-peca" class="uri">https://xiangzhu.github.io/rss-peca</a>.</p>
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
@@ -1335,7 +1369,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
  tz       America/Los_Angeles         
- date     2020-03-04                  
+ date     2020-03-05                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
