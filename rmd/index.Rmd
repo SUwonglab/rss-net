@@ -13,6 +13,14 @@ editor_options:
 Welcome to RSS-NET wiki!
 
 This wiki hosts the following documentation pages of RSS-NET methods.
+If you have any question or suggestion about RSS-NET,
+please feel free to create a new [issue](https://github.com/SUwonglab/rss-net/issues)
+and/or send an email to `xiangzhu[at]stanford.edu`.
+
+If you find RSS-NET methods and/or codes useful for your work,
+**please kindly cite the following research article**.
+
+> Add RSS-NET citation.
 
 ## <img src="https://static.thenounproject.com/png/506997-200.png" width="48"/> [Installation](setup.html)
 
