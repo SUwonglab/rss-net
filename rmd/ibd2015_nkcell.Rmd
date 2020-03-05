@@ -12,6 +12,7 @@ editor_options:
 [`script_dir`]: xxx
 [simulation example]: xxx
 [`ibd2015_nkcell.sbatch`]: xxx
+[`summarize_ibd2015_nkcell.m`]: xxx
 
 ## Overview
 
@@ -344,11 +345,24 @@ Please see [Supplementary Notes][] of [Zhu et al (2020)][] for definitions.
 
 ### Summarize RSS-NET results
 
+For this example, simply run the following line in a Matlab console.
+After running [`summarize_ibd2015_nkcell.m`][] 
+network-level enrichment results are stored
+in a MAT-file `${gwas}_${net}_${cis}_results_model.mat`.
+and locus-level association results are stored
+in a MAT-file `${gwas}_${net}_${cis}_results_gene.mat`. 
+
 ```matlab
 >> run summarize_ibd2015_nkcell.m;
 ```
 
 #### 1. `${gwas}_${net}_${cis}_results_model.mat`: network-level enrichments
+
+To assess whether a regulatory network is enriched
+for genetic associations with a trait,
+we evaluate a Bayes factor (BF) comparing
+the baseline model ($M_0:\theta=0~\text{and}~\sigma^2=0$)
+in RSS-NET with an enrichment model.
 
 ```matlab
 >> model_res = matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet');
@@ -369,8 +383,8 @@ Please see [Supplementary Notes][] of [Zhu et al (2020)][] for definitions.
                    time: [125x1 double]
 ```
 
-Let $M_0:\theta=0~\text{and}~\sigma^2=0$ denote the baseline model in RSS-NET.
-Here `log10_bf*` are log 10 BFs comparing the flollowing 4 enrichment models against $M_0$.
+Here `log10_bf*` are log 10 BFs comparing
+the flollowing 4 enrichment models against $M_0$.
 
 - `log10_bf`: $M_1:\theta>0~\text{or}~\sigma^2>0$;
 - `log10_bf_ns`: $M_{11}:\theta>0~\text{and}~\sigma^2=0$; 
@@ -381,6 +395,16 @@ Because $M_1$ is more flexible than other models,
 we mainly use `log10_bf` as recommended by [Zhu et al (2020)][].
 
 #### 2. `${gwas}_${net}_${cis}_results_gene.mat`: locus-level associations
+
+To summarize association between a locus and a trait,
+we compute $P_1^{\sf net}$, the posterior probability that at least
+one SNP $j$ in the locus is associated with the trait ($\beta_j\neq 0$):
+$$
+P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
+$$
+As in [Zhu et al (2020)][], a locus is defined as the transcribed region
+of a gene plus 100 kb uptream and downstream.
+The locus definition is provided in `ibd2015_gene_grch37.mat`.
 
 ```matlab
 >> gene_res=matfile('ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat');
@@ -402,7 +426,7 @@ denote physicial position of genes based on GRCh37.
 
 The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks
 reported in [Zhu et al (2020)][] are essentially 684 modified rerun of the example above
-(with different input GWAS and/or network data).
+(with different input GWAS and/or network data, and different hyper-parameter grids).
 Our full analysis results are publicly available at
 <https://xiangzhu.github.io/rss-peca>.
 
