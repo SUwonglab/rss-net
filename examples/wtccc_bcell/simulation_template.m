@@ -28,7 +28,7 @@ seg_path = strcat(dat_path,'wtccc_tidy_snp2gene_ncbi35togrch37.mat');
 
 % specify hyper-parameter grid for RSS-NET analysis
 hyper.theta0 = true_theta0;
-hyper.sigb   = true_sigb;
+hyper.sigma0 = true_sigma0;
 
 if (true_theta==0)
   hyper.theta = (0:0.25:1);
@@ -36,10 +36,10 @@ else
   hyper.theta = [0 ((true_theta-0.5):0.25:(true_theta+0.5))];
 end
 
-if (true_sige==0)
-  hyper.sige = (0:0.25:1);
+if (true_sigma==0)
+  hyper.sigma = (0:0.25:1);
 else
-  hyper.sige = [0 ((true_sige-0.5):0.25:(true_sige+0.5))];
+  hyper.sigma = [0 ((true_sigma-0.5):0.25:(true_sigma+0.5))];
 end
 
 % specify parameters for creating network matrix 
