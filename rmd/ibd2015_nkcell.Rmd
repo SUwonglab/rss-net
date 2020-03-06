@@ -10,13 +10,12 @@ editor_options:
 [zenodo-ibd2015nkcell]: https://doi.org/10.5281/zenodo.3698240
 [Zhu et al (2020)]: xxx
 [Supplementary Notes]: xxx
-[`script_dir`]: xxx
-[simulation example]: xxx
-[`analysis_template.m`]: xxx
-[`ibd2015_nkcell.m`]: xxx
-[`ibd2015_nkcell.sbatch`]: xxx
-[`summary_template.m`]: xxx
-[`summarize_ibd2015_nkcell.m`]: xxx
+[`ibd2015_nkcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell
+[`analysis_template.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/analysis_template.m
+[`ibd2015_nkcell.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.m
+[`ibd2015_nkcell.sbatch`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.sbatch
+[`summary_template.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m
+[`summarize_ibd2015_nkcell.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m
 [RSS-E baseline model]: https://doi.org/10.1038/s41467-018-06805-x
 
 ## Overview
@@ -29,18 +28,25 @@ and a gene regulatory network inferred for natural killer (NK) cells
 This example illustrates the actual data analyses performed in [Zhu et al (2020)][].
 
 To reproduce results of this example,
-please use scripts in the directory [`script_dir`][],
+please use scripts in the directory [`ibd2015_nkcell/`][],
 and follow the step-by-step guide below.
-Before running any script in [`script_dir`][],
+Before running any script in [`ibd2015_nkcell/`][],
 please [install](setup.html) RSS-NET.
 
 Since a real genome-wide analysis is conducted here,
-this example is more complicated than the previous [simulation example][].
-It is advisable to go through the previous [simulation example][]
-before diving into this real data example.
+this example is more complicated than the previous [simulation example](wtccc_bcell.html).
+It is advisable to go through the previous [simulation example](wtccc_bcell.html)
+before diving into the present real-world example.
 
-Note that the working directory here is assumed to be `wdtba`.
-Please modify scripts accordingly if a different directory is used.
+With the software installed and the input data downloaded,
+one should be able to run this example by simply typing the following line in shell:
+
+```{r, eval=FALSE, engine='zsh'}
+$ sbatch ibd2015_nkcell.sbatch
+```
+
+If a different directory is used to store the software, input data
+and/or output data, please modify file paths in the given scripts accordingly.
 
 ## Step-by-step illustration
 
