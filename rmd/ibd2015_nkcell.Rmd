@@ -303,6 +303,9 @@ In this example, there are 10790012 SNP-gene pairs
 with cis regulation scores available,
 consiting of 829280 SNPs and 18230 genes.
 The cis regulation scores (`val`) range from 0 to 0.76.
+The cis regulation scores used in this example are derived
+from recently published cis eQTLs in NK cells
+([Schmiedel et al, 2018](https://doi.org/10.1016/j.cell.2018.10.022)).
 
 ```matlab
 >> [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]
