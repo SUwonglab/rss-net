@@ -591,10 +591,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeb109ab5ad190bf8cb72e699d748909ff6fdaff80targetblankb109ab5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/b109ab5ad190bf8cb72e699d748909ff6fdaff80" target="_blank">b109ab5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree9729b44e534c052483a62f63741e3829451ca473targetblank9729b44a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/9729b44e534c052483a62f63741e3829451ca473" target="_blank">9729b44</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeb109ab5ad190bf8cb72e699d748909ff6fdaff80targetblankb109ab5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree9729b44e534c052483a62f63741e3829451ca473targetblank9729b44a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -606,6 +606,9 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
+
+Unstaged changes:
+    Modified:   rmd/ibd2015_nkcell.Rmd
 
 </code></pre>
 <p>
@@ -649,6 +652,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/SUwonglab/rss-net/blob/9729b44e534c052483a62f63741e3829451ca473/rmd/wtccc_bcell.Rmd" target="_blank">9729b44</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+wflow_publish(“rmd/wtccc_bcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/c2ee73aba4f97f9331d8938b35c6c195b35e6599/docs/wtccc_bcell.html" target="_blank">c2ee73a</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/SUwonglab/rss-net/blob/b109ab5ad190bf8cb72e699d748909ff6fdaff80/rmd/wtccc_bcell.Rmd" target="_blank">b109ab5</a>
 </td>
 <td>
@@ -687,6 +724,66 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 <p>For simplicity and generality, we introduce the following short-hand notations.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb3-1" title="1">gwas = <span class="st">&#39;WTCCC&#39;</span>;</a>
 <a class="sourceLine" id="cb3-2" title="2">net  = <span class="st">&#39;Primary_B_cells_from_peripheral_blood&#39;</span>; </a></code></pre></div>
+<div id="m_data.mat-simulated-gwas-summary-statistics-and-reference-ld-estimates" class="section level4">
+<h4>1. <code>m*_data.mat</code>: simulated GWAS summary statistics and reference LD estimates</h4>
+<p>Here we simulate two synthetic datasets from WTCCC genotypes and B cell network: one (<code>m0_data.mat</code>) based on RSS-NET baseline model <span class="math inline">\(M_0\)</span>, and the other (<code>m1_data.mat</code>) based on RSS-NET enrichment model <span class="math inline">\(M_1\)</span>. We match <code>m*_data.mat</code> by the number of trait-associated SNPs and the proportion of phenotypic variation explained by all SNPs. By this desgin, <code>m*_data.mat</code> have the same amount of genetic signals, and they only differ in how genetic signals are distributed: for the enrichment dataset <code>m1_data.mat</code> genetic associations are enriched in the B cell network; for the baseline dataset <code>m0_data.mat</code> genetic associations are randomly distributed across the genome.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb4-1" title="1">$ md5sum m*_data.mat</a>
+<a class="sourceLine" id="cb4-2" title="2">5d652796b4cc358843920b1edf2819fc  m0_data.mat</a>
+<a class="sourceLine" id="cb4-3" title="3">996eae1410f89607f1debefb31ec7811  m1_data.mat</a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5">$ <span class="kw">du</span> -sh m*_data.mat</a>
+<a class="sourceLine" id="cb4-6" title="6">3.0G    m0_data.mat</a>
+<a class="sourceLine" id="cb4-7" title="7">3.0G    m1_data.mat</a></code></pre></div>
+<p>Let’s look at the contents of <code>m*_data.mat</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb5-1" title="1">&gt;&gt; sumstat=matfile(<span class="st">&#39;m0_data.mat&#39;</span>); </a>
+<a class="sourceLine" id="cb5-2" title="2">&gt;&gt; sumstat</a>
+<a class="sourceLine" id="cb5-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb5-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb5-5" title="5">      Properties.Source: <span class="st">&#39;m0_data.mat&#39;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">    Properties.Writable: false                                                  </a>
+<a class="sourceLine" id="cb5-7" title="7">                  SiRiS: [<span class="fl">22</span>x1 cell]                                            </a>
+<a class="sourceLine" id="cb5-8" title="8">                betahat: [<span class="fl">22</span>x1 cell]                                            </a>
+<a class="sourceLine" id="cb5-9" title="9">                    chr: [<span class="fl">22</span>x1 cell]                                            </a>
+<a class="sourceLine" id="cb5-10" title="10">                    pos: [<span class="fl">22</span>x1 cell]                                            </a>
+<a class="sourceLine" id="cb5-11" title="11">                     se: [<span class="fl">22</span>x1 cell]</a></code></pre></div>
+<p>GWAS summary statistics and LD estimates are stored as <a href="https://www.mathworks.com/help/matlab/cell-arrays.html">cell arrays</a>. RSS-NET only uses the following variables:</p>
+<ul>
+<li><code>betahat{j,1}</code>, single-SNP effect size estimates of all SNPs on chromosome <code>j</code>;</li>
+<li><code>se{j,1}</code>, standard errors of <code>betahat{j, 1}</code>;</li>
+<li><code>chr{j,1}</code> and <code>pos{j, 1}</code>, physical positions of these SNPs (GRCh37 build);</li>
+<li><code>SiRiS{j,1}</code>, a <a href="https://www.mathworks.com/help/matlab/sparse-matrices.html">sparse matrix</a>, defined as <code>repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)</code>, where <code>R</code> is the estimated LD matrix of these <code>p</code> SNPs.</li>
+</ul>
+</div>
+<div id="gwas_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
+<h4>2. <code>${gwas}_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
+<p>This file contains the physical distance between each GWAS SNP and each protein-coding gene, within 1 Mb. This file corresponds to <span class="math inline">\({\bf G}_j\)</span> in the RSS-NET model.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb6-1" title="1">$ md5sum WTCCC_snp2gene.mat </a>
+<a class="sourceLine" id="cb6-2" title="2">50da1887601df3a0914380e2ea9b1be7  WTCCC_snp2gene.mat</a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4">$ <span class="kw">du</span> -sh WTCCC_snp2gene.mat</a>
+<a class="sourceLine" id="cb6-5" title="5">645M    WTCCC_snp2gene.mat</a></code></pre></div>
+<p>In this example, there are 18334 genes and 348965 SNPs.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb7-1" title="1">&gt;&gt; snp2gene=matfile(<span class="st">&#39;WTCCC_snp2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb7-2" title="2">&gt;&gt; snp2gene</a>
+<a class="sourceLine" id="cb7-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb7-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb7-5" title="5">      Properties.Source: <span class="st">&#39;WTCCC_snp2gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    Properties.Writable: false                                                         </a>
+<a class="sourceLine" id="cb7-7" title="7">                    chr: [<span class="fl">348965</span>x1   double]                                           </a>
+<a class="sourceLine" id="cb7-8" title="8">                  colid: [<span class="fl">41897736</span>x1 int32]                                            </a>
+<a class="sourceLine" id="cb7-9" title="9">             ncbi35_pos: [<span class="fl">348965</span>x1   int32]                                            </a>
+<a class="sourceLine" id="cb7-10" title="10">                numgene: [<span class="fl">1</span>x1        int32]                                            </a>
+<a class="sourceLine" id="cb7-11" title="11">                 numsnp: [<span class="fl">1</span>x1        int32]                                            </a>
+<a class="sourceLine" id="cb7-12" title="12">                    pos: [<span class="fl">348965</span>x1   int32]                                            </a>
+<a class="sourceLine" id="cb7-13" title="13">                  rowid: [<span class="fl">41897736</span>x1 int32]                                            </a>
+<a class="sourceLine" id="cb7-14" title="14">                    val: [<span class="fl">41897736</span>x1 double]                                           </a>
+<a class="sourceLine" id="cb7-15" title="15"></a>
+<a class="sourceLine" id="cb7-16" title="16">&gt;&gt; [snp2gene.numgene snp2gene.numsnp]</a>
+<a class="sourceLine" id="cb7-17" title="17">    <span class="fl">18334</span>   <span class="fl">348965</span></a></code></pre></div>
+<p>The SNP-to-gene distance information is captured by a three-column matrix <code>[colid rowid val]</code>. For example, the distance between gene <code>7</code> and SNP <code>161</code> is <code>2855196</code> bps.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb8-1" title="1">&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</a>
+<a class="sourceLine" id="cb8-2" title="2">&gt;&gt; [colid(<span class="fl">6688</span>) rowid(<span class="fl">6688</span>) val(<span class="fl">6688</span>)]</a>
+<a class="sourceLine" id="cb8-3" title="3">         <span class="fl">7</span>       <span class="fl">161</span>   <span class="fl">2855196</span></a></code></pre></div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -694,7 +791,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
@@ -756,6 +853,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 [2] /usr/local/lib/R/site-library
 [3] /usr/lib/R/site-library
 [4] /usr/lib/R/library</code></pre>
+</div>
 </div>
 </div>
 </div>
