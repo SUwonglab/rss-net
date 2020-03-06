@@ -1,0 +1,65 @@
+---
+title: "RSS-NET analysis of simulated GWAS summary statistics and B cell regulatory network"
+author: "Xiang Zhu"
+date: "2019-08-18"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+[`wtccc_bcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell
+[zenodo-wtcccbcell]: 
+
+## Overview
+
+Here we describe an end-to-end RSS-NET analysis of two synthetic datasets
+that are simulated from real genotypes of 348965 genome-wide SNPs from
+1458 individuals in the UK Blood Service Control Group
+([Wellcome Trust Case Control Consortium, 2007](https://doi.org/10.1038/nature05911))
+and a gene regulatory network inferred for B cells
+[(ENCODE Project Consortium, 2012)](https://doi.org/10.1038/nature11247).
+This example gives a quick view of how RSS-NET works.
+
+To reproduce results of this example,
+please use scripts in the directory [`wtccc_bcell/`][],
+and follow the step-by-step guide below.
+Before running any script in [`wtccc_bcell/`][],
+please [install](setup.html) RSS-NET.
+
+With the software installed and the input data downloaded,
+one should be able to run this example by simply typing the following line in shell:
+
+```{r, eval=FALSE, engine='zsh'}
+$ sbatch run_simulation.sbatch
+```
+
+If a different directory is used to store the software, input data
+and/or output data, please modify file paths in the given scripts accordingly.
+
+## Step-by-step illustration
+
+### Download data files
+
+All data files required to run this example are freely available at Zenodo
+[![DOI]()][zenodo-wtcccbcell].
+Please contact me (`xiangzhu[at]stanford.edu`)
+if you have any trouble accessing these files.
+After a complete download, you should see the following files.
+
+```{r, eval=FALSE, engine='zsh'}
+add tree
+```
+
+To help readers confirm if they use the same files as we do,
+we report 128-bit MD5 hashes of all files in `wtccc_bcell_data.md5`.
+
+To help readers confirm if they can reproduce results of this example,
+we also provide the results (`wtccc_bcell_results.zip`) in the same Zenodo deposit.
+
+For simplicity and generality,
+we introduce the following short-hand notations.
+
+```matlab
+gwas = 'WTCCC';
+net  = 'Primary_B_cells_from_peripheral_blood'; 
+```
