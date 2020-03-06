@@ -63,3 +63,100 @@ we introduce the following short-hand notations.
 gwas = 'WTCCC';
 net  = 'Primary_B_cells_from_peripheral_blood'; 
 ```
+
+#### 1. `m*_data.mat`: simulated GWAS summary statistics and reference LD estimates
+
+Here we simulate two synthetic datasets from WTCCC genotypes and B cell network:
+one (`m0_data.mat`) based on RSS-NET baseline model $M_0$,
+and the other (`m1_data.mat`) based on RSS-NET enrichment model $M_1$.
+We match `m*_data.mat` by the number of trait-associated SNPs and
+the proportion of phenotypic variation explained by all SNPs.
+By this desgin, `m*_data.mat` have the same amount of genetic signals,
+and they only differ in how genetic signals are distributed:
+for the enrichment dataset `m1_data.mat`
+genetic associations are enriched in the B cell network;
+for the baseline dataset `m0_data.mat`
+genetic associations are randomly distributed across the genome.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum m*_data.mat
+5d652796b4cc358843920b1edf2819fc  m0_data.mat
+996eae1410f89607f1debefb31ec7811  m1_data.mat
+
+$ du -sh m*_data.mat
+3.0G	m0_data.mat
+3.0G	m1_data.mat
+```
+
+Let's look at the contents of `m*_data.mat`.
+
+```matlab
+>> sumstat=matfile('m0_data.mat'); 
+>> sumstat
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'm0_data.mat'
+    Properties.Writable: false                                                  
+                  SiRiS: [22x1 cell]                                            
+                betahat: [22x1 cell]                                            
+                    chr: [22x1 cell]                                            
+                    pos: [22x1 cell]                                            
+                     se: [22x1 cell]
+```
+
+GWAS summary statistics and LD estimates are stored as
+[cell arrays](https://www.mathworks.com/help/matlab/cell-arrays.html).
+RSS-NET only uses the following variables:
+
+- `betahat{j,1}`, single-SNP effect size estimates of all SNPs on chromosome `j`;
+- `se{j,1}`, standard errors of `betahat{j, 1}`;
+- `chr{j,1}` and `pos{j, 1}`, physical positions of these SNPs (GRCh37 build);
+- `SiRiS{j,1}`, a [sparse matrix](https://www.mathworks.com/help/matlab/sparse-matrices.html),
+defined as `repmat((1./se),1,p) .* R .* repmat((1./se)',p,1)`,
+where `R` is the estimated LD matrix of these `p` SNPs.
+
+#### 2. `${gwas}_snp2gene.mat`: physical distance between SNPs and genes
+
+This file contains the physical distance between
+each GWAS SNP and each protein-coding gene, within 1 Mb.
+This file corresponds to ${\bf G}_j$ in the RSS-NET model.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum WTCCC_snp2gene.mat 
+50da1887601df3a0914380e2ea9b1be7  WTCCC_snp2gene.mat
+
+$ du -sh WTCCC_snp2gene.mat
+645M	WTCCC_snp2gene.mat
+```
+
+In this example, there are 18334 genes and 348965 SNPs.
+
+```matlab
+>> snp2gene=matfile('WTCCC_snp2gene.mat');
+>> snp2gene
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'WTCCC_snp2gene.mat'
+    Properties.Writable: false                                                         
+                    chr: [348965x1   double]                                           
+                  colid: [41897736x1 int32]                                            
+             ncbi35_pos: [348965x1   int32]                                            
+                numgene: [1x1        int32]                                            
+                 numsnp: [1x1        int32]                                            
+                    pos: [348965x1   int32]                                            
+                  rowid: [41897736x1 int32]                                            
+                    val: [41897736x1 double]                                           
+
+>> [snp2gene.numgene snp2gene.numsnp]
+    18334   348965
+```
+
+The SNP-to-gene distance information is captured
+by a three-column matrix `[colid rowid val]`.
+For example, the distance between gene `7` and SNP `161` is `2855196` bps. 
+
+```matlab
+>> colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;
+>> [colid(6688) rowid(6688) val(6688)]
+         7       161   2855196
+```
