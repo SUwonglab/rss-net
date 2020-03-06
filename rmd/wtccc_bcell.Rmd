@@ -160,3 +160,142 @@ For example, the distance between gene `7` and SNP `161` is `2855196` bps.
 >> [colid(6688) rowid(6688) val(6688)]
          7       161   2855196
 ```
+
+#### 3. `${net}_gene2gene.mat`: gene regulatory network
+
+This file contains information of gene-to-gene
+connections in a given regulatory network.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum Primary_B_cells_from_peripheral_blood_gene2gene.mat
+0098dd6d85762b18d5d594da6c3cfe93  Primary_B_cells_from_peripheral_blood_gene2gene.mat
+
+$ du -sh Primary_B_cells_from_peripheral_blood_gene2gene.mat
+1.8M	Primary_B_cells_from_peripheral_blood_gene2gene.mat
+```
+
+```matlab
+>> gene2gene=matfile('Primary_B_cells_from_peripheral_blood_gene2gene.mat');
+>> gene2gene
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'Primary_B_cells_from_peripheral_blood_gene2gene.mat'
+    Properties.Writable: false                                                                                          
+                  colid: [110062x1 int32]                                                                               
+                numgene: [1x1      int32]                                                                               
+                  rowid: [110062x1 int32]                                                                               
+                    val: [110062x1 double]
+```
+
+For implementation convenience, this file contains the trivial case
+where each gene is mapped to itself with `val=1`.
+
+```matlab
+>> colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             
+>> [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]
+   18334   18334       1
+```
+
+For a given network, transcription factors (TFs) are stored in `rowid`
+and target genes (TGs) are stored in `colid`.
+In this example there are 3018 TGs and 436 TFs.
+Among these TFs and TGs, there are 91728 edges.
+The edge weights range from 0.61 to 1.
+These TF-to-TG connections and edge weights correspond to
+$\{{\bf T}_g,v_{gt}\}$ in the RSS-NET model.
+
+```matlab
+>> [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]
+        3018         436
+
+>> [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]
+       91728       91728
+
+>> val_tftg = val(colid ~= rowid);
+>> [min(val_tftg) quantile(val_tftg, 0.25) median(val_tftg) quantile(val_tftg, 0.75) max(val_tftg)]
+    0.6101    0.6278    0.6515    0.6885    1.0000      
+```
+
+#### 4. `${gwas}_${net}_snp2net.mat`: SNP-to-network proximity annotation
+
+This file contains binary annotations
+whether a SNP is "near" the given network,
+that is, within 100 kb of any network element
+(TF, TG or associated regulatory elements).
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat
+701264f811c0f5edd582ee3eec5cfd15  WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat
+
+$ du -sh WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat
+9.4M	WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat
+```
+
+In this example, there are 348965 GWAS SNPs and
+121308 of them are near the B cell network (i.e. `val=1`).
+
+```matlab
+>> snp2net=matfile('WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat');
+>> snp2net
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat'
+    Properties.Writable: false                                                                                              
+                    chr: [348965x1 double]                                                                                  
+             ncbi35_pos: [348965x1 int32]                                                                                   
+                    pos: [348965x1 int32]                                                                                   
+                  snpid: [348965x1 int32]                                                                                   
+                    val: [348965x1 double]                                                                                  
+                 window: [1x1      double]                                                                                  
+
+>> [length(snp2net.val) sum(snp2net.val) snp2net.window]
+      348965      121308      100000
+
+>> unique(snp2net.val)'
+     0     1
+```
+
+#### 5. `${gwas}_${net}_snp2gene_cis.mat`: SNP-to-gene cis regulation
+
+This file contains the SNP-to-gene cis regulation scores.
+(For simplicity we do not use context-matching cis eQTL studies in our simulations.)
+This file corresponds to $(c_{jg}-1)$ in the RSS-NET model.
+
+```{r, eval=FALSE, engine='zsh'}
+$ md5sum WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat
+b77eebd576eee6d19ac3c8ed94681f00  WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat
+
+$ du -sh WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat
+4.5M	WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat
+```
+
+```matlab
+>> snp2gene_cis = matfile('WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat');
+>> snp2gene_cis
+  matlab.io.MatFile
+  Properties:
+      Properties.Source: 'WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat'
+    Properties.Writable: false                                                                                                   
+                  colid: [291181x1 int32]                                                                                        
+                     l0: [1x1      double]                                                                                       
+                     l1: [1x1      double]                                                                                       
+                numgene: [1x1      int32]                                                                                        
+                 numsnp: [1x1      int32]                                                                                        
+                  rowid: [291181x1 int32]                                                                                        
+                    val: [291181x1 double]                                                                                       
+                 window: [1x1      double]
+```
+
+In this example, there are 291181 SNP-gene pairs
+with cis regulation scores available,
+consiting of 111097 SNPs and 5345 genes.
+The cis regulation scores (`val`) range from 0.02 to 0.90.
+
+```matlab
+>> [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]
+   348965   111097    18334     5345
+
+>> val=snp2gene_cis.val;
+>> [min(val) quantile(val, 0.25) median(val) quantile(val, 0.75) max(val)]
+    0.0202    0.1615    0.2661    0.3864    0.8963
+```
