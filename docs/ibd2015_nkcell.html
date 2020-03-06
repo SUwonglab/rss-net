@@ -615,10 +615,10 @@ examples/ibd2015_nkcell/results
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree6bf894e2061a84af077cb6568f749232561c9e39targetblank6bf894ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/6bf894e2061a84af077cb6568f749232561c9e39" target="_blank">6bf894e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree2d37013c96be5c175943b2e8b2a66cfa52a1350etargetblank2d37013a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/2d37013c96be5c175943b2e8b2a66cfa52a1350e" target="_blank">2d37013</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree6bf894e2061a84af077cb6568f749232561c9e39targetblank6bf894ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree2d37013c96be5c175943b2e8b2a66cfa52a1350etargetblank2d37013a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -631,8 +631,8 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
 
-Untracked files:
-    Untracked:  rmd/wtccc_bcell.Rmd
+Unstaged changes:
+    Modified:   rmd/wtccc_bcell.Rmd
 
 </code></pre>
 <p>
@@ -671,6 +671,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/2d37013c96be5c175943b2e8b2a66cfa52a1350e/rmd/ibd2015_nkcell.Rmd" target="_blank">2d37013</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/7e923a9a1e16f1708334b5a2f7bae2913031e52c/docs/ibd2015_nkcell.html" target="_blank">7e923a9</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1275,7 +1309,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb3-3" title="3">cis  = <span class="st">&#39;NK&#39;</span>;</a></code></pre></div>
 <div id="gwas_sumstat.mat-processed-gwas-summary-statistics-and-ld-matrix-estimates" class="section level4">
 <h4>1. <code>${gwas}_sumstat.mat</code>: processed GWAS summary statistics and LD matrix estimates</h4>
-<p>This file is large (43G) because it has a LD matrix of 1.1 million common SNPs.</p>
+<p>This file contains processed IBD GWAS summary statistics and LD matrix estimates for 1.1 million common SNPs. This file is large (43G) because of the LD matrix .</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb4-1" title="1">$ md5sum ibd2015_sumstat.mat</a>
 <a class="sourceLine" id="cb4-2" title="2">ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</a>
 <a class="sourceLine" id="cb4-3" title="3"></a>
@@ -1311,7 +1345,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb6-3" title="3"></a>
 <a class="sourceLine" id="cb6-4" title="4">$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </a>
 <a class="sourceLine" id="cb6-5" title="5">224M    ibd2015_snp2gene.mat</a></code></pre></div>
-<p>In this example, there are 18334 SNPs and 1081481 genes.</p>
+<p>In this example, there are 18334 genes and 1081481 SNPs.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb7-1" title="1">&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</a>
 <a class="sourceLine" id="cb7-2" title="2">&gt;&gt; snp2gene                                   </a>
 <a class="sourceLine" id="cb7-3" title="3">  matlab.io.MatFile</a>
