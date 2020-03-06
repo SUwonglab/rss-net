@@ -1,3 +1,7 @@
+% set up parallel computing environment
+pc = parcluster('local');
+parpool(pc, str2num(getenv('SLURM_CPUS_ON_NODE')));  %#ok<ST2NM>
+
 % add search paths
 addpath(strcat(src_path,'rss/src_vb/'));  % RSS-E codes
 addpath(strcat(src_path,'rss-net/src/')); % RSS-NET codes
