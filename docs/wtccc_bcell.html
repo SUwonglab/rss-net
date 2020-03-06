@@ -591,10 +591,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree9729b44e534c052483a62f63741e3829451ca473targetblank9729b44a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/9729b44e534c052483a62f63741e3829451ca473" target="_blank">9729b44</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree4de49b794924f2a8d5da69459f5a0975c928d663targetblank4de49b7a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/4de49b794924f2a8d5da69459f5a0975c928d663" target="_blank">4de49b7</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree9729b44e534c052483a62f63741e3829451ca473targetblank9729b44a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree4de49b794924f2a8d5da69459f5a0975c928d663targetblank4de49b7a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -606,9 +606,6 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
-
-Unstaged changes:
-    Modified:   rmd/ibd2015_nkcell.Rmd
 
 </code></pre>
 <p>
@@ -647,6 +644,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/4de49b794924f2a8d5da69459f5a0975c928d663/rmd/wtccc_bcell.Rmd" target="_blank">4de49b7</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+wflow_publish(“rmd/wtccc_bcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/54677839aab0134f54fb1181ec52e30169a845d5/docs/wtccc_bcell.html" target="_blank">5467783</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -784,6 +815,97 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 <div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb8-1" title="1">&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</a>
 <a class="sourceLine" id="cb8-2" title="2">&gt;&gt; [colid(<span class="fl">6688</span>) rowid(<span class="fl">6688</span>) val(<span class="fl">6688</span>)]</a>
 <a class="sourceLine" id="cb8-3" title="3">         <span class="fl">7</span>       <span class="fl">161</span>   <span class="fl">2855196</span></a></code></pre></div>
+</div>
+<div id="net_gene2gene.mat-gene-regulatory-network" class="section level4">
+<h4>3. <code>${net}_gene2gene.mat</code>: gene regulatory network</h4>
+<p>This file contains information of gene-to-gene connections in a given regulatory network.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb9-1" title="1">$ md5sum Primary_B_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb9-2" title="2">0098dd6d85762b18d5d594da6c3cfe93  Primary_B_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4">$ <span class="kw">du</span> -sh Primary_B_cells_from_peripheral_blood_gene2gene.mat</a>
+<a class="sourceLine" id="cb9-5" title="5">1.8M    Primary_B_cells_from_peripheral_blood_gene2gene.mat</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb10-1" title="1">&gt;&gt; gene2gene=matfile(<span class="st">&#39;Primary_B_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb10-2" title="2">&gt;&gt; gene2gene</a>
+<a class="sourceLine" id="cb10-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb10-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb10-5" title="5">      Properties.Source: <span class="st">&#39;Primary_B_cells_from_peripheral_blood_gene2gene.mat&#39;</span></a>
+<a class="sourceLine" id="cb10-6" title="6">    Properties.Writable: false                                                                                          </a>
+<a class="sourceLine" id="cb10-7" title="7">                  colid: [<span class="fl">110062</span>x1 int32]                                                                               </a>
+<a class="sourceLine" id="cb10-8" title="8">                numgene: [<span class="fl">1</span>x1      int32]                                                                               </a>
+<a class="sourceLine" id="cb10-9" title="9">                  rowid: [<span class="fl">110062</span>x1 int32]                                                                               </a>
+<a class="sourceLine" id="cb10-10" title="10">                    val: [<span class="fl">110062</span>x1 double]</a></code></pre></div>
+<p>For implementation convenience, this file contains the trivial case where each gene is mapped to itself with <code>val=1</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb11-1" title="1">&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </a>
+<a class="sourceLine" id="cb11-2" title="2">&gt;&gt; [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]</a>
+<a class="sourceLine" id="cb11-3" title="3">   <span class="fl">18334</span>   <span class="fl">18334</span>       <span class="fl">1</span></a></code></pre></div>
+<p>For a given network, transcription factors (TFs) are stored in <code>rowid</code> and target genes (TGs) are stored in <code>colid</code>. In this example there are 3018 TGs and 436 TFs. Among these TFs and TGs, there are 91728 edges. The edge weights range from 0.61 to 1. These TF-to-TG connections and edge weights correspond to <span class="math inline">\(\{{\bf T}_g,v_{gt}\}\)</span> in the RSS-NET model.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb12-1" title="1">&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</a>
+<a class="sourceLine" id="cb12-2" title="2">        <span class="fl">3018</span>         <span class="fl">436</span></a>
+<a class="sourceLine" id="cb12-3" title="3"></a>
+<a class="sourceLine" id="cb12-4" title="4">&gt;&gt; [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]</a>
+<a class="sourceLine" id="cb12-5" title="5">       <span class="fl">91728</span>       <span class="fl">91728</span></a>
+<a class="sourceLine" id="cb12-6" title="6"></a>
+<a class="sourceLine" id="cb12-7" title="7">&gt;&gt; val_tftg = val(colid ~= rowid);</a>
+<a class="sourceLine" id="cb12-8" title="8">&gt;&gt; [min(val_tftg) quantile(val_tftg, <span class="fl">0.25</span>) median(val_tftg) quantile(val_tftg, <span class="fl">0.75</span>) max(val_tftg)]</a>
+<a class="sourceLine" id="cb12-9" title="9">    <span class="fl">0.6101</span>    <span class="fl">0.6278</span>    <span class="fl">0.6515</span>    <span class="fl">0.6885</span>    <span class="fl">1.0000</span>      </a></code></pre></div>
+</div>
+<div id="gwas_net_snp2net.mat-snp-to-network-proximity-annotation" class="section level4">
+<h4>4. <code>${gwas}_${net}_snp2net.mat</code>: SNP-to-network proximity annotation</h4>
+<p>This file contains binary annotations whether a SNP is “near” the given network, that is, within 100 kb of any network element (TF, TG or associated regulatory elements).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb13-1" title="1">$ md5sum WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb13-2" title="2">701264f811c0f5edd582ee3eec5cfd15  WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb13-3" title="3"></a>
+<a class="sourceLine" id="cb13-4" title="4">$ <span class="kw">du</span> -sh WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat</a>
+<a class="sourceLine" id="cb13-5" title="5">9.4M    WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat</a></code></pre></div>
+<p>In this example, there are 348965 GWAS SNPs and 121308 of them are near the B cell network (i.e. <code>val=1</code>).</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb14-1" title="1">&gt;&gt; snp2net=matfile(<span class="st">&#39;WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb14-2" title="2">&gt;&gt; snp2net</a>
+<a class="sourceLine" id="cb14-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb14-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb14-5" title="5">      Properties.Source: <span class="st">&#39;WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat&#39;</span></a>
+<a class="sourceLine" id="cb14-6" title="6">    Properties.Writable: false                                                                                              </a>
+<a class="sourceLine" id="cb14-7" title="7">                    chr: [<span class="fl">348965</span>x1 double]                                                                                  </a>
+<a class="sourceLine" id="cb14-8" title="8">             ncbi35_pos: [<span class="fl">348965</span>x1 int32]                                                                                   </a>
+<a class="sourceLine" id="cb14-9" title="9">                    pos: [<span class="fl">348965</span>x1 int32]                                                                                   </a>
+<a class="sourceLine" id="cb14-10" title="10">                  snpid: [<span class="fl">348965</span>x1 int32]                                                                                   </a>
+<a class="sourceLine" id="cb14-11" title="11">                    val: [<span class="fl">348965</span>x1 double]                                                                                  </a>
+<a class="sourceLine" id="cb14-12" title="12">                 window: [<span class="fl">1</span>x1      double]                                                                                  </a>
+<a class="sourceLine" id="cb14-13" title="13"></a>
+<a class="sourceLine" id="cb14-14" title="14">&gt;&gt; [length(snp2net.val) sum(snp2net.val) snp2net.window]</a>
+<a class="sourceLine" id="cb14-15" title="15">      <span class="fl">348965</span>      <span class="fl">121308</span>      <span class="fl">100000</span></a>
+<a class="sourceLine" id="cb14-16" title="16"></a>
+<a class="sourceLine" id="cb14-17" title="17">&gt;&gt; unique(snp2net.val)&#39;</a>
+<a class="sourceLine" id="cb14-18" title="18">     <span class="fl">0</span>     <span class="fl">1</span></a></code></pre></div>
+</div>
+<div id="gwas_net_snp2gene_cis.mat-snp-to-gene-cis-regulation" class="section level4">
+<h4>5. <code>${gwas}_${net}_snp2gene_cis.mat</code>: SNP-to-gene cis regulation</h4>
+<p>This file contains the SNP-to-gene cis regulation scores. (For simplicity we do not use context-matching cis eQTL studies in our simulations.) This file corresponds to <span class="math inline">\((c_{jg}-1)\)</span> in the RSS-NET model.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb15-1" title="1">$ md5sum WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb15-2" title="2">b77eebd576eee6d19ac3c8ed94681f00  WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4">$ <span class="kw">du</span> -sh WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat</a>
+<a class="sourceLine" id="cb15-5" title="5">4.5M    WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb16-1" title="1">&gt;&gt; snp2gene_cis = matfile(<span class="st">&#39;WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb16-2" title="2">&gt;&gt; snp2gene_cis</a>
+<a class="sourceLine" id="cb16-3" title="3">  matlab.io.MatFile</a>
+<a class="sourceLine" id="cb16-4" title="4">  Properties:</a>
+<a class="sourceLine" id="cb16-5" title="5">      Properties.Source: <span class="st">&#39;WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat&#39;</span></a>
+<a class="sourceLine" id="cb16-6" title="6">    Properties.Writable: false                                                                                                   </a>
+<a class="sourceLine" id="cb16-7" title="7">                  colid: [<span class="fl">291181</span>x1 int32]                                                                                        </a>
+<a class="sourceLine" id="cb16-8" title="8">                     l0: [<span class="fl">1</span>x1      double]                                                                                       </a>
+<a class="sourceLine" id="cb16-9" title="9">                     l1: [<span class="fl">1</span>x1      double]                                                                                       </a>
+<a class="sourceLine" id="cb16-10" title="10">                numgene: [<span class="fl">1</span>x1      int32]                                                                                        </a>
+<a class="sourceLine" id="cb16-11" title="11">                 numsnp: [<span class="fl">1</span>x1      int32]                                                                                        </a>
+<a class="sourceLine" id="cb16-12" title="12">                  rowid: [<span class="fl">291181</span>x1 int32]                                                                                        </a>
+<a class="sourceLine" id="cb16-13" title="13">                    val: [<span class="fl">291181</span>x1 double]                                                                                       </a>
+<a class="sourceLine" id="cb16-14" title="14">                 window: [<span class="fl">1</span>x1      double]</a></code></pre></div>
+<p>In this example, there are 291181 SNP-gene pairs with cis regulation scores available, consiting of 111097 SNPs and 5345 genes. The cis regulation scores (<code>val</code>) range from 0.02 to 0.90.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb17-1" title="1">&gt;&gt; [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]</a>
+<a class="sourceLine" id="cb17-2" title="2">   <span class="fl">348965</span>   <span class="fl">111097</span>    <span class="fl">18334</span>     <span class="fl">5345</span></a>
+<a class="sourceLine" id="cb17-3" title="3"></a>
+<a class="sourceLine" id="cb17-4" title="4">&gt;&gt; val=snp2gene_cis.val;</a>
+<a class="sourceLine" id="cb17-5" title="5">&gt;&gt; [min(val) quantile(val, <span class="fl">0.25</span>) median(val) quantile(val, <span class="fl">0.75</span>) max(val)]</a>
+<a class="sourceLine" id="cb17-6" title="6">    <span class="fl">0.0202</span>    <span class="fl">0.1615</span>    <span class="fl">0.2661</span>    <span class="fl">0.3864</span>    <span class="fl">0.8963</span></a></code></pre></div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -791,7 +913,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
