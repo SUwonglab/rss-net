@@ -8,14 +8,14 @@ out_path = '/scratch/midway2/xiangzhu/tmp/rss_net/wtccc_net_out/';
 
 true_theta0 = -4;
 true_theta  = 2;
-true_sigb   = 1;
+true_sigma0 = 1;
 true_pve    = 0.6;
 
 switch trial_name
   case 'm0'
-    true_sige = 0;
+    true_sigma = 0;
   case 'm1'
-    true_sige = 2;
+    true_sigma = 2;
 end
 
 % specify random seed
