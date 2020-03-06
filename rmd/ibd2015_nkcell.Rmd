@@ -94,8 +94,9 @@ cis  = 'NK';
 
 #### 1. `${gwas}_sumstat.mat`: processed GWAS summary statistics and LD matrix estimates
 
-This file is large (43G) because
-it has a LD matrix of 1.1 million common SNPs.
+This file contains processed IBD GWAS summary statistics
+and LD matrix estimates for 1.1 million common SNPs.
+This file is large (43G) because of the LD matrix .
 
 ```{r, eval=FALSE, engine='zsh'}
 $ md5sum ibd2015_sumstat.mat
@@ -148,7 +149,7 @@ $ du -sh ibd2015_snp2gene.mat
 224M	ibd2015_snp2gene.mat
 ```
 
-In this example, there are 18334 SNPs and 1081481 genes.
+In this example, there are 18334 genes and 1081481 SNPs.
 
 ```matlab
 >> snp2gene = matfile('ibd2015_snp2gene.mat');
