@@ -7,4 +7,15 @@ editor_options:
   chunk_output_type: console
 ---
 
+[`rss_net.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/rss_net.m
+[`calc_bf.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_bf.m
+[`calc_pp.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_pp.m
+[`compute_pip.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m
 
+- [`rss_net.m`][]: Fit the RSS-NET model using a mean-field variational Bayes algorithm.
+
+- [`calc_bf.m`][]: Compute network enrichment Bayes factor (BF) using RSS-NET model fitting results. 
+
+- [`calc_pp.m`][]: Compute locus-level association statistic $P_1$ using RSS-NET model fitting results.
+
+    - [`compute_pip.m`][]: Compute $P_1$. 
