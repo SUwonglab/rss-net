@@ -8,6 +8,13 @@ editor_options:
 ---
 
 [`wtccc_bcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell
+[`simulation_template.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/simulation_template.m
+[`run_simulation.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.m
+[`run_simulation.sbatch`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.sbatch
+[structure array]: https://www.mathworks.com/help/matlab/ref/struct.html
+[`rss_net.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/rss_net.m
+[`calc_bf.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_bf.m
+[`compute_pip.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m
 [zenodo-wtcccbcell]: 
 
 ## Overview
@@ -299,3 +306,114 @@ The cis regulation scores (`val`) range from 0.02 to 0.90.
 >> [min(val) quantile(val, 0.25) median(val) quantile(val, 0.75) max(val)]
     0.0202    0.1615    0.2661    0.3864    0.8963
 ```
+
+### Run RSS-NET analysis
+
+To facilitate running RSS-NET on real data,
+we provide a generic script [`simulation_template.m`][].
+For the present example, the RSS-NET analysis of two synthetic datasets
+is implemented by [`run_simulation.m`][] and [`run_simulation.sbatch`][].
+
+Please see scripts in [`wtccc_bcell/`][] for full details.
+Below we only highlight the important parts.
+
+#### 1. Specify input data files
+
+First we need to tell RSS-NET where to find all required input files,
+by creating the following [structure array][] `data`.
+Please ensure that you save all downloaded files in `dat_path`.
+
+```matlab
+data.sumstats_file     = strcat(dat_path,trial_name,'_data.mat');
+data.snp2net_file      = strcat(dat_path,gwas_name,'_',net_name,'_snp2net.mat');
+data.snp2gene_file     = strcat(dat_path,gwas_name,'_snp2gene.mat');
+data.gene2gene_file    = strcat(dat_path,net_name,'_gene2gene.mat');
+data.snp2gene_cis_file = strcat(dat_path,gwas_name,'_',net_name,'_snp2gene_cis.mat');
+```
+
+#### 2. Specify a hyper-parameter grid
+
+Next we need feed a hyper-parameter grid to RSS-NET,
+by creating the following [structure array][] `hyper`.
+The total computational cost of RSS-NET is proportional to the grid size.
+Hence, if you want to finish running this example faster,
+you can always reduce the grid size.
+
+```matlab
+hyper.theta0 = true_theta0;
+hyper.sigma0 = true_sigma0;
+hyper.theta  = [0 ((true_theta-0.5):0.25:(true_theta+0.5))];
+hyper.sigma  = [0 ((true_sigma-0.5):0.25:(true_sigma+0.5))];
+```
+
+#### 3. Initialize variational parameters
+
+We can provide initial values for variational parameters in RSS-NET as follows.
+If we do not provide initial values,
+RSS-NET will use a random initialization.
+
+```matlab
+options.alpha = alpha0;
+options.mu    = mu0;
+```
+
+#### 4. Fit the RSS-NET model
+
+We use [`rss_net.m`][] to fit the RSS-NET model on a given dataset.
+The model fitting results consist of variational lower bounds `logw` and
+variational parameter estimates `[alpha mu s]` for the given hyper-parameter grid.
+
+```matlab
+[logw,alpha,mu,s,param] = rss_net(data,hyper,options);
+```
+
+#### 5. Summarize network-level enrichments
+
+To assess whether a regulatory network is enriched
+for genetic associations with a trait,
+we evaluate a Bayes factor (BF) comparing
+the baseline model ($M_0:\theta=0~\text{and}~\sigma^2=0$)
+in RSS-NET with the enrichment model ($M_1:\theta>0~\text{or}~\sigma^2>0$).
+The BF computation is implemented in [`calc_bf.m`][].
+
+```matlab
+log10_bf = calc_bf(logw,param);
+```
+
+#### 6. Summarize gene-level associations
+
+To summarize association between a locus and a trait,
+we compute $P_1^{\sf net}$, the posterior probability that at least
+one SNP $j$ in the locus is associated with the trait ($\beta_j\neq 0$):
+$$
+P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
+$$
+As in [Zhu et al (2020)][], a locus is defined as the transcribed region
+of a gene plus 100 kb uptream and downstream.
+The locus definition is provided in `wtccc_tidy_snp2gene_ncbi35togrch37.mat`.
+The $P_1^{\sf net}$ computation is implemented in [`compute_pip`][].
+
+```matlab
+seg_path = strcat(dat_path,'wtccc_tidy_snp2gene_ncbi35togrch37.mat');
+p1_net   = compute_pip(seg_path,logw,alpha);
+```
+
+#### 7. Submit jobs
+
+After understanding the basic workflow of RSS-NET,
+we submit two jobs of running RSS-NET on the synthetic datasets `m*_data.mat`.
+To this end, we write a simple sbatch script [`run_simulation.sbatch`][],
+and submit it to a cluster with [`Slurm`](https://slurm.schedmd.com/) available.
+
+```{r, eval=FALSE, engine='zsh'}
+$ squeue -u xiangzhu
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+        66258089_0   broadwl run_simu xiangzhu  R    2:48:17      1 midway2-0009
+        66258089_1   broadwl run_simu xiangzhu  R    2:48:17      1 midway2-0011
+```
+
+For each job, we request 1 node with 8 CPUs and 32 Gb total memory.
+The running time of analyzing `m0_data.mat` and `m1_data.mat`
+is XXX and XXX, respectively.
+
+#### 8. Understand analysis results
