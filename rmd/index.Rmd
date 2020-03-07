@@ -30,7 +30,7 @@ This page provides instructions for installing RSS-NET software.
 
 This page gives end-to-end examples of using RSS-NET methods and software.
 
-## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functionalities](function.html)
+## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functions](function.html)
 
 This page outlines functions and scripts associated with RSS-NET methods.
 
