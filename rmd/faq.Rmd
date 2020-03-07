@@ -1,8 +1,15 @@
 ---
-title: "Frequently Asked Questions"
+title: "Frequently Asked Questions (FAQs)"
 output:
   workflowr::wflow_html:
     toc: false
 editor_options:
   chunk_output_type: console
 ---
+
+Welcome to RSS-NET wiki FAQ page!
+
+If you have any question or suggestion about RSS-NET,
+please feel free to create a new [issue](https://github.com/SUwonglab/rss-net/issues)
+and/or send an email to `xiangzhu[at]stanford.edu`. You may find
+[FAQs for other RSS-based methods](https://stephenslab.github.io/rss/FAQ) useful as well.
