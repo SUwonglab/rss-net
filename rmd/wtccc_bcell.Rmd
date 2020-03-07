@@ -7,6 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
+[Zhu et al (2020)]: ddd
 [`wtccc_bcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell
 [`simulation_template.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/simulation_template.m
 [`run_simulation.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.m
@@ -391,7 +392,7 @@ $$
 As in [Zhu et al (2020)][], a locus is defined as the transcribed region
 of a gene plus 100 kb uptream and downstream.
 The locus definition is provided in `wtccc_tidy_snp2gene_ncbi35togrch37.mat`.
-The $P_1^{\sf net}$ computation is implemented in [`compute_pip`][].
+The $P_1^{\sf net}$ computation is implemented in [`compute_pip.m`][].
 
 ```matlab
 seg_path = strcat(dat_path,'wtccc_tidy_snp2gene_ncbi35togrch37.mat');
@@ -413,7 +414,43 @@ $ squeue -u xiangzhu
 ```
 
 For each job, we request 1 node with 8 CPUs and 32 Gb total memory.
-The running time of analyzing `m0_data.mat` and `m1_data.mat`
-is XXX and XXX, respectively.
+The running time of analyzing `m0_data.mat` and `m1_data.mat` is around 4 hours each.
 
 #### 8. Understand analysis results
+
+Running [`run_simulation.sbatch`][] yields two MAT-files `m*_results.mat`.
+
+```matlab
+>> m0_res=matfile('m0_results.mat');
+>> m1_res=matfile('m1_results.mat');
+```
+
+As shown below, RSS-NET yields a small BF ($0.13$) for the baseline dataset `m0_data.mat`
+and a large BF ($5.85\times 10^{55}$) for the enrichment dataset `m1_data.mat`. 
+
+```matlab
+>> [m0_res.log10_bf m1_res.log10_bf]
+   -0.8917   55.7671
+```
+
+We also compare gene-level associations inferred from
+RSS-NET (`m*_res.pp`) with ground truth (`m*_true_gene.mat`).
+RSS-NET shows a higher statistical power in identifying gene-level associations
+on the enrichment dataset `m1_data.mat` ($\text{AUC}=0.78$)
+than the baseline dataset `m0_data.mat` ($\text{AUC}=0.60$).
+This is because RSS-NET automatically exploits the underlying network
+enrichment in `m1_data.mat` when assessing genetic associations.
+
+```matlab
+>> m1_gene=matfile('m1_true_gene.mat');              
+>> m1_mdl = fitglm(m1_res.pp,m1_gene.true_gene,'Distribution','binomial','Link','logit');
+>> [X,Y,T,m1_auc] = perfcurve(m1_gene.true_gene,m1_mdl.Fitted.Probability,1);
+>> m1_auc
+    0.7767
+
+>> m0_gene=matfile('m0_true_gene.mat');                                                  
+>> m0_mdl = fitglm(m0_res.pp,m0_gene.true_gene,'Distribution','binomial','Link','logit');
+>> [X,Y,T,m0_auc] = perfcurve(m0_gene.true_gene,m0_mdl.Fitted.Probability,1);
+>> m0_auc
+    0.5954
+```
