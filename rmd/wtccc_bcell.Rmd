@@ -16,7 +16,7 @@ editor_options:
 [`rss_net.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/rss_net.m
 [`calc_bf.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_bf.m
 [`compute_pip.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m
-[zenodo-wtcccbcell]: 
+[zenodo-wtcccbcell]: https://doi.org/10.5281/zenodo.3700214 
 
 ## Overview
 
@@ -49,13 +49,27 @@ and/or output data, please modify file paths in the given scripts accordingly.
 ### Download data files
 
 All data files required to run this example are freely available at Zenodo
-[![DOI]()][zenodo-wtcccbcell].
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3700214.svg)][zenodo-wtcccbcell].
 Please contact me (`xiangzhu[at]stanford.edu`)
 if you have any trouble accessing these files.
 After a complete download, you should see the following files.
 
 ```{r, eval=FALSE, engine='zsh'}
-add tree
+$ tree .
+.
+├── m0_data.mat
+├── m0_true_gene.mat
+├── m1_data.mat
+├── m1_true_gene.mat
+├── Primary_B_cells_from_peripheral_blood_gene2gene.mat
+├── wtccc_bcell_data.md5
+├── wtccc_bcell_results.zip
+├── WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat
+├── WTCCC_Primary_B_cells_from_peripheral_blood_snp2net.mat
+├── WTCCC_snp2gene.mat
+└── wtccc_tidy_snp2gene_ncbi35togrch37.mat
+
+0 directories, 11 files
 ```
 
 To help readers confirm if they use the same files as we do,
@@ -79,7 +93,7 @@ one (`m0_data.mat`) based on RSS-NET baseline model $M_0$,
 and the other (`m1_data.mat`) based on RSS-NET enrichment model $M_1$.
 We match `m*_data.mat` by the number of trait-associated SNPs and
 the proportion of phenotypic variation explained by all SNPs.
-By this desgin, `m*_data.mat` have the same amount of genetic signals,
+By this design, `m*_data.mat` have the same amount of genetic signals,
 and they only differ in how genetic signals are distributed:
 for the enrichment dataset `m1_data.mat`
 genetic associations are enriched in the B cell network;
@@ -296,7 +310,7 @@ $ du -sh WTCCC_Primary_B_cells_from_peripheral_blood_snp2gene_cis.mat
 
 In this example, there are 291181 SNP-gene pairs
 with cis regulation scores available,
-consiting of 111097 SNPs and 5345 genes.
+consisting of 111097 SNPs and 5345 genes.
 The cis regulation scores (`val`) range from 0.02 to 0.90.
 
 ```matlab
@@ -390,7 +404,7 @@ $$
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 $$
 As in [Zhu et al (2020)][], a locus is defined as the transcribed region
-of a gene plus 100 kb uptream and downstream.
+of a gene plus 100 kb upstream and downstream.
 The locus definition is provided in `wtccc_tidy_snp2gene_ncbi35togrch37.mat`.
 The $P_1^{\sf net}$ computation is implemented in [`compute_pip.m`][].
 
