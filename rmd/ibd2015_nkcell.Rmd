@@ -302,7 +302,7 @@ $ du -sh ibd2015_NK_snp2gene_cis.mat
 
 In this example, there are 10790012 SNP-gene pairs
 with cis regulation scores available,
-consiting of 829280 SNPs and 18230 genes.
+consisting of 829280 SNPs and 18230 genes.
 The cis regulation scores (`val`) range from 0 to 0.76.
 The cis regulation scores used in this example are derived
 from recently published cis eQTLs in NK cells
@@ -320,17 +320,9 @@ from recently published cis eQTLs in NK cells
 ### Run RSS-NET analysis
 
 To facilitate running RSS-NET on real data,
-I provide a generic script [`analysis_template.m`][].
+we provide a generic script [`analysis_template.m`][].
 For the present example, the RSS-NET analysis is implemented by
 [`ibd2015_nkcell.m`][] and [`ibd2015_nkcell.sbatch`][].
-
-```zsh
-/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell
-.
-├── ./analysis_template.m
-├── ./ibd2015_nkcell.m
-└── ./ibd2015_nkcell.sbatch
-```
 
 #### 1. Specify analysis-specific variables
 
@@ -439,13 +431,6 @@ If you need to summarize a different RSS-NET analysis,
 simply modify [`summarize_ibd2015_nkcell.m`][]
 and there is no need to change [`summary_template.m`][]. 
 
-```zsh
-/Users/xiangzhu/GitHub/rss-net/examples/ibd2015_nkcell
-.
-├── ./summary_template.m
-├── ./summarize_ibd2015_nkcell.m
-```
-
 For this example, simply run the following line in a Matlab console.
 
 ```matlab
@@ -484,7 +469,7 @@ in RSS-NET with an enrichment model.
 ```
 
 Here `log10_bf*` are log 10 BFs comparing
-the flollowing 4 enrichment models against $M_0$.
+the following 4 enrichment models against $M_0$.
 
 - `log10_bf`: $M_1:\theta>0~\text{or}~\sigma^2>0$;
 - `log10_bf_ns`: $M_{11}:\theta>0~\text{and}~\sigma^2=0$; 
@@ -532,7 +517,7 @@ $$
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 $$
 As in [Zhu et al (2020)][], a locus is defined as the transcribed region
-of a gene plus 100 kb uptream and downstream.
+of a gene plus 100 kb upstream and downstream.
 The locus definition is provided in `ibd2015_gene_grch37.mat`.
 
 ```matlab
@@ -549,7 +534,7 @@ The locus definition is provided in `ibd2015_gene_grch37.mat`.
 ```
 
 Here `P1_gene` corresponds to $P_1^{\sf net}$ and `[gene_chr gene_start gene_stop]`
-denote physicial position of genes based on GRCh37.
+denote physical position of genes based on GRCh37.
 
 Let's perform a reproducibility check for gene-level results.
 Again, my previous analysis and the current analysis yield
