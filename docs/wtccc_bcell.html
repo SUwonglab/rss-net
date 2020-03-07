@@ -591,10 +591,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreee3daa54b1768e59db84e6861e18aff7c9c69c517targetblanke3daa54a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/e3daa54b1768e59db84e6861e18aff7c9c69c517" target="_blank">e3daa54</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree26bfe195ec9a50233df23fa2e2ab1542d32b4454targetblank26bfe19a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/26bfe195ec9a50233df23fa2e2ab1542d32b4454" target="_blank">26bfe19</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreee3daa54b1768e59db84e6861e18aff7c9c69c517targetblanke3daa54a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree26bfe195ec9a50233df23fa2e2ab1542d32b4454targetblank26bfe19a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -606,9 +606,10 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
+    Ignored:    examples/wtccc_bcell/results/
 
-Untracked files:
-    Untracked:  examples/wtccc_bcell/.simulation_template.m.swp
+Unstaged changes:
+    Modified:   rmd/index.Rmd
 
 </code></pre>
 <p>
@@ -647,6 +648,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/26bfe195ec9a50233df23fa2e2ab1542d32b4454/rmd/wtccc_bcell.Rmd" target="_blank">26bfe19</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+wflow_publish(“rmd/wtccc_bcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/991b3234f108057574d29bf37f84cf2a5306e74d/docs/wtccc_bcell.html" target="_blank">991b323</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -986,7 +1021,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 <h4>6. Summarize gene-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
-\]</span> As in [Zhu et al (2020)][], a locus is defined as the transcribed region of a gene plus 100 kb uptream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in [<code>compute_pip</code>][].</p>
+\]</span> As in <a href="ddd">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb uptream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in <a href="https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m"><code>compute_pip.m</code></a>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb23-1" title="1">seg_path = strcat(dat_path,<span class="st">&#39;wtccc_tidy_snp2gene_ncbi35togrch37.mat&#39;</span>);</a>
 <a class="sourceLine" id="cb23-2" title="2">p1_net   = compute_pip(seg_path,logw,alpha);</a></code></pre></div>
 </div>
@@ -997,10 +1032,28 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 <a class="sourceLine" id="cb24-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
 <a class="sourceLine" id="cb24-3" title="3">        66258089_0   broadwl run_simu xiangzhu  R    2:48:17      1 midway2-0009</a>
 <a class="sourceLine" id="cb24-4" title="4">        66258089_1   broadwl run_simu xiangzhu  R    2:48:17      1 midway2-0011</a></code></pre></div>
-<p>For each job, we request 1 node with 8 CPUs and 32 Gb total memory. The running time of analyzing <code>m0_data.mat</code> and <code>m1_data.mat</code> is XXX and XXX, respectively.</p>
+<p>For each job, we request 1 node with 8 CPUs and 32 Gb total memory. The running time of analyzing <code>m0_data.mat</code> and <code>m1_data.mat</code> is around 4 hours each.</p>
 </div>
 <div id="understand-analysis-results" class="section level4">
 <h4>8. Understand analysis results</h4>
+<p>Running <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.sbatch"><code>run_simulation.sbatch</code></a> yields two MAT-files <code>m*_results.mat</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb25-1" title="1">&gt;&gt; m0_res=matfile(<span class="st">&#39;m0_results.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb25-2" title="2">&gt;&gt; m1_res=matfile(<span class="st">&#39;m1_results.mat&#39;</span>);</a></code></pre></div>
+<p>As shown below, RSS-NET yields a small BF (<span class="math inline">\(0.13\)</span>) for the baseline dataset <code>m0_data.mat</code> and a large BF (<span class="math inline">\(5.85\times 10^{55}\)</span>) for the enrichment dataset <code>m1_data.mat</code>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb26-1" title="1">&gt;&gt; [m0_res.log10_bf m1_res.log10_bf]</a>
+<a class="sourceLine" id="cb26-2" title="2">   -<span class="fl">0.8917</span>   <span class="fl">55.7671</span></a></code></pre></div>
+<p>We also compare gene-level associations inferred from RSS-NET (<code>m*_res.pp</code>) with ground truth (<code>m*_true_gene.mat</code>). RSS-NET shows a higher statistical power in identifying gene-level associations on the enrichment dataset <code>m1_data.mat</code> (<span class="math inline">\(\text{AUC}=0.78\)</span>) than the baseline dataset <code>m0_data.mat</code> (<span class="math inline">\(\text{AUC}=0.60\)</span>). This is because RSS-NET automatically exploits the underlying network enrichment in <code>m1_data.mat</code> when assessing genetic associations.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb27-1" title="1">&gt;&gt; m1_gene=matfile(<span class="st">&#39;m1_true_gene.mat&#39;</span>);              </a>
+<a class="sourceLine" id="cb27-2" title="2">&gt;&gt; m1_mdl = fitglm(m1_res.pp,m1_gene.true_gene,<span class="st">&#39;Distribution&#39;</span>,<span class="st">&#39;binomial&#39;</span>,<span class="st">&#39;Link&#39;</span>,<span class="st">&#39;logit&#39;</span>);</a>
+<a class="sourceLine" id="cb27-3" title="3">&gt;&gt; [X,Y,T,m1_auc] = perfcurve(m1_gene.true_gene,m1_mdl.Fitted.Probability,<span class="fl">1</span>);</a>
+<a class="sourceLine" id="cb27-4" title="4">&gt;&gt; m1_auc</a>
+<a class="sourceLine" id="cb27-5" title="5">    <span class="fl">0.7767</span></a>
+<a class="sourceLine" id="cb27-6" title="6"></a>
+<a class="sourceLine" id="cb27-7" title="7">&gt;&gt; m0_gene=matfile(<span class="st">&#39;m0_true_gene.mat&#39;</span>);                                                  </a>
+<a class="sourceLine" id="cb27-8" title="8">&gt;&gt; m0_mdl = fitglm(m0_res.pp,m0_gene.true_gene,<span class="st">&#39;Distribution&#39;</span>,<span class="st">&#39;binomial&#39;</span>,<span class="st">&#39;Link&#39;</span>,<span class="st">&#39;logit&#39;</span>);</a>
+<a class="sourceLine" id="cb27-9" title="9">&gt;&gt; [X,Y,T,m0_auc] = perfcurve(m0_gene.true_gene,m0_mdl.Fitted.Probability,<span class="fl">1</span>);</a>
+<a class="sourceLine" id="cb27-10" title="10">&gt;&gt; m0_auc</a>
+<a class="sourceLine" id="cb27-11" title="11">    <span class="fl">0.5954</span></a></code></pre></div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1008,7 +1061,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
