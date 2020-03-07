@@ -591,10 +591,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree4de49b794924f2a8d5da69459f5a0975c928d663targetblank4de49b7a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/4de49b794924f2a8d5da69459f5a0975c928d663" target="_blank">4de49b7</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreee3daa54b1768e59db84e6861e18aff7c9c69c517targetblanke3daa54a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/e3daa54b1768e59db84e6861e18aff7c9c69c517" target="_blank">e3daa54</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree4de49b794924f2a8d5da69459f5a0975c928d663targetblank4de49b7a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreee3daa54b1768e59db84e6861e18aff7c9c69c517targetblanke3daa54a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -606,6 +606,9 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
+
+Untracked files:
+    Untracked:  examples/wtccc_bcell/.simulation_template.m.swp
 
 </code></pre>
 <p>
@@ -644,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/e3daa54b1768e59db84e6861e18aff7c9c69c517/rmd/wtccc_bcell.Rmd" target="_blank">e3daa54</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+wflow_publish(“rmd/wtccc_bcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/3703a3df1c499e43d5cac80510e21d2a22a02cb3/docs/wtccc_bcell.html" target="_blank">3703a3d</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -906,6 +943,64 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 <a class="sourceLine" id="cb17-4" title="4">&gt;&gt; val=snp2gene_cis.val;</a>
 <a class="sourceLine" id="cb17-5" title="5">&gt;&gt; [min(val) quantile(val, <span class="fl">0.25</span>) median(val) quantile(val, <span class="fl">0.75</span>) max(val)]</a>
 <a class="sourceLine" id="cb17-6" title="6">    <span class="fl">0.0202</span>    <span class="fl">0.1615</span>    <span class="fl">0.2661</span>    <span class="fl">0.3864</span>    <span class="fl">0.8963</span></a></code></pre></div>
+</div>
+</div>
+<div id="run-rss-net-analysis" class="section level3">
+<h3>Run RSS-NET analysis</h3>
+<p>To facilitate running RSS-NET on real data, we provide a generic script <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/simulation_template.m"><code>simulation_template.m</code></a>. For the present example, the RSS-NET analysis of two synthetic datasets is implemented by <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.m"><code>run_simulation.m</code></a> and <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.sbatch"><code>run_simulation.sbatch</code></a>.</p>
+<p>Please see scripts in <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell"><code>wtccc_bcell/</code></a> for full details. Below we only highlight the important parts.</p>
+<div id="specify-input-data-files" class="section level4">
+<h4>1. Specify input data files</h4>
+<p>First we need to tell RSS-NET where to find all required input files, by creating the following <a href="https://www.mathworks.com/help/matlab/ref/struct.html">structure array</a> <code>data</code>. Please ensure that you save all downloaded files in <code>dat_path</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb18-1" title="1">data.sumstats_file     = strcat(dat_path,trial_name,<span class="st">&#39;_data.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb18-2" title="2">data.snp2net_file      = strcat(dat_path,gwas_name,<span class="st">&#39;_&#39;</span>,net_name,<span class="st">&#39;_snp2net.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb18-3" title="3">data.snp2gene_file     = strcat(dat_path,gwas_name,<span class="st">&#39;_snp2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb18-4" title="4">data.gene2gene_file    = strcat(dat_path,net_name,<span class="st">&#39;_gene2gene.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb18-5" title="5">data.snp2gene_cis_file = strcat(dat_path,gwas_name,<span class="st">&#39;_&#39;</span>,net_name,<span class="st">&#39;_snp2gene_cis.mat&#39;</span>);</a></code></pre></div>
+</div>
+<div id="specify-a-hyper-parameter-grid" class="section level4">
+<h4>2. Specify a hyper-parameter grid</h4>
+<p>Next we need feed a hyper-parameter grid to RSS-NET, by creating the following <a href="https://www.mathworks.com/help/matlab/ref/struct.html">structure array</a> <code>hyper</code>. The total computational cost of RSS-NET is proportional to the grid size. Hence, if you want to finish running this example faster, you can always reduce the grid size.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb19-1" title="1">hyper.theta0 = true_theta0;</a>
+<a class="sourceLine" id="cb19-2" title="2">hyper.sigma0 = true_sigma0;</a>
+<a class="sourceLine" id="cb19-3" title="3">hyper.theta  = [<span class="fl">0</span> ((true_theta-<span class="fl">0.5</span>):<span class="fl">0.25</span>:(true_theta+<span class="fl">0.5</span>))];</a>
+<a class="sourceLine" id="cb19-4" title="4">hyper.sigma  = [<span class="fl">0</span> ((true_sigma-<span class="fl">0.5</span>):<span class="fl">0.25</span>:(true_sigma+<span class="fl">0.5</span>))];</a></code></pre></div>
+</div>
+<div id="initialize-variational-parameters" class="section level4">
+<h4>3. Initialize variational parameters</h4>
+<p>We can provide initial values for variational parameters in RSS-NET as follows. If we do not provide initial values, RSS-NET will use a random initialization.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb20-1" title="1">options.alpha = alpha0;</a>
+<a class="sourceLine" id="cb20-2" title="2">options.mu    = mu0;</a></code></pre></div>
+</div>
+<div id="fit-the-rss-net-model" class="section level4">
+<h4>4. Fit the RSS-NET model</h4>
+<p>We use <a href="https://github.com/SUwonglab/rss-net/blob/master/src/rss_net.m"><code>rss_net.m</code></a> to fit the RSS-NET model on a given dataset. The model fitting results consist of variational lower bounds <code>logw</code> and variational parameter estimates <code>[alpha mu s]</code> for the given hyper-parameter grid.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">[logw,alpha,mu,s,param] = rss_net(data,hyper,options);</a></code></pre></div>
+</div>
+<div id="summarize-network-level-enrichments" class="section level4">
+<h4>5. Summarize network-level enrichments</h4>
+<p>To assess whether a regulatory network is enriched for genetic associations with a trait, we evaluate a Bayes factor (BF) comparing the baseline model (<span class="math inline">\(M_0:\theta=0~\text{and}~\sigma^2=0\)</span>) in RSS-NET with the enrichment model (<span class="math inline">\(M_1:\theta&gt;0~\text{or}~\sigma^2&gt;0\)</span>). The BF computation is implemented in <a href="https://github.com/SUwonglab/rss-net/blob/master/src/calc_bf.m"><code>calc_bf.m</code></a>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb22-1" title="1">log10_bf = calc_bf(logw,param);</a></code></pre></div>
+</div>
+<div id="summarize-gene-level-associations" class="section level4">
+<h4>6. Summarize gene-level associations</h4>
+<p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
+P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
+\]</span> As in [Zhu et al (2020)][], a locus is defined as the transcribed region of a gene plus 100 kb uptream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in [<code>compute_pip</code>][].</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb23-1" title="1">seg_path = strcat(dat_path,<span class="st">&#39;wtccc_tidy_snp2gene_ncbi35togrch37.mat&#39;</span>);</a>
+<a class="sourceLine" id="cb23-2" title="2">p1_net   = compute_pip(seg_path,logw,alpha);</a></code></pre></div>
+</div>
+<div id="submit-jobs" class="section level4">
+<h4>7. Submit jobs</h4>
+<p>After understanding the basic workflow of RSS-NET, we submit two jobs of running RSS-NET on the synthetic datasets <code>m*_data.mat</code>. To this end, we write a simple sbatch script <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.sbatch"><code>run_simulation.sbatch</code></a>, and submit it to a cluster with <a href="https://slurm.schedmd.com/"><code>Slurm</code></a> available.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb24-1" title="1">$ squeue -u xiangzhu</a>
+<a class="sourceLine" id="cb24-2" title="2">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></a>
+<a class="sourceLine" id="cb24-3" title="3">        66258089_0   broadwl run_simu xiangzhu  R    2:48:17      1 midway2-0009</a>
+<a class="sourceLine" id="cb24-4" title="4">        66258089_1   broadwl run_simu xiangzhu  R    2:48:17      1 midway2-0011</a></code></pre></div>
+<p>For each job, we request 1 node with 8 CPUs and 32 Gb total memory. The running time of analyzing <code>m0_data.mat</code> and <code>m1_data.mat</code> is XXX and XXX, respectively.</p>
+</div>
+<div id="understand-analysis-results" class="section level4">
+<h4>8. Understand analysis results</h4>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -913,7 +1008,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
  version  R version 3.6.3 (2020-02-29)
