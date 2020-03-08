@@ -30,6 +30,10 @@ This page provides instructions for installing RSS-NET software.
 
 This page gives the following end-to-end examples of using RSS-NET methods and software.
 
+1. RSS-NET analysis of [two synthetic datasets](wtccc_bcell.html)
+
+2. RSS-NET analysis of [a real-world dataset](ibd2015_nkcell.html)
+
 ## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functions](function.html)
 
 This page outlines functions and scripts associated with RSS-NET methods.
