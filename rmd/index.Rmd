@@ -17,8 +17,8 @@ If you have any question or suggestion about RSS-NET,
 please feel free to create a new [issue](https://github.com/SUwonglab/rss-net/issues)
 and/or send an email to `xiangzhu[at]stanford.edu`.
 
-If you find RSS-NET methods and/or codes useful for your work,
-**please kindly cite the following research article**.
+**If you find RSS-NET methods and/or codes useful for your work,
+please kindly cite the following research article**.
 
 > Add RSS-NET citation.
 
@@ -28,7 +28,7 @@ This page provides instructions for installing RSS-NET software.
 
 ## <img src="https://static.thenounproject.com/png/2018925-200.png" width="48"/> [Examples](example.html)
 
-This page gives end-to-end examples of using RSS-NET methods and software.
+This page gives the following end-to-end examples of using RSS-NET methods and software.
 
 ## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functions](function.html)
 
