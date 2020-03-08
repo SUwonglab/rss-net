@@ -18,4 +18,4 @@ editor_options:
 
 - [`calc_pp.m`][]: Compute locus-level association statistic $P_1$ using RSS-NET model fitting results.
 
-    - [`compute_pip.m`][]: Compute $P_1$. 
+    - [`compute_pip.m`][]: Compute $P_1$ for given `alpha` and `logw`. 
