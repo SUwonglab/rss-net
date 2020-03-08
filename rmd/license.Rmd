@@ -7,15 +7,21 @@ editor_options:
   chunk_output_type: console
 ---
 
-What license are you using for your code? See [choosealicense.com][choose] for
-help deciding. It's a convention to save a file `LICENSE` in the root of your
-Git repo that contains the license text.
+This wiki and its [GitHub repository](https://github.com/SUwonglab/rss-net)
+are currently licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License
+([CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)).
+A different CC License will be used as soon as
+the following research article becomes a peer-reviewed publication.
 
-What license are you using for the written content on your site? It is
-traditional to choose a [Creative Commons][cc] license for this type of content.
+If you use any material from this wiki or its
+[GitHub repository](https://github.com/SUwonglab/rss-net),
+please cite the following research article:
 
-[choose]: http://choosealicense.com/
-[cc]: https://creativecommons.org/choose/
+> Add RSS-NET citation.
 
-How should others cite your work? It's a convention to save a file `CITATION`
-in the root of your Git repo that contains the citation information.
+[RSS-NET source codes](https://github.com/SUwonglab/rss-net/tree/master/src)
+are licensed under the [MIT License](https://github.com/SUwonglab/rss-net/blob/master/LICENSE).
+
+Icons used in this wiki are credited to the
+[Noun Project](https://thenounproject.com).
