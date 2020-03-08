@@ -26,7 +26,7 @@ please kindly cite the following research article**.
 
 This page provides instructions for installing RSS-NET software.
 
-## <img src="https://static.thenounproject.com/png/2018925-200.png" width="48"/> [Examples](example.html)
+## <img src="https://static.thenounproject.com/png/2018925-200.png" width="48"/> [Examples](index.html)
 
 This page gives the following end-to-end examples of using RSS-NET methods and software.
 
