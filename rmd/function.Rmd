@@ -8,14 +8,34 @@ editor_options:
 ---
 
 [`rss_net.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/rss_net.m
+[`make_netmat.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/make_netmat.m
+[`make_hpgrid.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/make_hpgrid.m
+[`make_logodds.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/make_logodds.m
+[`make_sigma.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/make_sigma.m
+[`rss_varbvsr_bigmem_squarem.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/rss_varbvsr_bigmem_squarem.m
 [`calc_bf.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_bf.m
 [`calc_pp.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_pp.m
 [`compute_pip.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m
 
 - [`rss_net.m`][]: Fit the RSS-NET model using a mean-field variational Bayes algorithm.
 
-- [`calc_bf.m`][]: Compute network enrichment Bayes factor (BF) using RSS-NET model fitting results. 
+    - [`make_netmat.m`][]: Create a "network information" matrix
+    (row: SNP; column: gene) for a given regulatory network.
+    
+    - [`make_hpgrid.m`][]: Create a grid of all possible hyper-parameter combinations for RSS-NET.
+    
+    - [`make_logodds.m`][]: Compute prior log odds,
+    $\log[\pi_j/(1-\pi_j)]=(\theta_0+\theta\cdot a_j)\cdot \log(10)$, for each SNP $j$.
+    
+    - [`make_sigma.m`][]: Induce prior variances $\{\sigma_0^2,\sigma^2\}$ from $\{\eta,\rho\}$.
+    
+    - [`rss_varbvsr_bigmem_squarem.m`][]:
+    Fit an extended RSS-BVSR model in a parallel and memory-efficient manner.
 
-- [`calc_pp.m`][]: Compute locus-level association statistic $P_1$ using RSS-NET model fitting results.
+- [`calc_bf.m`][]: Compute network enrichment Bayes factor
+(BF) using RSS-NET model fitting results. 
 
-    - [`compute_pip.m`][]: Compute $P_1$ for given `alpha` and `logw`. 
+- [`calc_pp.m`][]: Compute locus-level association statistic
+$P_1$ using RSS-NET model fitting results.
+
+    - [`compute_pip.m`][]: Compute $P_1$ given locus definitions and variational estimates. 
