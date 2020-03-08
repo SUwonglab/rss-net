@@ -9,8 +9,6 @@ navbar:
     href: about.html
   - text: Setup
     href: setup.html
-  - text: Examples
-    href: example.html
   - text: Functions
     href: function.html
   - text: FAQ
