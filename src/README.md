@@ -1,3 +1,3 @@
 # Code
 
-Save command-line scripts and shared R code here.
+This directory contains source codes of RSS-NET software.
