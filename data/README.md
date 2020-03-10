@@ -1,3 +1,3 @@
 # Data
 
-Save raw data files here.
+This directory contains files of 38 gene regulatory networks.
