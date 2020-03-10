@@ -14,8 +14,7 @@ and prioritization analysis of complex trait GWAS and gene regulatory network.
 
 ## Citing this work
 
-If you find any of the source codes or data files in
-this repository useful for your work,
+If you find any part of this repository useful for your work,
 please kindly cite the following research article:
 
 > Add RSS-NET citation.
