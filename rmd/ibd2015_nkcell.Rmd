@@ -499,7 +499,7 @@ Differences are numerical negligible.
 ```matlab
 >> res_file = 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat';               
 >> old_path = '~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/';
->> new_path = '~/GitHub/rss-net/examples/ibd2015_nkcell/results/';                                             
+>> new_path = strcat(src_path,'rss-net/examples/ibd2015_nkcell/results/');                                             
 >> old_res = matfile(strcat(old_path,res_file));                                                               
 >> new_res = matfile(strcat(new_path,res_file));
 
@@ -543,7 +543,7 @@ numerically identical answers.
 ```matlab
 >> res_file = 'ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat'; 
 >> old_path = '~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/'; 
->> new_path = '~/GitHub/rss-net/examples/ibd2015_nkcell/results/';
+>> new_path = strcat(src_path,'rss-net/examples/ibd2015_nkcell/results/');
 >> old_res = matfile(strcat(old_path,res_file));                                                              
 >> new_res = matfile(strcat(new_path,res_file));
 
