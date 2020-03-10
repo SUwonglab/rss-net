@@ -10,7 +10,7 @@ and prioritization analysis of complex trait GWAS and gene regulatory network.
 
 2. Try RSS-NET on [two synthetic datasets](https://suwonglab.github.io/rss-net/wtccc_bcell.html).
 
-3. Try RSS-NET on [a real-world dataset](https://suwonglab.github.io/rss-net/ibd2015_nkcell). 
+3. Try RSS-NET on [a real-world dataset](https://suwonglab.github.io/rss-net/ibd2015_nkcell.html). 
 
 ## Citing this work
 
