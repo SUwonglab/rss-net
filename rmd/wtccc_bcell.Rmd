@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-[Zhu et al (2020)]: ddd
+[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010
 [`wtccc_bcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell
 [`simulation_template.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/simulation_template.m
 [`run_simulation.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.m
