@@ -8,8 +8,8 @@ editor_options:
 ---
 
 [zenodo-ibd2015nkcell]: https://doi.org/10.5281/zenodo.3698240
-[Zhu et al (2020)]: xxx
-[Supplementary Notes]: xxx
+[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010
+[Supplementary Notes]: https://www.biorxiv.org/content/biorxiv/early/2020/03/14/2020.03.13.990010/DC1/embed/media-1.pdf
 [`ibd2015_nkcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell
 [`analysis_template.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/analysis_template.m
 [`ibd2015_nkcell.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.m
