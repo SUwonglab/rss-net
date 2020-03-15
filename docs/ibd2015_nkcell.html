@@ -28,6 +28,14 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -456,13 +464,6 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<!-- Add a small amount of space between sections. -->
-<style type="text/css">
-div.section {
-  padding-top: 12px;
-}
-</style>
-
 <div class="fluid-row" id="header">
 
 
@@ -494,7 +495,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-09
+<strong>Last updated:</strong> 2020-03-15
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -504,7 +505,7 @@ div.section {
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.1). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -585,13 +586,19 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree820a50862044fd4aee5af66b8e935bdf771467d9targetblank820a508a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/820a50862044fd4aee5af66b8e935bdf771467d9" target="_blank">820a508</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreea6069aa25620ee8429b067176bb78d4a9e0a49f9targetblanka6069aaa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/a6069aa25620ee8429b067176bb78d4a9e0a49f9" target="_blank">a6069aa</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree820a50862044fd4aee5af66b8e935bdf771467d9targetblank820a508a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreea6069aa25620ee8429b067176bb78d4a9e0a49f9targetblanka6069aaa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/a6069aa25620ee8429b067176bb78d4a9e0a49f9" target="_blank">a6069aa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
@@ -615,7 +622,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>rmd/ibd2015_nkcell.Rmd</code>) and HTML (<code>docs/ibd2015_nkcell.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -639,6 +646,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/a6069aa25620ee8429b067176bb78d4a9e0a49f9/rmd/ibd2015_nkcell.Rmd" target="_blank">a6069aa</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-15
+</td>
+<td>
+wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/4f31597c9f2540d47d37913091e93549ca1ed83d/docs/ibd2015_nkcell.html" target="_blank">4f31597</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1345,7 +1386,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </div>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>Here we describe an end-to-end RSS-NET analysis of inflammatory bowel disease (IBD) GWAS summary statistics <a href="https://doi.org/10.1038/ng.3359">(Liu et al, 2015)</a> and a gene regulatory network inferred for natural killer (NK) cells <a href="https://doi.org/10.1038/nature11247">(ENCODE Project Consortium, 2012)</a>. This example illustrates the actual data analyses performed in <a href="xxx">Zhu et al (2020)</a>.</p>
+<p>Here we describe an end-to-end RSS-NET analysis of inflammatory bowel disease (IBD) GWAS summary statistics <a href="https://doi.org/10.1038/ng.3359">(Liu et al, 2015)</a> and a gene regulatory network inferred for natural killer (NK) cells <a href="https://doi.org/10.1038/nature11247">(ENCODE Project Consortium, 2012)</a>. This example illustrates the actual data analyses performed in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>.</p>
 <p>To reproduce results of this example, please use scripts in the directory <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell"><code>ibd2015_nkcell/</code></a>, and follow the step-by-step guide below. Before running any script in <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell"><code>ibd2015_nkcell/</code></a>, please <a href="setup.html">install</a> RSS-NET.</p>
 <p>Since a real genome-wide analysis is conducted here, this example is more complicated than the previous <a href="wtccc_bcell.html">simulation example</a>. It is advisable to go through the previous <a href="wtccc_bcell.html">simulation example</a> before diving into the present real-world example.</p>
 <p>With the software installed and the input data downloaded, one should be able to run this example by simply typing the following line in shell:</p>
@@ -1568,12 +1609,12 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <a class="sourceLine" id="cb20-13" title="13">                   sige: [<span class="fl">1</span>x1       double]                                                                                                               </a>
 <a class="sourceLine" id="cb20-14" title="14">                  theta: [<span class="fl">1</span>x1       double]                                                                                                               </a>
 <a class="sourceLine" id="cb20-15" title="15">                 theta0: [<span class="fl">1</span>x1       double]</a></code></pre></div>
-<p>Here <code>[alpha mu s]</code> correspond to the optimal variational parameters <span class="math inline">\(\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}\)</span> for the given hyper-parameters, <code>logw</code> corresponds to the variational lower bound <span class="math inline">\(F^\star\)</span> and <code>[theta0 theta sigb sige]</code> corresponds to <span class="math inline">\(\{\theta_0,\theta,\sigma_0,\sigma\}\)</span>. Please see <a href="xxx">Supplementary Notes</a> of <a href="xxx">Zhu et al (2020)</a> for definitions.</p>
+<p>Here <code>[alpha mu s]</code> correspond to the optimal variational parameters <span class="math inline">\(\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}\)</span> for the given hyper-parameters, <code>logw</code> corresponds to the variational lower bound <span class="math inline">\(F^\star\)</span> and <code>[theta0 theta sigb sige]</code> corresponds to <span class="math inline">\(\{\theta_0,\theta,\sigma_0,\sigma\}\)</span>. Please see <a href="https://www.biorxiv.org/content/biorxiv/early/2020/03/14/2020.03.13.990010/DC1/embed/media-1.pdf">Supplementary Notes</a> of <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a> for definitions.</p>
 </div>
 </div>
 <div id="summarize-rss-net-results" class="section level3">
 <h3>Summarize RSS-NET results</h3>
-<p>The RSS-NET result files <code>${gwas}_${net}_${cis}_out_${id}.mat</code> shown above can be further summarized into both network-level and gene-level statistics as reported in <a href="xxx">Zhu et al (2020)</a>. To facilitate summarizing RSS-NET results, we provide a generic script <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m"><code>summary_template.m</code></a>. For the present example, the RSS-NET summary is implemented by <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a>. If you need to summarize a different RSS-NET analysis, simply modify <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a> and there is no need to change <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m"><code>summary_template.m</code></a>.</p>
+<p>The RSS-NET result files <code>${gwas}_${net}_${cis}_out_${id}.mat</code> shown above can be further summarized into both network-level and gene-level statistics as reported in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>. To facilitate summarizing RSS-NET results, we provide a generic script <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m"><code>summary_template.m</code></a>. For the present example, the RSS-NET summary is implemented by <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a>. If you need to summarize a different RSS-NET analysis, simply modify <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a> and there is no need to change <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m"><code>summary_template.m</code></a>.</p>
 <p>For this example, simply run the following line in a Matlab console.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb21-1" title="1">&gt;&gt; run summarize_ibd2015_nkcell.m;</a></code></pre></div>
 <p>Running <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a> yields two (much smaller) MAT-files: <code>${gwas}_${net}_${cis}_results_model.mat</code> that stores network-level enrichment results, and <code>${gwas}_${net}_${cis}_results_gene.mat</code> that stores locus-level association results.</p>
@@ -1603,8 +1644,8 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <li><code>log10_bf_nt</code>: <span class="math inline">\(M_{12}:\theta=0~\text{and}~\sigma^2&gt;0\)</span>;</li>
 <li><code>log10_bf_ts</code>: <span class="math inline">\(M_{13}:\theta&gt;0~\text{and}~\sigma^2&gt;0\)</span>.</li>
 </ul>
-<p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="xxx">Zhu et al (2020)</a>.</p>
-<p>By running this example, we reproduce the enrichment BFs of <a href="https://xiangzhu.github.io/rss-peca/ibd2015_net.html">IBD GWAS and NK cell network</a> reported in <a href="xxx">Zhu et al (2020)</a>. The NK cell network shows strong enrichment of IBD genetic associations, which seems consistent with the role of NK cell in autoimmune diseases like IBD.</p>
+<p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>.</p>
+<p>By running this example, we reproduce the enrichment BFs of <a href="https://xiangzhu.github.io/rss-peca/ibd2015_net.html">IBD GWAS and NK cell network</a> reported in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>. The NK cell network shows strong enrichment of IBD genetic associations, which seems consistent with the role of NK cell in autoimmune diseases like IBD.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb23-1" title="1">&gt;&gt; load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat</a>
 <a class="sourceLine" id="cb23-2" title="2">&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</a>
 <a class="sourceLine" id="cb23-3" title="3">   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></a></code></pre></div>
@@ -1623,7 +1664,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <h4>2. <code>${gwas}_${net}_${cis}_results_gene.mat</code>: locus-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
-\]</span> As in <a href="xxx">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>ibd2015_gene_grch37.mat</code>.</p>
+\]</span> As in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>ibd2015_gene_grch37.mat</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb25-1" title="1">&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</a>
 <a class="sourceLine" id="cb25-2" title="2">&gt;&gt; gene_res</a>
 <a class="sourceLine" id="cb25-3" title="3">  matlab.io.MatFile</a>
@@ -1650,7 +1691,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </div>
 <div id="more-examples" class="section level2">
 <h2>More examples</h2>
-<p>The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks reported in <a href="xxx">Zhu et al (2020)</a> are essentially 684 modified reruns of the example above (with different input GWAS and/or network data, and different hyper-parameter grids). Our full analysis results are publicly available at <a href="https://xiangzhu.github.io/rss-peca" class="uri">https://xiangzhu.github.io/rss-peca</a>.</p>
+<p>The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks reported in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a> are essentially 684 modified reruns of the example above (with different input GWAS and/or network data, and different hyper-parameter grids). Our full analysis results are publicly available at <a href="https://xiangzhu.github.io/rss-peca" class="uri">https://xiangzhu.github.io/rss-peca</a>.</p>
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
@@ -1680,7 +1721,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
  tz       America/Los_Angeles         
- date     2020-03-09                  
+ date     2020-03-15                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
@@ -1697,7 +1738,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
  fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.2)
  fs            1.3.2   2020-03-05 [1] CRAN (R 3.6.3)
  git2r         0.26.1  2019-06-29 [1] CRAN (R 3.6.0)
- glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)
+ glue          1.3.2   2020-03-12 [1] CRAN (R 3.6.3)
  htmltools     0.4.0   2019-10-04 [1] CRAN (R 3.6.1)
  httpuv        1.5.2   2019-09-11 [1] CRAN (R 3.6.1)
  knitr         1.28    2020-02-06 [1] CRAN (R 3.6.2)
@@ -1723,7 +1764,7 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
  usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.1)
  whisker       0.4     2019-08-28 [1] CRAN (R 3.6.1)
  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)
- workflowr   * 1.6.0   2019-12-19 [1] CRAN (R 3.6.2)
+ workflowr   * 1.6.1   2020-03-11 [1] CRAN (R 3.6.3)
  xfun          0.12    2020-01-13 [1] CRAN (R 3.6.2)
  yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.2)
 
