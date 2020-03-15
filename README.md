@@ -17,7 +17,9 @@ and prioritization analysis of complex trait GWAS and gene regulatory network.
 If you find any part of this repository useful for your work,
 please kindly cite the following research article:
 
-> Add RSS-NET citation.
+> Xiang Zhu, Zhana Duren, Wing Hung Wong (2020).
+> Modeling regulatory network topology improves genome-wide analyses of complex human traits.
+> *bioRxiv*. <https://doi.org/10.1101/2020.03.13.990010>.
 
 ## Support
 
