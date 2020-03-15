@@ -18,7 +18,9 @@ If you use any material from this wiki or its
 [GitHub repository](https://github.com/SUwonglab/rss-net),
 please cite the following research article:
 
-> Add RSS-NET citation.
+> Xiang Zhu, Zhana Duren, Wing Hung Wong (2020).
+> Modeling regulatory network topology improves genome-wide analyses of complex human traits.
+> *bioRxiv*. <https://doi.org/10.1101/2020.03.13.990010>.
 
 [RSS-NET source codes](https://github.com/SUwonglab/rss-net/tree/master/src)
 are licensed under the [MIT License](https://github.com/SUwonglab/rss-net/blob/master/LICENSE).
