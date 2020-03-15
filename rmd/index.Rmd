@@ -50,4 +50,9 @@ This page lists progress updates related to RSS-NET methods and software.
 
 --------
 
-<small>Icons used in this wiki are credited to the [Noun Project](https://thenounproject.com/).</small>
+<small>
+Icons used in this wiki are credited to the
+[Noun Project](https://thenounproject.com/).
+This wiki is created using
+[workflowr](https://github.com/jdblischak/workflowr).
+</small>
