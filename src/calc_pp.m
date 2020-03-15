@@ -20,7 +20,7 @@ function [pp,pp_nt,pp_ns,pp_nn] = calc_pp(seg_path,logw,alpha,param)
 
   % Preallocate locus-level P1 and P2 output.
   seg_info = matfile(seg_path);
-  num_segs = length(seg_info.segid);
+  num_segs = size(seg_info.Aseg, 2);
 
   pp    = zeros(num_segs,2);
   pp_nt = zeros(num_segs,2);
