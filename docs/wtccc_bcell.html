@@ -28,6 +28,14 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -456,13 +464,6 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<!-- Add a small amount of space between sections. -->
-<style type="text/css">
-div.section {
-  padding-top: 12px;
-}
-</style>
-
 <div class="fluid-row" id="header">
 
 
@@ -494,7 +495,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-08
+<strong>Last updated:</strong> 2020-03-15
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -504,7 +505,7 @@ div.section {
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.1). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -585,13 +586,19 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreef0aa16bff32f189c05d3d982e8bde62240c78c2btargetblankf0aa16ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/f0aa16bff32f189c05d3d982e8bde62240c78c2b" target="_blank">f0aa16b</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebaf07eca495f8776475418a3feac069d62034810targetblankbaf07eca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/baf07eca495f8776475418a3feac069d62034810" target="_blank">baf07ec</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreef0aa16bff32f189c05d3d982e8bde62240c78c2btargetblankf0aa16ba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebaf07eca495f8776475418a3feac069d62034810targetblankbaf07eca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/baf07eca495f8776475418a3feac069d62034810" target="_blank">baf07ec</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
@@ -615,7 +622,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>rmd/wtccc_bcell.Rmd</code>) and HTML (<code>docs/wtccc_bcell.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -639,6 +646,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/baf07eca495f8776475418a3feac069d62034810/rmd/wtccc_bcell.Rmd" target="_blank">baf07ec</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-15
+</td>
+<td>
+wflow_publish(“rmd/wtccc_bcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/a4241718442f47362b6581697b185afd07f2a850/docs/wtccc_bcell.html" target="_blank">a424171</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-03-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1094,7 +1135,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 <h4>6. Summarize gene-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
-\]</span> As in <a href="ddd">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in <a href="https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m"><code>compute_pip.m</code></a>.</p>
+\]</span> As in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in <a href="https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m"><code>compute_pip.m</code></a>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb23-1" title="1">seg_path = strcat(dat_path,<span class="st">&#39;wtccc_tidy_snp2gene_ncbi35togrch37.mat&#39;</span>);</a>
 <a class="sourceLine" id="cb23-2" title="2">p1_net   = compute_pip(seg_path,logw,alpha);</a></code></pre></div>
 </div>
@@ -1145,24 +1186,24 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
  tz       America/Los_Angeles         
- date     2020-03-08                  
+ date     2020-03-15                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.0)
  backports     1.1.5   2019-10-02 [1] CRAN (R 3.6.1)
- callr         3.4.1   2020-01-24 [1] CRAN (R 3.6.2)
- cli           2.0.1   2020-01-08 [1] CRAN (R 3.6.2)
+ callr         3.4.2   2020-02-12 [1] CRAN (R 3.6.3)
+ cli           2.0.2   2020-02-28 [1] CRAN (R 3.6.3)
  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.0)
  desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.0)
- devtools      2.2.1   2019-09-24 [1] CRAN (R 3.6.1)
- digest        0.6.23  2019-11-23 [1] CRAN (R 3.6.1)
+ devtools      2.2.2   2020-02-17 [1] CRAN (R 3.6.3)
+ digest        0.6.25  2020-02-23 [1] CRAN (R 3.6.3)
  ellipsis      0.3.0   2019-09-20 [1] CRAN (R 3.6.1)
  evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.0)
  fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.2)
- fs            1.3.1   2019-05-06 [1] CRAN (R 3.6.0)
+ fs            1.3.2   2020-03-05 [1] CRAN (R 3.6.3)
  git2r         0.26.1  2019-06-29 [1] CRAN (R 3.6.0)
- glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)
+ glue          1.3.2   2020-03-12 [1] CRAN (R 3.6.3)
  htmltools     0.4.0   2019-10-04 [1] CRAN (R 3.6.1)
  httpuv        1.5.2   2019-09-11 [1] CRAN (R 3.6.1)
  knitr         1.28    2020-02-06 [1] CRAN (R 3.6.2)
@@ -1172,23 +1213,23 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
  pkgbuild      1.0.6   2019-10-09 [1] CRAN (R 3.6.1)
  pkgload       1.0.2   2018-10-29 [1] CRAN (R 3.6.0)
  prettyunits   1.1.1   2020-01-24 [1] CRAN (R 3.6.2)
- processx      3.4.1   2019-07-18 [1] CRAN (R 3.6.1)
+ processx      3.4.2   2020-02-09 [1] CRAN (R 3.6.3)
  promises      1.1.0   2019-10-04 [1] CRAN (R 3.6.1)
- ps            1.3.0   2018-12-21 [1] CRAN (R 3.6.0)
+ ps            1.3.2   2020-02-13 [1] CRAN (R 3.6.3)
  R6            2.4.1   2019-11-12 [1] CRAN (R 3.6.1)
  Rcpp          1.0.3   2019-11-08 [1] CRAN (R 3.6.1)
- remotes       2.1.0   2019-06-24 [1] CRAN (R 3.6.0)
- rlang         0.4.4   2020-01-28 [1] CRAN (R 3.6.2)
+ remotes       2.1.1   2020-02-15 [1] CRAN (R 3.6.3)
+ rlang         0.4.5   2020-03-01 [1] CRAN (R 3.6.3)
  rmarkdown     2.1     2020-01-20 [1] CRAN (R 3.6.2)
  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 3.6.0)
  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.6.0)
- stringi       1.4.5   2020-01-11 [1] CRAN (R 3.6.2)
+ stringi       1.4.6   2020-02-17 [1] CRAN (R 3.6.3)
  stringr       1.4.0   2019-02-10 [1] CRAN (R 3.6.0)
- testthat      2.3.1   2019-12-01 [1] CRAN (R 3.6.2)
+ testthat      2.3.2   2020-03-02 [1] CRAN (R 3.6.3)
  usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.1)
  whisker       0.4     2019-08-28 [1] CRAN (R 3.6.1)
  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)
- workflowr   * 1.6.0   2019-12-19 [1] CRAN (R 3.6.2)
+ workflowr   * 1.6.1   2020-03-11 [1] CRAN (R 3.6.3)
  xfun          0.12    2020-01-13 [1] CRAN (R 3.6.2)
  yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.2)
 
