@@ -13,6 +13,8 @@ editor_options:
 [`rss/src_vb/install.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/install.m
 
 This page shows how to install the RSS-NET software.
+In a standard computing environment with internet connection,
+the installation time is typically less than 10 minutes.
 
 ## Step-by-step guide
 
