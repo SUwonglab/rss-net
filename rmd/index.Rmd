@@ -44,7 +44,7 @@ This page outlines functions and scripts associated with RSS-NET methods.
 
 This page answers frequently ask questions (FAQs) about RSS-NET methods and software.
 
-## <img src="https://static.thenounproject.com/png/51135-200.png" width="48"/> [News](https://stephenslab.github.io/rss/News)
+## <img src="https://static.thenounproject.com/png/51135-200.png" width="48"/> [News](https://stephenslab.github.io/rss/news.html)
 
 This page lists progress updates related to RSS-NET methods and software.
 
