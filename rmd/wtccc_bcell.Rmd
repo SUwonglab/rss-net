@@ -428,7 +428,8 @@ $ squeue -u xiangzhu
 ```
 
 For each job, we request 1 node with 8 CPUs and 32 Gb total memory.
-The running time of analyzing `m0_data.mat` and `m1_data.mat` is around 4 hours each.
+The memory utilized by these two jobs is around 16 Gb each.
+The running time of these two jobs is around 4 hours each.
 
 #### 8. Understand analysis results
 
