@@ -12,7 +12,7 @@ navbar:
   - text: FAQ
     href: faq.html
   - text: News
-    href: https://stephenslab.github.io/rss/News.html
+    href: https://stephenslab.github.io/rss/news.html
   - text: License
     href: license.html
   right:
