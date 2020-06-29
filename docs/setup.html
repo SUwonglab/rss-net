@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -34,9 +35,9 @@ div.section {
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -46,14 +47,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -62,9 +65,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -368,7 +371,7 @@ $(document).ready(function () {
   <a href="faq.html">FAQ</a>
 </li>
 <li>
-  <a href="https://stephenslab.github.io/rss/News.html">News</a>
+  <a href="https://stephenslab.github.io/rss/news.html">News</a>
 </li>
 <li>
   <a href="license.html">License</a>
@@ -415,7 +418,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-04-05
+<strong>Last updated:</strong> 2020-06-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -425,7 +428,7 @@ $(document).ready(function () {
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.1). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -446,16 +449,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree0ebe8524d9574a6ca5a609ce113071d7cfe567d6targetblank0ebe852a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/0ebe8524d9574a6ca5a609ce113071d7cfe567d6" target="_blank">0ebe852</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreef706971d267c884252a1b262a0edbf096b4ad7c2targetblankf706971a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/f706971d267c884252a1b262a0edbf096b4ad7c2" target="_blank">f706971</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree0ebe8524d9574a6ca5a609ce113071d7cfe567d6targetblank0ebe852a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreef706971d267c884252a1b262a0edbf096b4ad7c2targetblankf706971a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/0ebe8524d9574a6ca5a609ce113071d7cfe567d6" target="_blank">0ebe852</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/f706971d267c884252a1b262a0edbf096b4ad7c2" target="_blank">f706971</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -506,6 +509,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/e7cbf158d752852a34a92cc4a63f0ed487007c95/docs/setup.html" target="_blank">e7cbf15</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-04-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -694,33 +714,33 @@ wflow_publish(“rmd/setup.Rmd”)
 <div id="clone-rss-repository" class="section level3">
 <h3>1. Clone <a href="https://github.com/stephenslab/rss"><code>rss</code></a> repository</h3>
 <p>With <a href="https://git-scm.com/downloads"><code>git</code></a> installed, you can easily clone <a href="https://github.com/stephenslab/rss"><code>rss</code></a> by running the following command in Terminal.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb1-1" title="1">git <span class="kw">clone</span> git@github.com:stephenslab/rss.git</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1"></a>git <span class="kw">clone</span> git@github.com:stephenslab/rss.git</span></code></pre></div>
 <p>Without <a href="https://git-scm.com/downloads"><code>git</code></a>, you can manually download <a href="https://github.com/stephenslab/rss"><code>rss</code></a> as follows.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">wget</span> https://github.com/stephenslab/rss/archive/master.zip</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">unzip</span> master.zip</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">rm</span> master.zip</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">mv</span> rss-master rss</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">wget</span> https://github.com/stephenslab/rss/archive/master.zip</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">unzip</span> master.zip</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">rm</span> master.zip</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">mv</span> rss-master rss</span></code></pre></div>
 </div>
 <div id="clone-rss-net-repository" class="section level3">
 <h3>2. Clone <a href="https://github.com/SUwonglab/rss-net"><code>rss-net</code></a> repository</h3>
 <p>Similar to Step 1, if <a href="https://git-scm.com/downloads"><code>git</code></a> is available in your computing environment, you can easily clone <a href="https://github.com/SUwonglab/rss-net"><code>rss-net</code></a> by running the following command in Terminal.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb3-1" title="1">git <span class="kw">clone</span> git@github.com:SUwonglab/rss-net.git</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb3-1"><a href="#cb3-1"></a>git <span class="kw">clone</span> git@github.com:SUwonglab/rss-net.git</span></code></pre></div>
 <p>Without <a href="https://git-scm.com/downloads"><code>git</code></a>, you can manually download <a href="https://github.com/SUwonglab/rss-net"><code>rss-net</code></a> as follows.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">wget</span> https://github.com/SUwonglab/rss-net/archive/master.zip</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="kw">unzip</span> master.zip</a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="kw">rm</span> master.zip</a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="kw">mv</span> rss-net-master rss-net </a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">wget</span> https://github.com/SUwonglab/rss-net/archive/master.zip</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">unzip</span> master.zip</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">rm</span> master.zip</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">mv</span> rss-net-master rss-net </span></code></pre></div>
 </div>
 <div id="compile-mex-file" class="section level3">
 <h3>3. Compile <a href="https://www.mathworks.com/help/matlab/ref/mex.html">mex</a> file</h3>
 <p>Go to <code>rss/src_vb</code> and open MATLAB.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode zsh"><code class="sourceCode zsh"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">cd</span> rss/src_vb</a>
-<a class="sourceLine" id="cb5-2" title="2">matlab -nodesktop</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">cd</span> rss/src_vb</span>
+<span id="cb5-2"><a href="#cb5-2"></a>matlab -nodesktop</span></code></pre></div>
 <p>Run <a href="https://github.com/stephenslab/rss/blob/master/src_vb/install.m"><code>rss/src_vb/install.m</code></a> in MATLAB. You may get the following output.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb6-1" title="1">&gt;&gt; run install.m</a>
-<a class="sourceLine" id="cb6-2" title="2">Building with <span class="st">&#39;gcc&#39;</span>.</a>
-<a class="sourceLine" id="cb6-3" title="3">MEX completed successfully.</a>
-<a class="sourceLine" id="cb6-4" title="4">Compilation of MEX files is complete.</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1"></a>&gt;&gt; run install.m</span>
+<span id="cb6-2"><a href="#cb6-2"></a>Building with <span class="st">&#39;gcc&#39;</span>.</span>
+<span id="cb6-3"><a href="#cb6-3"></a>MEX completed successfully.</span>
+<span id="cb6-4"><a href="#cb6-4"></a>Compilation of MEX files is complete.</span></code></pre></div>
 <p>After successfully running <a href="https://github.com/stephenslab/rss/blob/master/src_vb/install.m"><code>rss/src_vb/install.m</code></a>, you will find a file <code>rss_varbvsr_update_matlab.mexa64</code> (in Linux) in the directory <code>rss/src_vb</code>, which is the workhorse for variational Bayes computations.</p>
 </div>
 </div>
