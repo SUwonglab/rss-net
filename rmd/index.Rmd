@@ -31,8 +31,8 @@ and 18 human complex traits are described in the following article:
 All 38 gene regulatory networks used in this study are freely available at
 [`suwonglab/rss-net/data`](https://github.com/SUwonglab/rss-net/tree/master/data).
 
-The full RSS-NET analysis results of 38 networks and 18 traits are freely
-available at the [Results Page](https://suwonglab.github.io/rss-net/results.html)
+The full RSS-NET analysis results of 38 networks and 18 traits
+are freely available at the [Results Page](results.html).
 
 If you find the analysis results, the pre-processed network files,
 the statistical methods, and/or the open-source software useful for your work,
