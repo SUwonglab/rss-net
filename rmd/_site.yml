@@ -24,3 +24,4 @@ output:
     toc_float: yes
     theme: sandstone
     highlight: pygments
+    anchor_sections: false
