@@ -17,6 +17,9 @@ editor_options:
 [`calc_pp.m`]: https://github.com/SUwonglab/rss-net/blob/master/src/calc_pp.m
 [`compute_pip.m`]: https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m
 
+This page outlines all RSS-NET associated functions and scripts that are freely available at
+[`suwonglab/rss-net/src`](https://github.com/SUwonglab/rss-net/tree/master/src).
+
 - [`rss_net.m`][]: Fit the RSS-NET model using a mean-field variational Bayes algorithm.
 
     - [`make_netmat.m`][]: Create a "network information" matrix
