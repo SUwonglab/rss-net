@@ -10,7 +10,7 @@ navbar:
   - text: Functions
     href: function.html
   - text: FAQ
-    href: faq.html
+    href: https://stephenslab.github.io/rss/faq.html
   - text: News
     href: https://stephenslab.github.io/rss/news.html
   - text: License
