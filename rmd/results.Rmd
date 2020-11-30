@@ -1,0 +1,27 @@
+---
+title: "Full results of Zhu et al (2020)"
+author: "Xiang Zhu"
+date: 2018-07-19
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: false
+---
+
+[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010 
+
+This page provides the full RSS-NET analysis results of 38 gene regulatory
+networks and 18 human complex traits described in [Zhu et al (2020)][].
+
+## Main results
+
+```{r, child="~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/wflow_child/tab_index.Rmd"}
+```
+
+## Additional results
+
+- Numerical values for Supplementary Figure 13 of [Zhu et al (2020)][]
+
+- Numerical values for Supplementary Figure 14 of [Zhu et al (2020)][] 
+
+
