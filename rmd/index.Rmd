@@ -10,19 +10,33 @@ editor_options:
   chunk_output_type: console
 ---
 
+[(Zhu et al, 2020)]: https://doi.org/10.1101/2020.03.13.990010
+[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010
+
 Welcome to RSS-NET wiki!
 
-This wiki hosts the following documentation pages of RSS-NET software.
+This wiki hosts documentations of RSS-NET software.
 If you have any question or suggestion about RSS-NET,
-please feel free to create a new [issue](https://github.com/SUwonglab/rss-net/issues)
-and/or send an email to `xiangzhu[at]stanford.edu`.
+please feel free to create a new
+[issue](https://github.com/SUwonglab/rss-net/issues)
+and/or send an email to `xiangzhu[at]psu.edu`.
 
-**If you find RSS-NET methods and/or software useful for your work,
-please kindly cite the following research article**.
+The RSS-NET methodology and its application to 38 gene regulatory networks
+and 18 human complex traits are described in the following article:
 
 > Xiang Zhu, Zhana Duren, Wing Hung Wong (2020).
 > Modeling regulatory network topology improves genome-wide analyses of complex human traits.
 > *bioRxiv*. <https://doi.org/10.1101/2020.03.13.990010>.
+
+All 38 gene regulatory networks used in this study are freely available at
+[`suwonglab/rss-net/data`](https://github.com/SUwonglab/rss-net/tree/master/data).
+
+The full RSS-NET analysis results of 38 networks and 18 traits are freely
+available at the [Results Page](https://suwonglab.github.io/rss-net/results.html)
+
+If you find the analysis results, the pre-processed network files,
+the statistical methods, and/or the open-source software useful for your work,
+please kindly cite the research article listed above [(Zhu et al, 2020)][].
 
 ## <img src="https://static.thenounproject.com/png/506997-200.png" width="48"/> [Installation](setup.html)
 
@@ -36,17 +50,12 @@ This page gives the following end-to-end examples of using RSS-NET methods and s
 
 2. RSS-NET analysis of [a real-world dataset](ibd2015_nkcell.html)
 
+These examples are based on simulation studies
+and data analyses reported in [Zhu et al (2020)][]. 
+
 ## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functions](function.html)
 
 This page outlines functions and scripts associated with RSS-NET methods.
-
-## <img src="https://static.thenounproject.com/png/2069228-200.png" width="48"/> [FAQs](faq.html)
-
-This page answers frequently ask questions (FAQs) about RSS-NET methods and software.
-
-## <img src="https://static.thenounproject.com/png/51135-200.png" width="48"/> [News](https://stephenslab.github.io/rss/news.html)
-
-This page lists progress updates related to RSS-NET methods and software.
 
 --------
 
