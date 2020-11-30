@@ -37,6 +37,15 @@ div.section {
 }
 </style>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -446,7 +455,7 @@ div.tocify {
   <a href="function.html">Functions</a>
 </li>
 <li>
-  <a href="faq.html">FAQ</a>
+  <a href="https://stephenslab.github.io/rss/faq.html">FAQ</a>
 </li>
 <li>
   <a href="https://stephenslab.github.io/rss/news.html">News</a>
@@ -498,7 +507,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-06-29
+<strong>Last updated:</strong> 2020-11-30
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -589,16 +598,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeddaf8781caef9bb4e6c66b105879c335b5afc360targetblankddaf878a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/ddaf8781caef9bb4e6c66b105879c335b5afc360" target="_blank">ddaf878</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreed6d604e9f5fa12413300d118a4199f3533dc8236targetblankd6d604ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/d6d604e9f5fa12413300d118a4199f3533dc8236" target="_blank">d6d604e</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeddaf8781caef9bb4e6c66b105879c335b5afc360targetblankddaf878a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreed6d604e9f5fa12413300d118a4199f3533dc8236targetblankd6d604ea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/ddaf8781caef9bb4e6c66b105879c335b5afc360" target="_blank">ddaf878</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/d6d604e9f5fa12413300d118a4199f3533dc8236" target="_blank">d6d604e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -649,6 +658,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/6ac43881506def51bad354aa3b78f4f306e7bf06/docs/wtccc_bcell.html" target="_blank">6ac4388</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-06-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1232,59 +1258,64 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>devtools<span class="op">::</span><span class="kw">session_info</span>()</span></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
- version  R version 4.0.2 (2020-06-22)
- os       Ubuntu 20.04 LTS            
+ version  R version 4.0.3 (2020-10-10)
+ os       Ubuntu 20.04.1 LTS          
  system   x86_64, linux-gnu           
  ui       X11                         
  language (EN)                        
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
- tz       America/Los_Angeles         
- date     2020-06-29                  
+ tz       America/New_York            
+ date     2020-11-30                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
  assertthat    0.2.1   2019-03-21 [3] CRAN (R 4.0.0)
- backports     1.1.8   2020-06-17 [3] CRAN (R 4.0.1)
- callr         3.4.3   2020-03-28 [1] CRAN (R 4.0.2)
- cli           2.0.2   2020-02-28 [3] CRAN (R 4.0.0)
+ callr         3.5.1   2020-10-13 [1] CRAN (R 4.0.3)
+ cli           2.2.0   2020-11-20 [3] CRAN (R 4.0.3)
  crayon        1.3.4   2017-09-16 [3] CRAN (R 4.0.0)
  desc          1.2.0   2018-05-01 [3] CRAN (R 4.0.0)
- devtools      2.3.0   2020-04-10 [3] CRAN (R 4.0.0)
- digest        0.6.25  2020-02-23 [3] CRAN (R 4.0.0)
+ devtools      2.3.2   2020-09-18 [3] CRAN (R 4.0.2)
+ digest        0.6.27  2020-10-24 [3] CRAN (R 4.0.3)
  ellipsis      0.3.1   2020-05-15 [3] CRAN (R 4.0.0)
  evaluate      0.14    2019-05-28 [3] CRAN (R 4.0.0)
  fansi         0.4.1   2020-01-08 [3] CRAN (R 4.0.0)
- fs            1.4.1   2020-04-04 [3] CRAN (R 4.0.0)
+ fs            1.5.0   2020-07-31 [1] CRAN (R 4.0.2)
  git2r         0.27.1  2020-05-03 [3] CRAN (R 4.0.0)
- glue          1.4.1   2020-05-13 [3] CRAN (R 4.0.0)
+ glue          1.4.2   2020-08-27 [3] CRAN (R 4.0.2)
  htmltools     0.5.0   2020-06-16 [3] CRAN (R 4.0.1)
  httpuv        1.5.4   2020-06-06 [3] CRAN (R 4.0.0)
- knitr         1.29    2020-06-23 [3] CRAN (R 4.0.2)
+ knitr         1.30    2020-09-22 [3] CRAN (R 4.0.2)
  later         1.1.0.1 2020-06-05 [3] CRAN (R 4.0.0)
- magrittr      1.5     2014-11-22 [3] CRAN (R 4.0.0)
+ lifecycle     0.2.0   2020-03-06 [3] CRAN (R 4.0.0)
+ magrittr      2.0.1   2020-11-17 [3] CRAN (R 4.0.3)
  memoise       1.1.0   2017-04-21 [3] CRAN (R 4.0.0)
- pkgbuild      1.0.8   2020-05-07 [3] CRAN (R 4.0.0)
+ pillar        1.4.7   2020-11-20 [3] CRAN (R 4.0.3)
+ pkgbuild      1.1.0   2020-07-13 [3] CRAN (R 4.0.2)
+ pkgconfig     2.0.3   2019-09-22 [3] CRAN (R 4.0.0)
  pkgload       1.1.0   2020-05-29 [3] CRAN (R 4.0.0)
  prettyunits   1.1.1   2020-01-24 [3] CRAN (R 4.0.0)
- processx      3.4.2   2020-02-09 [3] CRAN (R 4.0.0)
+ processx      3.4.4   2020-09-03 [3] CRAN (R 4.0.2)
  promises      1.1.1   2020-06-09 [3] CRAN (R 4.0.1)
- ps            1.3.3   2020-05-08 [3] CRAN (R 4.0.0)
- R6            2.4.1   2019-11-12 [3] CRAN (R 4.0.0)
- Rcpp          1.0.4.6 2020-04-09 [3] CRAN (R 4.0.0)
- remotes       2.1.1   2020-02-15 [3] CRAN (R 4.0.0)
- rlang         0.4.6   2020-05-02 [3] CRAN (R 4.0.0)
- rmarkdown     2.3     2020-06-18 [1] CRAN (R 4.0.2)
- rprojroot     1.3-2   2018-01-03 [3] CRAN (R 4.0.0)
+ ps            1.4.0   2020-10-07 [3] CRAN (R 4.0.2)
+ R6            2.5.0   2020-10-28 [3] CRAN (R 4.0.3)
+ Rcpp          1.0.5   2020-07-06 [3] CRAN (R 4.0.2)
+ remotes       2.2.0   2020-07-21 [3] CRAN (R 4.0.2)
+ rlang         0.4.9   2020-11-26 [3] CRAN (R 4.0.3)
+ rmarkdown     2.5     2020-10-21 [1] CRAN (R 4.0.3)
+ rprojroot     2.0.2   2020-11-15 [3] CRAN (R 4.0.3)
+ rstudioapi    0.13    2020-11-12 [3] CRAN (R 4.0.3)
  sessioninfo   1.1.1   2018-11-05 [3] CRAN (R 4.0.0)
- stringi       1.4.6   2020-02-17 [3] CRAN (R 4.0.0)
+ stringi       1.5.3   2020-09-09 [3] CRAN (R 4.0.2)
  stringr       1.4.0   2019-02-10 [3] CRAN (R 4.0.0)
- testthat      2.3.2   2020-03-02 [3] CRAN (R 4.0.0)
- usethis       1.6.1   2020-04-29 [3] CRAN (R 4.0.0)
+ testthat      3.0.0   2020-10-31 [3] CRAN (R 4.0.3)
+ tibble        3.0.4   2020-10-12 [3] CRAN (R 4.0.3)
+ usethis       1.6.3   2020-09-17 [3] CRAN (R 4.0.2)
+ vctrs         0.3.5   2020-11-17 [3] CRAN (R 4.0.3)
  whisker       0.4     2019-08-28 [3] CRAN (R 4.0.0)
- withr         2.2.0   2020-04-20 [3] CRAN (R 4.0.0)
+ withr         2.3.0   2020-09-22 [3] CRAN (R 4.0.2)
  workflowr   * 1.6.2   2020-04-30 [1] CRAN (R 4.0.0)
- xfun          0.15    2020-06-21 [3] CRAN (R 4.0.1)
+ xfun          0.19    2020-10-30 [3] CRAN (R 4.0.3)
  yaml          2.2.1   2020-02-01 [3] CRAN (R 4.0.0)
 
 [1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/4.0
@@ -1319,7 +1350,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
