@@ -15,7 +15,7 @@ networks and 18 human complex traits described in [Zhu et al (2020)][].
 
 ## Main results
 
-```{r, child="~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/wflow_child/tab_index.Rmd"}
+```{r, child="~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/wflow_child/tab_index_ext.Rmd"}
 ```
 
 ## Additional results
