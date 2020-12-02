@@ -20,8 +20,11 @@ networks and 18 human complex traits described in [Zhu et al (2020)][].
 
 ## Additional results
 
-- Numerical values for Supplementary Figure 13 of [Zhu et al (2020)][]
+The following pages provide numerical values to reproduce
+Supplementary Figures 13 and 14 of [Zhu et al (2020)][]. 
 
-- Numerical values for Supplementary Figure 14 of [Zhu et al (2020)][] 
+- [Numerical values for Supplementary Figure 13](https://xiangzhu.github.io/rss-net-results/ne_suppfig.html)
+
+- [Numerical values for Supplementary Figure 14](https://xiangzhu.github.io/rss-net-results/rc_suppfig.html)
 
 
