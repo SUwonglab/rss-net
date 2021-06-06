@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010
+[Zhu et al (2021)]: https://doi.org/10.1038/s41467-021-22588-0
 [`wtccc_bcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell
 [`simulation_template.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/simulation_template.m
 [`run_simulation.m`]: https://github.com/SUwonglab/rss-net/tree/master/examples/wtccc_bcell/run_simulation.m
@@ -403,7 +403,7 @@ one SNP $j$ in the locus is associated with the trait ($\beta_j\neq 0$):
 $$
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 $$
-As in [Zhu et al (2020)][], a locus is defined as the transcribed region
+As in [Zhu et al (2021)][], a locus is defined as the transcribed region
 of a gene plus 100 kb upstream and downstream.
 The locus definition is provided in `wtccc_tidy_snp2gene_ncbi35togrch37.mat`.
 The $P_1^{\sf net}$ computation is implemented in [`compute_pip.m`][].
