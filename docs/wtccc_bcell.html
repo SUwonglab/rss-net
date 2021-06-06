@@ -567,16 +567,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreece99060fe8bed40f0032e808a6a6dcbcc61d004etargetblankce99060a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/ce99060fe8bed40f0032e808a6a6dcbcc61d004e" target="_blank">ce99060</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree7ee878f3159d1c873c3245dea4eb85b1c2fd582btargetblank7ee878fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/7ee878f3159d1c873c3245dea4eb85b1c2fd582b" target="_blank">7ee878f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreece99060fe8bed40f0032e808a6a6dcbcc61d004etargetblankce99060a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettree7ee878f3159d1c873c3245dea4eb85b1c2fd582btargetblank7ee878fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/ce99060fe8bed40f0032e808a6a6dcbcc61d004e" target="_blank">ce99060</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/7ee878f3159d1c873c3245dea4eb85b1c2fd582b" target="_blank">7ee878f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -589,13 +589,6 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
     Ignored:    examples/wtccc_bcell/results/
-
-Untracked files:
-    Untracked:  README.html
-
-Unstaged changes:
-    Modified:   README.md
-    Modified:   rmd/_site.yml
 
 </code></pre>
 <p>
@@ -634,6 +627,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/SUwonglab/rss-net/blob/7ee878f3159d1c873c3245dea4eb85b1c2fd582b/rmd/wtccc_bcell.Rmd" target="_blank">7ee878f</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2021-06-06
+</td>
+<td>
+wflow_publish(“rmd/wtccc_bcell.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/efd45b7429ccef4cbb69838459dea66cfb601aaa/docs/wtccc_bcell.html" target="_blank">efd45b7</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2021-06-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1225,7 +1252,7 @@ wflow_publish(“rmd/wtccc_bcell.Rmd”)
 <h4>6. Summarize gene-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
-\]</span> As in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in <a href="https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m"><code>compute_pip.m</code></a>.</p>
+\]</span> As in <a href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et al (2021)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>wtccc_tidy_snp2gene_ncbi35togrch37.mat</code>. The <span class="math inline">\(P_1^{\sf net}\)</span> computation is implemented in <a href="https://github.com/stephenslab/rss/blob/master/src_vb/compute_pip.m"><code>compute_pip.m</code></a>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="va">seg_path</span> <span class="op">=</span> <span class="va">strcat</span>(<span class="va">dat_path</span><span class="op">,</span><span class="ss">&#39;wtccc_tidy_snp2gene_ncbi35togrch37.mat&#39;</span>)<span class="op">;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="va">p1_net</span>   <span class="op">=</span> <span class="va">compute_pip</span>(<span class="va">seg_path</span><span class="op">,</span><span class="va">logw</span><span class="op">,</span><span class="va">alpha</span>)<span class="op">;</span></span></code></pre></div>
 </div>
