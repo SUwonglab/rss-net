@@ -16,7 +16,7 @@ navbar:
   - text: License
     href: license.html
   right:
-  - icon: fa-github
+  - icon: fab fa-github
     href: https://github.com/SUwonglab/rss-net
 output:
   workflowr::wflow_html:
