@@ -15,14 +15,23 @@
 
 <title>Full results of Zhu et al (2020)</title>
 
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -34,6 +43,8 @@ div.section {
 }
 </style>
 
+
+
 <style type="text/css">
   code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -44,21 +55,28 @@ div.section {
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -78,7 +96,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,39 +150,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -174,10 +162,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -194,40 +178,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -255,7 +212,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -267,7 +224,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -278,10 +235,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -293,7 +263,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -391,7 +360,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/SUwonglab/rss-net">
-    <span class="fa fa-github"></span>
+    <span class="fab fa-github"></span>
      
   </a>
 </li>
@@ -400,7 +369,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -431,7 +400,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-02
+<strong>Last updated:</strong> 2021-06-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -522,16 +491,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc64ea5c98aac26a751235935d5bc9cae3a5df9atargetblankbc64ea5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/bc64ea5c98aac26a751235935d5bc9cae3a5df9a" target="_blank">bc64ea5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreece99060fe8bed40f0032e808a6a6dcbcc61d004etargetblankce99060a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/ce99060fe8bed40f0032e808a6a6dcbcc61d004e" target="_blank">ce99060</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc64ea5c98aac26a751235935d5bc9cae3a5df9atargetblankbc64ea5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreece99060fe8bed40f0032e808a6a6dcbcc61d004etargetblankce99060a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/bc64ea5c98aac26a751235935d5bc9cae3a5df9a" target="_blank">bc64ea5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/ce99060fe8bed40f0032e808a6a6dcbcc61d004e" target="_blank">ce99060</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -544,6 +513,13 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
     Ignored:    examples/wtccc_bcell/results/
+
+Untracked files:
+    Untracked:  README.html
+
+Unstaged changes:
+    Modified:   README.md
+    Modified:   rmd/_site.yml
 
 </code></pre>
 <p>
@@ -582,6 +558,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/ce99060fe8bed40f0032e808a6a6dcbcc61d004e/docs/results.html" target="_blank">ce99060</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-12-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -985,70 +978,76 @@ Neuroticism (Okbay et al. 2016)
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw">session_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
- version  R version 4.0.3 (2020-10-10)
- os       Ubuntu 20.04.1 LTS          
+ version  R version 4.1.0 (2021-05-18)
+ os       Ubuntu 20.04.2 LTS          
  system   x86_64, linux-gnu           
  ui       X11                         
  language (EN)                        
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
  tz       America/New_York            
- date     2020-12-02                  
+ date     2021-06-06                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
- assertthat    0.2.1   2019-03-21 [3] CRAN (R 4.0.0)
- callr         3.5.1   2020-10-13 [1] CRAN (R 4.0.3)
- cli           2.2.0   2020-11-20 [3] CRAN (R 4.0.3)
- crayon        1.3.4   2017-09-16 [3] CRAN (R 4.0.0)
- desc          1.2.0   2018-05-01 [3] CRAN (R 4.0.0)
- devtools      2.3.2   2020-09-18 [3] CRAN (R 4.0.2)
+ bslib         0.2.5.1 2021-05-18 [3] CRAN (R 4.1.0)
+ cachem        1.0.5   2021-05-15 [3] CRAN (R 4.0.5)
+ callr         3.7.0   2021-04-20 [3] CRAN (R 4.0.5)
+ cli           2.5.0   2021-04-26 [3] CRAN (R 4.0.5)
+ crayon        1.4.1   2021-02-08 [3] CRAN (R 4.0.3)
+ desc          1.3.0   2021-03-05 [3] CRAN (R 4.0.4)
+ devtools      2.4.1   2021-05-05 [3] CRAN (R 4.0.5)
  digest        0.6.27  2020-10-24 [3] CRAN (R 4.0.3)
- ellipsis      0.3.1   2020-05-15 [3] CRAN (R 4.0.0)
+ ellipsis      0.3.2   2021-04-29 [3] CRAN (R 4.0.5)
  evaluate      0.14    2019-05-28 [3] CRAN (R 4.0.0)
- fansi         0.4.1   2020-01-08 [3] CRAN (R 4.0.0)
- fs            1.5.0   2020-07-31 [1] CRAN (R 4.0.2)
- git2r         0.27.1  2020-05-03 [3] CRAN (R 4.0.0)
+ fansi         0.5.0   2021-05-25 [3] CRAN (R 4.1.0)
+ fastmap       1.1.0   2021-01-25 [3] CRAN (R 4.0.3)
+ fs            1.5.0   2020-07-31 [3] CRAN (R 4.0.2)
+ git2r         0.28.0  2021-01-10 [1] CRAN (R 4.1.0)
  glue          1.4.2   2020-08-27 [3] CRAN (R 4.0.2)
- htmltools     0.5.0   2020-06-16 [3] CRAN (R 4.0.1)
- httpuv        1.5.4   2020-06-06 [3] CRAN (R 4.0.0)
- knitr         1.30    2020-09-22 [3] CRAN (R 4.0.2)
- later         1.1.0.1 2020-06-05 [3] CRAN (R 4.0.0)
- lifecycle     0.2.0   2020-03-06 [3] CRAN (R 4.0.0)
+ htmltools     0.5.1.1 2021-01-22 [3] CRAN (R 4.0.3)
+ httpuv        1.6.1   2021-05-07 [3] CRAN (R 4.0.5)
+ jquerylib     0.1.4   2021-04-26 [3] CRAN (R 4.0.5)
+ jsonlite      1.7.2   2020-12-09 [3] CRAN (R 4.0.3)
+ knitr         1.33    2021-04-24 [3] CRAN (R 4.0.5)
+ later         1.2.0   2021-04-23 [3] CRAN (R 4.0.5)
+ lifecycle     1.0.0   2021-02-15 [3] CRAN (R 4.0.4)
  magrittr      2.0.1   2020-11-17 [3] CRAN (R 4.0.3)
- memoise       1.1.0   2017-04-21 [3] CRAN (R 4.0.0)
- pillar        1.4.7   2020-11-20 [3] CRAN (R 4.0.3)
- pkgbuild      1.1.0   2020-07-13 [3] CRAN (R 4.0.2)
+ memoise       2.0.0   2021-01-26 [3] CRAN (R 4.0.3)
+ pillar        1.6.1   2021-05-16 [3] CRAN (R 4.0.5)
+ pkgbuild      1.2.0   2020-12-15 [3] CRAN (R 4.0.3)
  pkgconfig     2.0.3   2019-09-22 [3] CRAN (R 4.0.0)
- pkgload       1.1.0   2020-05-29 [3] CRAN (R 4.0.0)
+ pkgload       1.2.1   2021-04-06 [3] CRAN (R 4.0.5)
  prettyunits   1.1.1   2020-01-24 [3] CRAN (R 4.0.0)
- processx      3.4.4   2020-09-03 [3] CRAN (R 4.0.2)
- promises      1.1.1   2020-06-09 [3] CRAN (R 4.0.1)
- ps            1.4.0   2020-10-07 [3] CRAN (R 4.0.2)
+ processx      3.5.2   2021-04-30 [3] CRAN (R 4.0.5)
+ promises      1.2.0.1 2021-02-11 [3] CRAN (R 4.0.3)
+ ps            1.6.0   2021-02-28 [3] CRAN (R 4.0.4)
+ purrr         0.3.4   2020-04-17 [3] CRAN (R 4.0.0)
  R6            2.5.0   2020-10-28 [3] CRAN (R 4.0.3)
- Rcpp          1.0.5   2020-07-06 [3] CRAN (R 4.0.2)
- remotes       2.2.0   2020-07-21 [3] CRAN (R 4.0.2)
- rlang         0.4.9   2020-11-26 [3] CRAN (R 4.0.3)
- rmarkdown     2.5     2020-10-21 [1] CRAN (R 4.0.3)
+ Rcpp          1.0.6   2021-01-15 [3] CRAN (R 4.0.5)
+ remotes       2.4.0   2021-06-02 [3] CRAN (R 4.1.0)
+ rlang         0.4.11  2021-04-30 [3] CRAN (R 4.0.5)
+ rmarkdown     2.8     2021-05-07 [3] CRAN (R 4.0.5)
  rprojroot     2.0.2   2020-11-15 [3] CRAN (R 4.0.3)
- rstudioapi    0.13    2020-11-12 [3] CRAN (R 4.0.3)
+ sass          0.4.0   2021-05-12 [3] CRAN (R 4.0.5)
  sessioninfo   1.1.1   2018-11-05 [3] CRAN (R 4.0.0)
- stringi       1.5.3   2020-09-09 [3] CRAN (R 4.0.2)
+ stringi       1.6.2   2021-05-17 [3] CRAN (R 4.0.5)
  stringr       1.4.0   2019-02-10 [3] CRAN (R 4.0.0)
- testthat      3.0.0   2020-10-31 [3] CRAN (R 4.0.3)
- tibble        3.0.4   2020-10-12 [3] CRAN (R 4.0.3)
- usethis       1.6.3   2020-09-17 [3] CRAN (R 4.0.2)
- vctrs         0.3.5   2020-11-17 [3] CRAN (R 4.0.3)
+ testthat      3.0.2   2021-02-14 [3] CRAN (R 4.0.4)
+ tibble        3.1.2   2021-05-16 [3] CRAN (R 4.0.5)
+ usethis       2.0.1   2021-02-10 [3] CRAN (R 4.0.3)
+ utf8          1.2.1   2021-03-12 [3] CRAN (R 4.0.4)
+ vctrs         0.3.8   2021-04-29 [3] CRAN (R 4.0.5)
  whisker       0.4     2019-08-28 [3] CRAN (R 4.0.0)
- withr         2.3.0   2020-09-22 [3] CRAN (R 4.0.2)
- workflowr   * 1.6.2   2020-04-30 [1] CRAN (R 4.0.0)
- xfun          0.19    2020-10-30 [3] CRAN (R 4.0.3)
+ withr         2.4.2   2021-04-18 [3] CRAN (R 4.0.5)
+ workflowr   * 1.6.2   2020-04-30 [1] CRAN (R 4.1.0)
+ xfun          0.23    2021-05-15 [3] CRAN (R 4.0.5)
  yaml          2.2.1   2020-02-01 [3] CRAN (R 4.0.0)
 
-[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/4.0
+[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/4.1
 [2] /usr/local/lib/R/site-library
 [3] /usr/lib/R/site-library
 [4] /usr/lib/R/library</code></pre>
@@ -1067,6 +1066,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 
@@ -1094,7 +1095,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

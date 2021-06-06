@@ -15,17 +15,26 @@
 
 <title>RSS-NET analysis of IBD GWAS summary statistics and NK cell regulatory network</title>
 
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -37,6 +46,8 @@ div.section {
 }
 </style>
 
+
+
 <style type="text/css">
   code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -47,21 +58,28 @@ div.section {
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +99,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,39 +153,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -177,10 +165,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -197,40 +181,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -258,7 +215,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -270,7 +227,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -281,10 +238,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -296,7 +266,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -422,7 +391,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -467,7 +436,7 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/SUwonglab/rss-net">
-    <span class="fa fa-github"></span>
+    <span class="fab fa-github"></span>
      
   </a>
 </li>
@@ -476,7 +445,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -507,7 +476,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-02
+<strong>Last updated:</strong> 2021-06-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -598,16 +567,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc64ea5c98aac26a751235935d5bc9cae3a5df9atargetblankbc64ea5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/bc64ea5c98aac26a751235935d5bc9cae3a5df9a" target="_blank">bc64ea5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreece99060fe8bed40f0032e808a6a6dcbcc61d004etargetblankce99060a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/ce99060fe8bed40f0032e808a6a6dcbcc61d004e" target="_blank">ce99060</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc64ea5c98aac26a751235935d5bc9cae3a5df9atargetblankbc64ea5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreece99060fe8bed40f0032e808a6a6dcbcc61d004etargetblankce99060a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/bc64ea5c98aac26a751235935d5bc9cae3a5df9a" target="_blank">bc64ea5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/ce99060fe8bed40f0032e808a6a6dcbcc61d004e" target="_blank">ce99060</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -620,6 +589,13 @@ Ignored files:
     Ignored:    examples/ibd2015_nkcell/randinit_results/
     Ignored:    examples/ibd2015_nkcell/results/
     Ignored:    examples/wtccc_bcell/results/
+
+Untracked files:
+    Untracked:  README.html
+
+Unstaged changes:
+    Modified:   README.md
+    Modified:   rmd/_site.yml
 
 </code></pre>
 <p>
@@ -658,6 +634,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/ce99060fe8bed40f0032e808a6a6dcbcc61d004e/docs/ibd2015_nkcell.html" target="_blank">ce99060</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2020-12-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1453,7 +1446,7 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <p>To reproduce results of this example, please use scripts in the directory <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell"><code>ibd2015_nkcell/</code></a>, and follow the step-by-step guide below. Before running any script in <a href="https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell"><code>ibd2015_nkcell/</code></a>, please <a href="setup.html">install</a> RSS-NET.</p>
 <p>Since a real genome-wide analysis is conducted here, this example is more complicated than the previous <a href="wtccc_bcell.html">simulation example</a>. It is advisable to go through the previous <a href="wtccc_bcell.html">simulation example</a> before diving into the present real-world example.</p>
 <p>With the software installed and the input data downloaded, one should be able to run this example by simply typing the following line in shell:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1"></a>$ sbatch ibd2015_nkcell.sbatch</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$ sbatch ibd2015_nkcell.sbatch</span></code></pre></div>
 <p>If a different directory is used to store the software, input data and/or output data, please modify file paths in the given scripts accordingly.</p>
 </div>
 <div id="step-by-step-illustration" class="section level2">
@@ -1461,48 +1454,48 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <div id="download-data-files" class="section level3">
 <h3>Download data files</h3>
 <p>All data files required to run this example are freely available at Zenodo <a href="https://doi.org/10.5281/zenodo.3698240"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3698240.svg" alt="DOI" /></a>. Please contact me (<code>xiangzhu[at]stanford.edu</code>) if you have any trouble accessing these files. After a complete download, you should see the following files.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1"></a>$ tree <span class="kw">.</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">.</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>├── ibd2015_gene_grch37.mat</span>
-<span id="cb2-4"><a href="#cb2-4"></a>├── ibd2015_nkcell_data.md5</span>
-<span id="cb2-5"><a href="#cb2-5"></a>├── ibd2015_nkcell_full_results.zip</span>
-<span id="cb2-6"><a href="#cb2-6"></a>├── ibd2015_nkcell_summary_results.zip</span>
-<span id="cb2-7"><a href="#cb2-7"></a>├── ibd2015_NK_snp2gene_cis.mat</span>
-<span id="cb2-8"><a href="#cb2-8"></a>├── ibd2015_null_seed_459_squarem_step2.mat</span>
-<span id="cb2-9"><a href="#cb2-9"></a>├── ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
-<span id="cb2-10"><a href="#cb2-10"></a>├── ibd2015_snp2gene.mat</span>
-<span id="cb2-11"><a href="#cb2-11"></a>├── ibd2015_sumstat.mat</span>
-<span id="cb2-12"><a href="#cb2-12"></a>└── Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a>0 directories, 10 files</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>$ tree <span class="kw">.</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>├── ibd2015_gene_grch37.mat</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>├── ibd2015_nkcell_data.md5</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>├── ibd2015_nkcell_full_results.zip</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>├── ibd2015_nkcell_summary_results.zip</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>├── ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>├── ibd2015_null_seed_459_squarem_step2.mat</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>├── ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>├── ibd2015_snp2gene.mat</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>├── ibd2015_sumstat.mat</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>└── Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>0 directories, 10 files</span></code></pre></div>
 <p>To help readers confirm if they use the same files as we do, we report 128-bit MD5 hashes of all files in <code>ibd2015_nkcell_data.md5</code>.</p>
 <p>To help readers confirm if they can reproduce results of this example, we also provide the full results (<code>ibd2015_nkcell_full_results.zip</code>) and summarized results (<code>ibd2015_nkcell_summary_results.zip</code>) in the same Zenodo deposit.</p>
 <p>For simplicity and generality, we introduce the following short-hand notations.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1"></a>gwas = <span class="st">&#39;ibd2015&#39;</span>;</span>
-<span id="cb3-2"><a href="#cb3-2"></a>net  = <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood&#39;</span>; </span>
-<span id="cb3-3"><a href="#cb3-3"></a>cis  = <span class="st">&#39;NK&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">gwas</span> <span class="op">=</span> <span class="ss">&#39;ibd2015&#39;</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">net</span>  <span class="op">=</span> <span class="ss">&#39;Primary_Natural_Killer_cells_from_peripheral_blood&#39;</span><span class="op">;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">cis</span>  <span class="op">=</span> <span class="ss">&#39;NK&#39;</span><span class="op">;</span></span></code></pre></div>
 <div id="gwas_sumstat.mat-processed-gwas-summary-statistics-and-ld-matrix-estimates" class="section level4">
 <h4>1. <code>${gwas}_sumstat.mat</code>: processed GWAS summary statistics and LD matrix estimates</h4>
 <p>This file contains processed IBD GWAS summary statistics and LD matrix estimates for 1.1 million common SNPs. This file is large (43G) because of the LD matrix .</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb4-1"><a href="#cb4-1"></a>$ md5sum ibd2015_sumstat.mat</span>
-<span id="cb4-2"><a href="#cb4-2"></a>ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>$ <span class="kw">du</span> -sh ibd2015_sumstat.mat                                             </span>
-<span id="cb4-5"><a href="#cb4-5"></a>43G ibd2015_sumstat.mat</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>$ md5sum ibd2015_sumstat.mat</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ad1763079ee7e46b21722f74e037a230  ibd2015_sumstat.mat</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>$ du -sh ibd2015_sumstat.mat                                             </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>43G ibd2015_sumstat.mat</span></code></pre></div>
 <p>Let’s look at the contents of <code>ibd2015_sumstat.mat</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1"></a>&gt;&gt; sumstat = matfile(<span class="st">&#39;ibd2015_sumstat.mat&#39;</span>);</span>
-<span id="cb5-2"><a href="#cb5-2"></a>&gt;&gt; sumstat</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  matlab.io.MatFile</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  Properties:</span>
-<span id="cb5-5"><a href="#cb5-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_sumstat.mat&#39;</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>    Properties.Writable: false                                                          </span>
-<span id="cb5-7"><a href="#cb5-7"></a>                     BR: [<span class="fl">22</span>x1 cell]                                                    </span>
-<span id="cb5-8"><a href="#cb5-8"></a>                      R: [<span class="fl">22</span>x1 cell]                                                    </span>
-<span id="cb5-9"><a href="#cb5-9"></a>                  SiRiS: [<span class="fl">22</span>x1 cell]                                                    </span>
-<span id="cb5-10"><a href="#cb5-10"></a>                betahat: [<span class="fl">22</span>x1 cell]                                                    </span>
-<span id="cb5-11"><a href="#cb5-11"></a>                    chr: [<span class="fl">22</span>x1 cell]                                                    </span>
-<span id="cb5-12"><a href="#cb5-12"></a>                    pos: [<span class="fl">22</span>x1 cell]                                                    </span>
-<span id="cb5-13"><a href="#cb5-13"></a>                     se: [<span class="fl">22</span>x1 cell]</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">sumstat</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;ibd2015_sumstat.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">sumstat</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_sumstat.mat&#39;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span>                                                          </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                     <span class="va">BR</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]                                                    </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                      <span class="va">R</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]                                                    </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                  <span class="va">SiRiS</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]                                                    </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="va">betahat</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]                                                    </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="va">chr</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]                                                    </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="va">pos</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]                                                    </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                     <span class="va">se</span><span class="op">:</span> [<span class="fl">22</span><span class="va">x1</span> <span class="va">cell</span>]</span></code></pre></div>
 <p>GWAS summary statistics and LD estimates are stored as <a href="https://www.mathworks.com/help/matlab/cell-arrays.html">cell arrays</a>. RSS-NET only uses the following variables:</p>
 <ul>
 <li><code>betahat{j,1}</code>, single-SNP effect size estimates of all SNPs on chromosome <code>j</code>;</li>
@@ -1514,117 +1507,117 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <div id="gwas_snp2gene.mat-physical-distance-between-snps-and-genes" class="section level4">
 <h4>2. <code>${gwas}_snp2gene.mat</code>: physical distance between SNPs and genes</h4>
 <p>This file contains the physical distance between each GWAS SNP and each protein-coding gene, within 1 Mb. This file corresponds to <span class="math inline">\({\bf G}_j\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb6-1"><a href="#cb6-1"></a>$ md5sum ibd2015_snp2gene.mat </span>
-<span id="cb6-2"><a href="#cb6-2"></a>7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>$ <span class="kw">du</span> -sh ibd2015_snp2gene.mat </span>
-<span id="cb6-5"><a href="#cb6-5"></a>224M    ibd2015_snp2gene.mat</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>$ md5sum ibd2015_snp2gene.mat </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>7832838e2675e4cf3b85f471fed95554  ibd2015_snp2gene.mat</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>$ du -sh ibd2015_snp2gene.mat </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>224M    ibd2015_snp2gene.mat</span></code></pre></div>
 <p>In this example, there are 18334 genes and 1081481 SNPs.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1"></a>&gt;&gt; snp2gene = matfile(<span class="st">&#39;ibd2015_snp2gene.mat&#39;</span>);</span>
-<span id="cb7-2"><a href="#cb7-2"></a>&gt;&gt; snp2gene                                   </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  matlab.io.MatFile</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  Properties:</span>
-<span id="cb7-5"><a href="#cb7-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_snp2gene.mat&#39;</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    Properties.Writable: false                                                                </span>
-<span id="cb7-7"><a href="#cb7-7"></a>                    chr: [<span class="fl">1081481</span>x1  int32]                                                   </span>
-<span id="cb7-8"><a href="#cb7-8"></a>                  colid: [<span class="fl">14126805</span>x1 int32]                                                   </span>
-<span id="cb7-9"><a href="#cb7-9"></a>                numgene: [<span class="fl">1</span>x1        int32]                                                   </span>
-<span id="cb7-10"><a href="#cb7-10"></a>                 numsnp: [<span class="fl">1</span>x1        int32]                                                   </span>
-<span id="cb7-11"><a href="#cb7-11"></a>                    pos: [<span class="fl">1081481</span>x1  int32]                                                   </span>
-<span id="cb7-12"><a href="#cb7-12"></a>                  rowid: [<span class="fl">14126805</span>x1 int32]                                                   </span>
-<span id="cb7-13"><a href="#cb7-13"></a>                    val: [<span class="fl">14126805</span>x1 double]</span>
-<span id="cb7-14"><a href="#cb7-14"></a></span>
-<span id="cb7-15"><a href="#cb7-15"></a>&gt;&gt; [snp2gene.numgene snp2gene.numsnp]                                                              </span>
-<span id="cb7-16"><a href="#cb7-16"></a>     <span class="fl">18334</span>   <span class="fl">1081481</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">snp2gene</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;ibd2015_snp2gene.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">snp2gene</span>                                   </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_snp2gene.mat&#39;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span>                                                                </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                    <span class="va">chr</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span>  <span class="va">int32</span>]                                                   </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                  <span class="va">colid</span><span class="op">:</span> [<span class="fl">14126805</span><span class="va">x1</span> <span class="va">int32</span>]                                                   </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                <span class="va">numgene</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>        <span class="va">int32</span>]                                                   </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                 <span class="va">numsnp</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>        <span class="va">int32</span>]                                                   </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                    <span class="va">pos</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span>  <span class="va">int32</span>]                                                   </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                  <span class="va">rowid</span><span class="op">:</span> [<span class="fl">14126805</span><span class="va">x1</span> <span class="va">int32</span>]                                                   </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                    <span class="va">val</span><span class="op">:</span> [<span class="fl">14126805</span><span class="va">x1</span> <span class="va">double</span>]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">snp2gene</span>.<span class="va">numgene</span> <span class="va">snp2gene</span>.<span class="va">numsnp</span>]                                                              </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>     <span class="fl">18334</span>   <span class="fl">1081481</span></span></code></pre></div>
 <p>The SNP-to-gene distance information is captured by a three-column matrix <code>[colid rowid val]</code>. For example, the distance between gene <code>1</code> and SNP <code>6</code> is <code>978947</code> bps.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1"></a>&gt;&gt; colid=snp2gene.colid; rowid=snp2gene.rowid; val=snp2gene.val;</span>
-<span id="cb8-2"><a href="#cb8-2"></a>&gt;&gt; [colid(<span class="fl">6</span>) rowid(<span class="fl">6</span>) val(<span class="fl">6</span>)]</span>
-<span id="cb8-3"><a href="#cb8-3"></a>        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">colid</span><span class="op">=</span><span class="va">snp2gene</span>.<span class="va">colid</span><span class="op">;</span> <span class="va">rowid</span><span class="op">=</span><span class="va">snp2gene</span>.<span class="va">rowid</span><span class="op">;</span> <span class="va">val</span><span class="op">=</span><span class="va">snp2gene</span>.<span class="va">val</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">colid</span>(<span class="fl">6</span>) <span class="va">rowid</span>(<span class="fl">6</span>) <span class="va">val</span>(<span class="fl">6</span>)]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1</span>        <span class="fl">6</span>   <span class="fl">978947</span></span></code></pre></div>
 </div>
 <div id="net_gene2gene.mat-gene-regulatory-network" class="section level4">
 <h4>3. <code>${net}_gene2gene.mat</code>: gene regulatory network</h4>
 <p>This file contains information of gene-to-gene connections in a given regulatory network.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb9-1"><a href="#cb9-1"></a>$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </span>
-<span id="cb9-2"><a href="#cb9-2"></a>35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a>$ <span class="kw">du</span> -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
-<span id="cb9-5"><a href="#cb9-5"></a>1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb10-1"><a href="#cb10-1"></a>&gt;&gt; gene2gene = matfile(<span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>);</span>
-<span id="cb10-2"><a href="#cb10-2"></a>&gt;&gt; gene2gene</span>
-<span id="cb10-3"><a href="#cb10-3"></a>  matlab.io.MatFile</span>
-<span id="cb10-4"><a href="#cb10-4"></a>  Properties:</span>
-<span id="cb10-5"><a href="#cb10-5"></a>      Properties.Source: <span class="st">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>    Properties.Writable: false                                                                                                            </span>
-<span id="cb10-7"><a href="#cb10-7"></a>                  colid: [<span class="fl">110733</span>x1 int32]                                                                                                 </span>
-<span id="cb10-8"><a href="#cb10-8"></a>                numgene: [<span class="fl">1</span>x1      int32]                                                                                                 </span>
-<span id="cb10-9"><a href="#cb10-9"></a>                  rowid: [<span class="fl">110733</span>x1 int32]                                                                                                 </span>
-<span id="cb10-10"><a href="#cb10-10"></a>                    val: [<span class="fl">110733</span>x1 double]</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>$ md5sum Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>35ac724b86f7777d87116cc48166caa2  Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>$ du -sh Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>1.7M    Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">gene2gene</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">gene2gene</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;Primary_Natural_Killer_cells_from_peripheral_blood_gene2gene.mat&#39;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span>                                                                                                            </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                  <span class="va">colid</span><span class="op">:</span> [<span class="fl">110733</span><span class="va">x1</span> <span class="va">int32</span>]                                                                                                 </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                <span class="va">numgene</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>      <span class="va">int32</span>]                                                                                                 </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                  <span class="va">rowid</span><span class="op">:</span> [<span class="fl">110733</span><span class="va">x1</span> <span class="va">int32</span>]                                                                                                 </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                    <span class="va">val</span><span class="op">:</span> [<span class="fl">110733</span><span class="va">x1</span> <span class="va">double</span>]</span></code></pre></div>
 <p>For implementation convenience, this file contains the trivial case where each gene is mapped to itself with <code>val=1</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb11-1"><a href="#cb11-1"></a>&gt;&gt; colid=gene2gene.colid; rowid=gene2gene.rowid; val=gene2gene.val;             </span>
-<span id="cb11-2"><a href="#cb11-2"></a>&gt;&gt; [gene2gene.numgene sum(colid==rowid) unique(val(colid==rowid))]</span>
-<span id="cb11-3"><a href="#cb11-3"></a>   <span class="fl">18334</span>   <span class="fl">18334</span>       <span class="fl">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">colid</span><span class="op">=</span><span class="va">gene2gene</span>.<span class="va">colid</span><span class="op">;</span> <span class="va">rowid</span><span class="op">=</span><span class="va">gene2gene</span>.<span class="va">rowid</span><span class="op">;</span> <span class="va">val</span><span class="op">=</span><span class="va">gene2gene</span>.<span class="va">val</span><span class="op">;</span>             </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">gene2gene</span>.<span class="va">numgene</span> <span class="va">sum</span>(<span class="va">colid</span><span class="op">==</span><span class="va">rowid</span>) <span class="va">unique</span>(<span class="va">val</span>(<span class="va">colid</span><span class="op">==</span><span class="va">rowid</span>))]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="fl">18334</span>   <span class="fl">18334</span>       <span class="fl">1</span></span></code></pre></div>
 <p>For a given network, transcription factors (TFs) are stored in <code>rowid</code> and target genes (TGs) are stored in <code>colid</code>. In this example there are 3105 TGs and 376 TFs. Among these TFs and TGs, there are 92399 edges. The edge weights range from 0.61 to 1. These TF-to-TG connections and edge weights correspond to <span class="math inline">\(\{{\bf T}_g,v_{gt}\}\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb12-1"><a href="#cb12-1"></a>&gt;&gt; [length(unique(colid(colid ~= rowid))) length(unique(rowid(colid ~= rowid)))]</span>
-<span id="cb12-2"><a href="#cb12-2"></a>        <span class="fl">3105</span>         <span class="fl">376</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>&gt;&gt; [length(colid(colid ~= rowid)) length(rowid(colid ~= rowid))]</span>
-<span id="cb12-4"><a href="#cb12-4"></a>       <span class="fl">92399</span>       <span class="fl">92399</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a>&gt;&gt; val_tftg = val(colid ~= rowid);</span>
-<span id="cb12-7"><a href="#cb12-7"></a>&gt;&gt; [min(val_tftg) quantile(val_tftg, <span class="fl">0.25</span>) median(val_tftg) quantile(val_tftg, <span class="fl">0.75</span>) max(val_tftg)]</span>
-<span id="cb12-8"><a href="#cb12-8"></a>    <span class="fl">0.6138</span>    <span class="fl">0.6324</span>    <span class="fl">0.6568</span>    <span class="fl">0.6949</span>    <span class="fl">1.0000</span>       </span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">length</span>(<span class="va">unique</span>(<span class="va">colid</span>(<span class="va">colid</span> <span class="op">~=</span> <span class="va">rowid</span>))) <span class="va">length</span>(<span class="va">unique</span>(<span class="va">rowid</span>(<span class="va">colid</span> <span class="op">~=</span> <span class="va">rowid</span>)))]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3105</span>         <span class="fl">376</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">length</span>(<span class="va">colid</span>(<span class="va">colid</span> <span class="op">~=</span> <span class="va">rowid</span>)) <span class="va">length</span>(<span class="va">rowid</span>(<span class="va">colid</span> <span class="op">~=</span> <span class="va">rowid</span>))]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">92399</span>       <span class="fl">92399</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">val_tftg</span> <span class="op">=</span> <span class="va">val</span>(<span class="va">colid</span> <span class="op">~=</span> <span class="va">rowid</span>)<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">min</span>(<span class="va">val_tftg</span>) <span class="va">quantile</span>(<span class="va">val_tftg</span><span class="op">,</span> <span class="fl">0.25</span>) <span class="va">median</span>(<span class="va">val_tftg</span>) <span class="va">quantile</span>(<span class="va">val_tftg</span><span class="op">,</span> <span class="fl">0.75</span>) <span class="va">max</span>(<span class="va">val_tftg</span>)]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.6138</span>    <span class="fl">0.6324</span>    <span class="fl">0.6568</span>    <span class="fl">0.6949</span>    <span class="fl">1.0000</span>       </span></code></pre></div>
 </div>
 <div id="gwas_net_snp2net.mat-snp-to-network-proximity-annotation" class="section level4">
 <h4>4. <code>${gwas}_${net}_snp2net.mat</code>: SNP-to-network proximity annotation</h4>
 <p>This file contains binary annotations whether a SNP is “near” the given network, that is, within 100 kb of any network element (TF, TG or associated regulatory elements).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb13-1"><a href="#cb13-1"></a>$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
-<span id="cb13-2"><a href="#cb13-2"></a>d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a>$ <span class="kw">du</span> -sh ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
-<span id="cb13-5"><a href="#cb13-5"></a>21M ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>$ md5sum ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>d96cd9b32759f954cc37680dc6aeafd8  ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>$ du -sh ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>21M ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat</span></code></pre></div>
 <p>In this example, there are 1081481 GWAS SNPs and 382443 of them are near the NK cell network (i.e. <code>val=1</code>).</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb14-1"><a href="#cb14-1"></a>&gt;&gt; snp2net = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span>);</span>
-<span id="cb14-2"><a href="#cb14-2"></a>&gt;&gt; snp2net</span>
-<span id="cb14-3"><a href="#cb14-3"></a>  matlab.io.MatFile</span>
-<span id="cb14-4"><a href="#cb14-4"></a>  Properties:</span>
-<span id="cb14-5"><a href="#cb14-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>    Properties.Writable: false</span>
-<span id="cb14-7"><a href="#cb14-7"></a>                    chr: [<span class="fl">1081481</span>x1 int32]</span>
-<span id="cb14-8"><a href="#cb14-8"></a>                    pos: [<span class="fl">1081481</span>x1 int32]</span>
-<span id="cb14-9"><a href="#cb14-9"></a>                  snpid: [<span class="fl">1081481</span>x1 int32]</span>
-<span id="cb14-10"><a href="#cb14-10"></a>                    val: [<span class="fl">1081481</span>x1 double]</span>
-<span id="cb14-11"><a href="#cb14-11"></a>                 window: [<span class="fl">1</span>x1       double]</span>
-<span id="cb14-12"><a href="#cb14-12"></a>                 </span>
-<span id="cb14-13"><a href="#cb14-13"></a>&gt;&gt; [length(snp2net.val) sum(snp2net.val) snp2net.window]</span>
-<span id="cb14-14"><a href="#cb14-14"></a>     <span class="fl">1081481</span>      <span class="fl">382443</span>      <span class="fl">100000</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a>&gt;&gt; unique(snp2net.val)&#39;</span>
-<span id="cb14-16"><a href="#cb14-16"></a>     <span class="fl">0</span>     <span class="fl">1</span>     </span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">snp2net</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">snp2net</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_snp2net.mat&#39;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                    <span class="va">chr</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">int32</span>]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                    <span class="va">pos</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">int32</span>]</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                  <span class="va">snpid</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">int32</span>]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                    <span class="va">val</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">double</span>]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                 <span class="va">window</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                 </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">length</span>(<span class="va">snp2net</span>.<span class="va">val</span>) <span class="va">sum</span>(<span class="va">snp2net</span>.<span class="va">val</span>) <span class="va">snp2net</span>.<span class="va">window</span>]</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>     <span class="fl">1081481</span>      <span class="fl">382443</span>      <span class="fl">100000</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">unique</span>(<span class="va">snp2net</span>.<span class="va">val</span>)<span class="op">&#39;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>     <span class="fl">0</span>     <span class="fl">1</span>     </span></code></pre></div>
 </div>
 <div id="gwas_cis_snp2gene_cis.mat-snp-to-gene-cis-regulation" class="section level4">
 <h4>5. <code>${gwas}_${cis}_snp2gene_cis.mat</code>: SNP-to-gene cis regulation</h4>
 <p>This file contains the SNP-to-gene cis regulation scores derived from context-matching cis eQTL studies. This file corresponds to <span class="math inline">\((c_{jg}-1)\)</span> in the RSS-NET model.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb15-1"><a href="#cb15-1"></a>$ md5sum ibd2015_NK_snp2gene_cis.mat</span>
-<span id="cb15-2"><a href="#cb15-2"></a>dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a>$ <span class="kw">du</span> -sh ibd2015_NK_snp2gene_cis.mat</span>
-<span id="cb15-5"><a href="#cb15-5"></a>165M    ibd2015_NK_snp2gene_cis.mat</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb16-1"><a href="#cb16-1"></a>&gt;&gt; snp2gene_cis = matfile(<span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span>);</span>
-<span id="cb16-2"><a href="#cb16-2"></a>&gt;&gt; snp2gene_cis</span>
-<span id="cb16-3"><a href="#cb16-3"></a>  matlab.io.MatFile</span>
-<span id="cb16-4"><a href="#cb16-4"></a>  Properties:</span>
-<span id="cb16-5"><a href="#cb16-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>    Properties.Writable: false</span>
-<span id="cb16-7"><a href="#cb16-7"></a>                  colid: [<span class="fl">10790012</span>x1 int32]</span>
-<span id="cb16-8"><a href="#cb16-8"></a>                numgene: [<span class="fl">1</span>x1        int32]</span>
-<span id="cb16-9"><a href="#cb16-9"></a>                 numsnp: [<span class="fl">1</span>x1        int32]</span>
-<span id="cb16-10"><a href="#cb16-10"></a>                  rowid: [<span class="fl">10790012</span>x1 int32]</span>
-<span id="cb16-11"><a href="#cb16-11"></a>                    val: [<span class="fl">10790012</span>x1 double]</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>$ md5sum ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>dedad8e25773fad69576dbce0f7d9f93  ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>$ du -sh ibd2015_NK_snp2gene_cis.mat</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>165M    ibd2015_NK_snp2gene_cis.mat</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">snp2gene_cis</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">snp2gene_cis</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_NK_snp2gene_cis.mat&#39;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                  <span class="va">colid</span><span class="op">:</span> [<span class="fl">10790012</span><span class="va">x1</span> <span class="va">int32</span>]</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                <span class="va">numgene</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>        <span class="va">int32</span>]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                 <span class="va">numsnp</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>        <span class="va">int32</span>]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                  <span class="va">rowid</span><span class="op">:</span> [<span class="fl">10790012</span><span class="va">x1</span> <span class="va">int32</span>]</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                    <span class="va">val</span><span class="op">:</span> [<span class="fl">10790012</span><span class="va">x1</span> <span class="va">double</span>]</span></code></pre></div>
 <p>In this example, there are 10790012 SNP-gene pairs with cis regulation scores available, consisting of 829280 SNPs and 18230 genes. The cis regulation scores (<code>val</code>) range from 0 to 0.76. The cis regulation scores used in this example are derived from recently published cis eQTLs in NK cells (<a href="https://doi.org/10.1016/j.cell.2018.10.022">Schmiedel et al, 2018</a>).</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb17-1"><a href="#cb17-1"></a>&gt;&gt; [snp2gene_cis.numsnp length(unique(snp2gene_cis.rowid)) snp2gene_cis.numgene length(unique(snp2gene_cis.colid))]</span>
-<span id="cb17-2"><a href="#cb17-2"></a>   <span class="fl">1081481</span>    <span class="fl">829280</span>     <span class="fl">18334</span>     <span class="fl">18230</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>   </span>
-<span id="cb17-4"><a href="#cb17-4"></a>&gt;&gt; val=snp2gene_cis.val;</span>
-<span id="cb17-5"><a href="#cb17-5"></a>&gt;&gt; [min(val) quantile(val, <span class="fl">0.25</span>) median(val) quantile(val, <span class="fl">0.75</span>) max(val)]</span>
-<span id="cb17-6"><a href="#cb17-6"></a>         <span class="fl">0</span>    <span class="fl">0.0226</span>    <span class="fl">0.0636</span>    <span class="fl">0.1172</span>    <span class="fl">0.7622</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">snp2gene_cis</span>.<span class="va">numsnp</span> <span class="va">length</span>(<span class="va">unique</span>(<span class="va">snp2gene_cis</span>.<span class="va">rowid</span>)) <span class="va">snp2gene_cis</span>.<span class="va">numgene</span> <span class="va">length</span>(<span class="va">unique</span>(<span class="va">snp2gene_cis</span>.<span class="va">colid</span>))]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   <span class="fl">1081481</span>    <span class="fl">829280</span>     <span class="fl">18334</span>     <span class="fl">18230</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">val</span><span class="op">=</span><span class="va">snp2gene_cis</span>.<span class="va">val</span><span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">min</span>(<span class="va">val</span>) <span class="va">quantile</span>(<span class="va">val</span><span class="op">,</span> <span class="fl">0.25</span>) <span class="va">median</span>(<span class="va">val</span>) <span class="va">quantile</span>(<span class="va">val</span><span class="op">,</span> <span class="fl">0.75</span>) <span class="va">max</span>(<span class="va">val</span>)]</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>         <span class="fl">0</span>    <span class="fl">0.0226</span>    <span class="fl">0.0636</span>    <span class="fl">0.1172</span>    <span class="fl">0.7622</span>   </span></code></pre></div>
 </div>
 </div>
 <div id="run-rss-net-analysis" class="section level3">
@@ -1644,34 +1637,34 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <h4>2. Submit job arrays</h4>
 <p>For a given GWAS and a given regulatory network, all RSS-NET analysis tasks are almost identical and they only differs in hyper-parameter values. To exploit this feature, we run one RSS-NET analysis as a <a href="https://slurm.schedmd.com/job_array.html">job array</a> with multiple tasks that run in parallel.</p>
 <p>To this end, we write a simple sbatch script <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.sbatch"><code>ibd2015_nkcell.sbatch</code></a>, and submit it to a cluster with <a href="https://slurm.schedmd.com/"><code>Slurm</code></a> available.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb18-1"><a href="#cb18-1"></a>$ sbatch ibd2015_nkcell.sbatch</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>$ sbatch ibd2015_nkcell.sbatch</span></code></pre></div>
 <p>After the submission, 125 tasks are created. As shown below, multiple tasks should run in different nodes simultaneously.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb19-1"><a href="#cb19-1"></a>$ squeue -u xiangzhu</span>
-<span id="cb19-2"><a href="#cb19-2"></a>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</span>
-<span id="cb19-4"><a href="#cb19-4"></a>      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</span>
-<span id="cb19-5"><a href="#cb19-5"></a>      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</span>
-<span id="cb19-6"><a href="#cb19-6"></a>      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</span>
-<span id="cb19-7"><a href="#cb19-7"></a>      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</span>
-<span id="cb19-8"><a href="#cb19-8"></a>      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>$ squeue -u xiangzhu</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="kw">(</span>REASON<span class="kw">)</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      62554249_107    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      62554249_108    owners ibd2015_ xiangzhu  R       0:32      1 sh02-17n12</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      62554249_109    owners ibd2015_ xiangzhu  R       0:32      1 sh01-28n08</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      62554249_110    owners ibd2015_ xiangzhu  R       0:32      1 sh01-17n18</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      62554249_111    owners ibd2015_ xiangzhu  R       0:32      1 sh01-26n33</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      62554249_112    owners ibd2015_ xiangzhu  R       0:32      1 sh01-27n30</span></code></pre></div>
 <p>For each task of this job array, we request 1 node with 8 CPUs and 32 Gb total memory and set the maximum job wall-clock time as 12.5 hours (see <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.sbatch"><code>ibd2015_nkcell.sbatch</code></a> for details). The actual memory utilized per task is 26.58 GB (efficiency: 85.06% of 31.25 GB). Across all 125 tasks, the actual running time per task ranges from 5 minutes to 8.9 hours, with median being 2.1 hours.</p>
 <p>We request 8 CPUs for each task because RSS-NET takes advantage of <a href="https://www.mathworks.com/help/parallel-computing/parfor.html"><code>parfor</code></a> in the <a href="https://www.mathworks.com/help/distcomp/index.html">MATLAB Parallel Computing Toolbox</a>. If this toolbox is not available in your environment, you can still run the same RSS-NET codes on this example (in a serial manner), with longer computation time per task.</p>
 <p>Each task of the job array saves results in a <a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Version 7 MAT-file</a>, <code>${gwas}_${net}_${cis}_out_${id}.mat</code>. Each MAT-file contains variational estimates for a given set of hyper-parameter values. For example, the following MAT-file <code>ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat</code> stores RSS-NET results based on the 66-th set of hyper-parameter values from the grid.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb20-1"><a href="#cb20-1"></a>&gt;&gt; res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>);</span>
-<span id="cb20-2"><a href="#cb20-2"></a>&gt;&gt; res</span>
-<span id="cb20-3"><a href="#cb20-3"></a>  matlab.io.MatFile</span>
-<span id="cb20-4"><a href="#cb20-4"></a>  Properties:</span>
-<span id="cb20-5"><a href="#cb20-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>    Properties.Writable: false                                                                                                                            </span>
-<span id="cb20-7"><a href="#cb20-7"></a>                  alpha: [<span class="fl">1081481</span>x1 double]                                                                                                               </span>
-<span id="cb20-8"><a href="#cb20-8"></a>                   logw: [<span class="fl">1</span>x1       double]                                                                                                               </span>
-<span id="cb20-9"><a href="#cb20-9"></a>                     mu: [<span class="fl">1081481</span>x1 double]                                                                                                               </span>
-<span id="cb20-10"><a href="#cb20-10"></a>               run_time: [<span class="fl">1</span>x1       double]                                                                                                               </span>
-<span id="cb20-11"><a href="#cb20-11"></a>                      s: [<span class="fl">1081481</span>x1 double]                                                                                                               </span>
-<span id="cb20-12"><a href="#cb20-12"></a>                   sigb: [<span class="fl">1</span>x1       double]                                                                                                               </span>
-<span id="cb20-13"><a href="#cb20-13"></a>                   sige: [<span class="fl">1</span>x1       double]                                                                                                               </span>
-<span id="cb20-14"><a href="#cb20-14"></a>                  theta: [<span class="fl">1</span>x1       double]                                                                                                               </span>
-<span id="cb20-15"><a href="#cb20-15"></a>                 theta0: [<span class="fl">1</span>x1       double]</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">res</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">res</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat&#39;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span>                                                                                                                            </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                  <span class="va">alpha</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                   <span class="va">logw</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                     <span class="va">mu</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>               <span class="va">run_time</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                      <span class="va">s</span><span class="op">:</span> [<span class="fl">1081481</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>                   <span class="va">sigb</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                   <span class="va">sige</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>                  <span class="va">theta</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]                                                                                                               </span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>                 <span class="va">theta0</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>       <span class="va">double</span>]</span></code></pre></div>
 <p>Here <code>[alpha mu s]</code> correspond to the optimal variational parameters <span class="math inline">\(\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}\)</span> for the given hyper-parameters, <code>logw</code> corresponds to the variational lower bound <span class="math inline">\(F^\star\)</span> and <code>[theta0 theta sigb sige]</code> corresponds to <span class="math inline">\(\{\theta_0,\theta,\sigma_0,\sigma\}\)</span>. Please see <a href="https://www.biorxiv.org/content/biorxiv/early/2020/03/14/2020.03.13.990010/DC1/embed/media-1.pdf">Supplementary Notes</a> of <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a> for definitions.</p>
 </div>
 </div>
@@ -1679,27 +1672,27 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 <h3>Summarize RSS-NET results</h3>
 <p>The RSS-NET result files <code>${gwas}_${net}_${cis}_out_${id}.mat</code> shown above can be further summarized into both network-level and gene-level statistics as reported in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>. To facilitate summarizing RSS-NET results, we provide a generic script <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m"><code>summary_template.m</code></a>. For the present example, the RSS-NET summary is implemented by <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a>. If you need to summarize a different RSS-NET analysis, simply modify <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a> and there is no need to change <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summary_template.m"><code>summary_template.m</code></a>.</p>
 <p>For this example, simply run the following line in a Matlab console.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb21-1"><a href="#cb21-1"></a>&gt;&gt; run summarize_ibd2015_nkcell.m;</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">run</span> <span class="va">summarize_ibd2015_nkcell</span>.<span class="va">m</span><span class="op">;</span></span></code></pre></div>
 <p>Running <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/summarize_ibd2015_nkcell.m"><code>summarize_ibd2015_nkcell.m</code></a> yields two (much smaller) MAT-files: <code>${gwas}_${net}_${cis}_results_model.mat</code> that stores network-level enrichment results, and <code>${gwas}_${net}_${cis}_results_gene.mat</code> that stores locus-level association results.</p>
 <div id="gwas_net_cis_results_model.mat-network-level-enrichments" class="section level4">
 <h4>1. <code>${gwas}_${net}_${cis}_results_model.mat</code>: network-level enrichments</h4>
 <p>To assess whether a regulatory network is enriched for genetic associations with a trait, we evaluate a Bayes factor (BF) comparing the baseline model (<span class="math inline">\(M_0:\theta=0~\text{and}~\sigma^2=0\)</span>) in RSS-NET with an enrichment model.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb22-1"><a href="#cb22-1"></a>&gt;&gt; model_res = matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet&#39;</span>);</span>
-<span id="cb22-2"><a href="#cb22-2"></a>&gt;&gt; model_res</span>
-<span id="cb22-3"><a href="#cb22-3"></a>  matlab.io.MatFile</span>
-<span id="cb22-4"><a href="#cb22-4"></a>  Properties:</span>
-<span id="cb22-5"><a href="#cb22-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>    Properties.Writable: false                                                                                                                                                    </span>
-<span id="cb22-7"><a href="#cb22-7"></a>               log10_bf: [<span class="fl">1</span>x1   double]                                                                                                                                           </span>
-<span id="cb22-8"><a href="#cb22-8"></a>            log10_bf_ns: [<span class="fl">1</span>x1   double]                                                                                                                                           </span>
-<span id="cb22-9"><a href="#cb22-9"></a>            log10_bf_nt: [<span class="fl">1</span>x1   double]                                                                                                                                           </span>
-<span id="cb22-10"><a href="#cb22-10"></a>            log10_bf_ts: [<span class="fl">1</span>x1   double]                                                                                                                                           </span>
-<span id="cb22-11"><a href="#cb22-11"></a>                   logw: [<span class="fl">125</span>x1 double]                                                                                                                                           </span>
-<span id="cb22-12"><a href="#cb22-12"></a>                   sigb: [<span class="fl">125</span>x1 double]                                                                                                                                           </span>
-<span id="cb22-13"><a href="#cb22-13"></a>                   sige: [<span class="fl">125</span>x1 double]                                                                                                                                           </span>
-<span id="cb22-14"><a href="#cb22-14"></a>                  theta: [<span class="fl">125</span>x1 double]                                                                                                                                           </span>
-<span id="cb22-15"><a href="#cb22-15"></a>                 theta0: [<span class="fl">125</span>x1 double]                                                                                                                                           </span>
-<span id="cb22-16"><a href="#cb22-16"></a>                   time: [<span class="fl">125</span>x1 double]</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">model_res</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_modet&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">model_res</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span>                                                                                                                                                    </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>               <span class="va">log10_bf</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>   <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>            <span class="va">log10_bf_ns</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>   <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">log10_bf_nt</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>   <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">log10_bf_ts</span><span class="op">:</span> [<span class="fl">1</span><span class="va">x1</span>   <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                   <span class="va">logw</span><span class="op">:</span> [<span class="fl">125</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                   <span class="va">sigb</span><span class="op">:</span> [<span class="fl">125</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                   <span class="va">sige</span><span class="op">:</span> [<span class="fl">125</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                  <span class="va">theta</span><span class="op">:</span> [<span class="fl">125</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                 <span class="va">theta0</span><span class="op">:</span> [<span class="fl">125</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                           </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                   <span class="va">time</span><span class="op">:</span> [<span class="fl">125</span><span class="va">x1</span> <span class="va">double</span>]</span></code></pre></div>
 <p>Here <code>log10_bf*</code> are log 10 BFs comparing the following 4 enrichment models against <span class="math inline">\(M_0\)</span>.</p>
 <ul>
 <li><code>log10_bf</code>: <span class="math inline">\(M_1:\theta&gt;0~\text{or}~\sigma^2&gt;0\)</span>;</li>
@@ -1709,46 +1702,46 @@ wflow_publish(“rmd/ibd2015_nkcell.Rmd”)
 </ul>
 <p>Because <span class="math inline">\(M_1\)</span> is more flexible than other models, we mainly use <code>log10_bf</code> as recommended by <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>.</p>
 <p>By running this example, we reproduce the enrichment BFs of <a href="https://xiangzhu.github.io/rss-peca/ibd2015_net.html">IBD GWAS and NK cell network</a> reported in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>. The NK cell network shows strong enrichment of IBD genetic associations, which seems consistent with the role of NK cell in autoimmune diseases like IBD.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb23-1"><a href="#cb23-1"></a>&gt;&gt; load ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat</span>
-<span id="cb23-2"><a href="#cb23-2"></a>&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</span>
-<span id="cb23-3"><a href="#cb23-3"></a>   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">load</span> <span class="va">ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model</span>.<span class="va">mat</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">log10_bf</span> <span class="va">log10_bf_ns</span> <span class="va">log10_bf_nt</span> <span class="va">log10_bf_ts</span>]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></span></code></pre></div>
 <p>Let’s perform a more rigorous check of reproducibility. For the same hyper-parameter values, we compare the resulting variational lower bounds from my previous run and from the current run. Differences are numerical negligible.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb24-1"><a href="#cb24-1"></a>&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span>;               </span>
-<span id="cb24-2"><a href="#cb24-2"></a>&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/&#39;</span>;</span>
-<span id="cb24-3"><a href="#cb24-3"></a>&gt;&gt; new_path = strcat(src_path,<span class="st">&#39;rss-net/examples/ibd2015_nkcell/results/&#39;</span>);                                             </span>
-<span id="cb24-4"><a href="#cb24-4"></a>&gt;&gt; old_res = matfile(strcat(old_path,res_file));                                                               </span>
-<span id="cb24-5"><a href="#cb24-5"></a>&gt;&gt; new_res = matfile(strcat(new_path,res_file));</span>
-<span id="cb24-6"><a href="#cb24-6"></a></span>
-<span id="cb24-7"><a href="#cb24-7"></a>&gt;&gt; [min(old_res.logw - new_res.logw) median(old_res.logw - new_res.logw) max(old_res.logw - new_res.logw)]</span>
-<span id="cb24-8"><a href="#cb24-8"></a>   <span class="fl">1.0e-10</span> *</span>
-<span id="cb24-9"><a href="#cb24-9"></a>   -<span class="fl">0.0568</span>         <span class="fl">0</span>    <span class="fl">0.1592</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">res_file</span> <span class="op">=</span> <span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_model.mat&#39;</span><span class="op">;</span>               </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">old_path</span> <span class="op">=</span> <span class="ss">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/model_results/peca_encode/ibd2015/&#39;</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">new_path</span> <span class="op">=</span> <span class="va">strcat</span>(<span class="va">src_path</span><span class="op">,</span><span class="ss">&#39;rss-net/examples/ibd2015_nkcell/results/&#39;</span>)<span class="op">;</span>                                             </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">old_res</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="va">strcat</span>(<span class="va">old_path</span><span class="op">,</span><span class="va">res_file</span>))<span class="op">;</span>                                                               </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">new_res</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="va">strcat</span>(<span class="va">new_path</span><span class="op">,</span><span class="va">res_file</span>))<span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">min</span>(<span class="va">old_res</span>.<span class="va">logw</span> <span class="op">-</span> <span class="va">new_res</span>.<span class="va">logw</span>) <span class="va">median</span>(<span class="va">old_res</span>.<span class="va">logw</span> <span class="op">-</span> <span class="va">new_res</span>.<span class="va">logw</span>) <span class="va">max</span>(<span class="va">old_res</span>.<span class="va">logw</span> <span class="op">-</span> <span class="va">new_res</span>.<span class="va">logw</span>)]</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>   <span class="fl">1.0e-10</span> <span class="op">*</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span><span class="fl">0.0568</span>         <span class="fl">0</span>    <span class="fl">0.1592</span></span></code></pre></div>
 </div>
 <div id="gwas_net_cis_results_gene.mat-locus-level-associations" class="section level4">
 <h4>2. <code>${gwas}_${net}_${cis}_results_gene.mat</code>: locus-level associations</h4>
 <p>To summarize association between a locus and a trait, we compute <span class="math inline">\(P_1^{\sf net}\)</span>, the posterior probability that at least one SNP <span class="math inline">\(j\)</span> in the locus is associated with the trait (<span class="math inline">\(\beta_j\neq 0\)</span>): <span class="math display">\[
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 \]</span> As in <a href="https://doi.org/10.1101/2020.03.13.990010">Zhu et al (2020)</a>, a locus is defined as the transcribed region of a gene plus 100 kb upstream and downstream. The locus definition is provided in <code>ibd2015_gene_grch37.mat</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb25-1"><a href="#cb25-1"></a>&gt;&gt; gene_res=matfile(<span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>);</span>
-<span id="cb25-2"><a href="#cb25-2"></a>&gt;&gt; gene_res</span>
-<span id="cb25-3"><a href="#cb25-3"></a>  matlab.io.MatFile</span>
-<span id="cb25-4"><a href="#cb25-4"></a>  Properties:</span>
-<span id="cb25-5"><a href="#cb25-5"></a>      Properties.Source: <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>    Properties.Writable: false                                                                                                                                                   </span>
-<span id="cb25-7"><a href="#cb25-7"></a>                P1_gene: [<span class="fl">18334</span>x1 double]                                                                                                                                        </span>
-<span id="cb25-8"><a href="#cb25-8"></a>               gene_chr: [<span class="fl">18334</span>x1 double]                                                                                                                                        </span>
-<span id="cb25-9"><a href="#cb25-9"></a>             gene_start: [<span class="fl">18334</span>x1 double]                                                                                                                                        </span>
-<span id="cb25-10"><a href="#cb25-10"></a>              gene_stop: [<span class="fl">18334</span>x1 double]</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">gene_res</span><span class="op">=</span><span class="va">matfile</span>(<span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>)<span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">gene_res</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">matlab</span>.<span class="va">io</span>.<span class="va">MatFile</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">Properties</span><span class="op">:</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">Properties</span>.<span class="va">Source</span><span class="op">:</span> <span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">Properties</span>.<span class="va">Writable</span><span class="op">:</span> <span class="va">false</span>                                                                                                                                                   </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                <span class="va">P1_gene</span><span class="op">:</span> [<span class="fl">18334</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                        </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>               <span class="va">gene_chr</span><span class="op">:</span> [<span class="fl">18334</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                        </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>             <span class="va">gene_start</span><span class="op">:</span> [<span class="fl">18334</span><span class="va">x1</span> <span class="va">double</span>]                                                                                                                                        </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>              <span class="va">gene_stop</span><span class="op">:</span> [<span class="fl">18334</span><span class="va">x1</span> <span class="va">double</span>]</span></code></pre></div>
 <p>Here <code>P1_gene</code> corresponds to <span class="math inline">\(P_1^{\sf net}\)</span> and <code>[gene_chr gene_start gene_stop]</code> denote physical position of genes based on GRCh37.</p>
 <p>Let’s perform a reproducibility check for gene-level results. Again, my previous analysis and the current analysis yield numerically identical answers.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb26-1"><a href="#cb26-1"></a>&gt;&gt; res_file = <span class="st">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span>; </span>
-<span id="cb26-2"><a href="#cb26-2"></a>&gt;&gt; old_path = <span class="st">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/&#39;</span>; </span>
-<span id="cb26-3"><a href="#cb26-3"></a>&gt;&gt; new_path = strcat(src_path,<span class="st">&#39;rss-net/examples/ibd2015_nkcell/results/&#39;</span>);</span>
-<span id="cb26-4"><a href="#cb26-4"></a>&gt;&gt; old_res = matfile(strcat(old_path,res_file));                                                              </span>
-<span id="cb26-5"><a href="#cb26-5"></a>&gt;&gt; new_res = matfile(strcat(new_path,res_file));</span>
-<span id="cb26-6"><a href="#cb26-6"></a></span>
-<span id="cb26-7"><a href="#cb26-7"></a>&gt;&gt; [min(old_res.P1_gene - new_res.P1_gene) median(old_res.P1_gene - new_res.P1_gene) max(old_res.P1_gene - new_res.P1_gene)]                  </span>
-<span id="cb26-8"><a href="#cb26-8"></a>   <span class="fl">1.0e-15</span> *</span>
-<span id="cb26-9"><a href="#cb26-9"></a>   -<span class="fl">0.2220</span>    <span class="fl">0.0278</span>    <span class="fl">0.5551</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">res_file</span> <span class="op">=</span> <span class="ss">&#39;ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_results_gene.mat&#39;</span><span class="op">;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">old_path</span> <span class="op">=</span> <span class="ss">&#39;~/Dropbox/rss/Data/peca_human/job_camp/gwas33_net71/results/gene_results/peca_encode/ibd2015/&#39;</span><span class="op">;</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">new_path</span> <span class="op">=</span> <span class="va">strcat</span>(<span class="va">src_path</span><span class="op">,</span><span class="ss">&#39;rss-net/examples/ibd2015_nkcell/results/&#39;</span>)<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">old_res</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="va">strcat</span>(<span class="va">old_path</span><span class="op">,</span><span class="va">res_file</span>))<span class="op">;</span>                                                              </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">new_res</span> <span class="op">=</span> <span class="va">matfile</span>(<span class="va">strcat</span>(<span class="va">new_path</span><span class="op">,</span><span class="va">res_file</span>))<span class="op">;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">min</span>(<span class="va">old_res</span>.<span class="va">P1_gene</span> <span class="op">-</span> <span class="va">new_res</span>.<span class="va">P1_gene</span>) <span class="va">median</span>(<span class="va">old_res</span>.<span class="va">P1_gene</span> <span class="op">-</span> <span class="va">new_res</span>.<span class="va">P1_gene</span>) <span class="va">max</span>(<span class="va">old_res</span>.<span class="va">P1_gene</span> <span class="op">-</span> <span class="va">new_res</span>.<span class="va">P1_gene</span>)]                  </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>   <span class="fl">1.0e-15</span> <span class="op">*</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span><span class="fl">0.2220</span>    <span class="fl">0.0278</span>    <span class="fl">0.5551</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1760,11 +1753,11 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 <h2>Appendix</h2>
 <p>Careful readers may notice an optional input data file <code>ibd2015_null_seed_459_squarem_step2.mat</code> specified in <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.m"><code>ibd2015_nkcell.m</code></a> and used in <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/analysis_template.m"><code>analysis_template.m</code></a>. This file provides the <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> fitting results of IBD GWAS data. If this file is available, <a href="https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/analysis_template.m"><code>analysis_template.m</code></a> uses the optimal <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> results to initialize RSS-NET. If not, RSS-NET uses a random initialization.</p>
 <p>For this example, here are the enrichment BFs based on using the optimal <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> results to initialize RSS-NET.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb27-1"><a href="#cb27-1"></a>&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</span>
-<span id="cb27-2"><a href="#cb27-2"></a>   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">log10_bf</span> <span class="va">log10_bf_ns</span> <span class="va">log10_bf_nt</span> <span class="va">log10_bf_ts</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>   <span class="fl">35.7048</span>   <span class="fl">29.4216</span>   <span class="fl">15.1461</span>   <span class="fl">35.8986</span></span></code></pre></div>
 <p>Here are the enrichment BFs based on random initialization, which are consistent with, but smaller than previous results.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb28-1"><a href="#cb28-1"></a>&gt;&gt; [log10_bf log10_bf_ns log10_bf_nt log10_bf_ts]</span>
-<span id="cb28-2"><a href="#cb28-2"></a>   <span class="fl">32.1495</span>   <span class="fl">29.5295</span>   <span class="fl">11.0758</span>   <span class="fl">32.3432</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> [<span class="va">log10_bf</span> <span class="va">log10_bf_ns</span> <span class="va">log10_bf_nt</span> <span class="va">log10_bf_ts</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>   <span class="fl">32.1495</span>   <span class="fl">29.5295</span>   <span class="fl">11.0758</span>   <span class="fl">32.3432</span></span></code></pre></div>
 <p>Using optimal <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> results to initialize RSS-NET is not required, but highly recommended in practice, because this often yields a better fit as shown above. Please see <a href="https://stephenslab.github.io/rss/Example-5B">this tutorial</a> for more details of fitting <a href="https://doi.org/10.1038/s41467-018-06805-x">RSS-E baseline model</a> on GWAS data.</p>
 <br>
 <p>
@@ -1773,70 +1766,76 @@ P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>devtools<span class="op">::</span><span class="kw">session_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value                       
- version  R version 4.0.3 (2020-10-10)
- os       Ubuntu 20.04.1 LTS          
+ version  R version 4.1.0 (2021-05-18)
+ os       Ubuntu 20.04.2 LTS          
  system   x86_64, linux-gnu           
  ui       X11                         
  language (EN)                        
  collate  en_US.UTF-8                 
  ctype    en_US.UTF-8                 
  tz       America/New_York            
- date     2020-12-02                  
+ date     2021-06-06                  
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date       lib source        
- assertthat    0.2.1   2019-03-21 [3] CRAN (R 4.0.0)
- callr         3.5.1   2020-10-13 [1] CRAN (R 4.0.3)
- cli           2.2.0   2020-11-20 [3] CRAN (R 4.0.3)
- crayon        1.3.4   2017-09-16 [3] CRAN (R 4.0.0)
- desc          1.2.0   2018-05-01 [3] CRAN (R 4.0.0)
- devtools      2.3.2   2020-09-18 [3] CRAN (R 4.0.2)
+ bslib         0.2.5.1 2021-05-18 [3] CRAN (R 4.1.0)
+ cachem        1.0.5   2021-05-15 [3] CRAN (R 4.0.5)
+ callr         3.7.0   2021-04-20 [3] CRAN (R 4.0.5)
+ cli           2.5.0   2021-04-26 [3] CRAN (R 4.0.5)
+ crayon        1.4.1   2021-02-08 [3] CRAN (R 4.0.3)
+ desc          1.3.0   2021-03-05 [3] CRAN (R 4.0.4)
+ devtools      2.4.1   2021-05-05 [3] CRAN (R 4.0.5)
  digest        0.6.27  2020-10-24 [3] CRAN (R 4.0.3)
- ellipsis      0.3.1   2020-05-15 [3] CRAN (R 4.0.0)
+ ellipsis      0.3.2   2021-04-29 [3] CRAN (R 4.0.5)
  evaluate      0.14    2019-05-28 [3] CRAN (R 4.0.0)
- fansi         0.4.1   2020-01-08 [3] CRAN (R 4.0.0)
- fs            1.5.0   2020-07-31 [1] CRAN (R 4.0.2)
- git2r         0.27.1  2020-05-03 [3] CRAN (R 4.0.0)
+ fansi         0.5.0   2021-05-25 [3] CRAN (R 4.1.0)
+ fastmap       1.1.0   2021-01-25 [3] CRAN (R 4.0.3)
+ fs            1.5.0   2020-07-31 [3] CRAN (R 4.0.2)
+ git2r         0.28.0  2021-01-10 [1] CRAN (R 4.1.0)
  glue          1.4.2   2020-08-27 [3] CRAN (R 4.0.2)
- htmltools     0.5.0   2020-06-16 [3] CRAN (R 4.0.1)
- httpuv        1.5.4   2020-06-06 [3] CRAN (R 4.0.0)
- knitr         1.30    2020-09-22 [3] CRAN (R 4.0.2)
- later         1.1.0.1 2020-06-05 [3] CRAN (R 4.0.0)
- lifecycle     0.2.0   2020-03-06 [3] CRAN (R 4.0.0)
+ htmltools     0.5.1.1 2021-01-22 [3] CRAN (R 4.0.3)
+ httpuv        1.6.1   2021-05-07 [3] CRAN (R 4.0.5)
+ jquerylib     0.1.4   2021-04-26 [3] CRAN (R 4.0.5)
+ jsonlite      1.7.2   2020-12-09 [3] CRAN (R 4.0.3)
+ knitr         1.33    2021-04-24 [3] CRAN (R 4.0.5)
+ later         1.2.0   2021-04-23 [3] CRAN (R 4.0.5)
+ lifecycle     1.0.0   2021-02-15 [3] CRAN (R 4.0.4)
  magrittr      2.0.1   2020-11-17 [3] CRAN (R 4.0.3)
- memoise       1.1.0   2017-04-21 [3] CRAN (R 4.0.0)
- pillar        1.4.7   2020-11-20 [3] CRAN (R 4.0.3)
- pkgbuild      1.1.0   2020-07-13 [3] CRAN (R 4.0.2)
+ memoise       2.0.0   2021-01-26 [3] CRAN (R 4.0.3)
+ pillar        1.6.1   2021-05-16 [3] CRAN (R 4.0.5)
+ pkgbuild      1.2.0   2020-12-15 [3] CRAN (R 4.0.3)
  pkgconfig     2.0.3   2019-09-22 [3] CRAN (R 4.0.0)
- pkgload       1.1.0   2020-05-29 [3] CRAN (R 4.0.0)
+ pkgload       1.2.1   2021-04-06 [3] CRAN (R 4.0.5)
  prettyunits   1.1.1   2020-01-24 [3] CRAN (R 4.0.0)
- processx      3.4.4   2020-09-03 [3] CRAN (R 4.0.2)
- promises      1.1.1   2020-06-09 [3] CRAN (R 4.0.1)
- ps            1.4.0   2020-10-07 [3] CRAN (R 4.0.2)
+ processx      3.5.2   2021-04-30 [3] CRAN (R 4.0.5)
+ promises      1.2.0.1 2021-02-11 [3] CRAN (R 4.0.3)
+ ps            1.6.0   2021-02-28 [3] CRAN (R 4.0.4)
+ purrr         0.3.4   2020-04-17 [3] CRAN (R 4.0.0)
  R6            2.5.0   2020-10-28 [3] CRAN (R 4.0.3)
- Rcpp          1.0.5   2020-07-06 [3] CRAN (R 4.0.2)
- remotes       2.2.0   2020-07-21 [3] CRAN (R 4.0.2)
- rlang         0.4.9   2020-11-26 [3] CRAN (R 4.0.3)
- rmarkdown     2.5     2020-10-21 [1] CRAN (R 4.0.3)
+ Rcpp          1.0.6   2021-01-15 [3] CRAN (R 4.0.5)
+ remotes       2.4.0   2021-06-02 [3] CRAN (R 4.1.0)
+ rlang         0.4.11  2021-04-30 [3] CRAN (R 4.0.5)
+ rmarkdown     2.8     2021-05-07 [3] CRAN (R 4.0.5)
  rprojroot     2.0.2   2020-11-15 [3] CRAN (R 4.0.3)
- rstudioapi    0.13    2020-11-12 [3] CRAN (R 4.0.3)
+ sass          0.4.0   2021-05-12 [3] CRAN (R 4.0.5)
  sessioninfo   1.1.1   2018-11-05 [3] CRAN (R 4.0.0)
- stringi       1.5.3   2020-09-09 [3] CRAN (R 4.0.2)
+ stringi       1.6.2   2021-05-17 [3] CRAN (R 4.0.5)
  stringr       1.4.0   2019-02-10 [3] CRAN (R 4.0.0)
- testthat      3.0.0   2020-10-31 [3] CRAN (R 4.0.3)
- tibble        3.0.4   2020-10-12 [3] CRAN (R 4.0.3)
- usethis       1.6.3   2020-09-17 [3] CRAN (R 4.0.2)
- vctrs         0.3.5   2020-11-17 [3] CRAN (R 4.0.3)
+ testthat      3.0.2   2021-02-14 [3] CRAN (R 4.0.4)
+ tibble        3.1.2   2021-05-16 [3] CRAN (R 4.0.5)
+ usethis       2.0.1   2021-02-10 [3] CRAN (R 4.0.3)
+ utf8          1.2.1   2021-03-12 [3] CRAN (R 4.0.4)
+ vctrs         0.3.8   2021-04-29 [3] CRAN (R 4.0.5)
  whisker       0.4     2019-08-28 [3] CRAN (R 4.0.0)
- withr         2.3.0   2020-09-22 [3] CRAN (R 4.0.2)
- workflowr   * 1.6.2   2020-04-30 [1] CRAN (R 4.0.0)
- xfun          0.19    2020-10-30 [3] CRAN (R 4.0.3)
+ withr         2.4.2   2021-04-18 [3] CRAN (R 4.0.5)
+ workflowr   * 1.6.2   2020-04-30 [1] CRAN (R 4.1.0)
+ xfun          0.23    2021-05-15 [3] CRAN (R 4.0.5)
  yaml          2.2.1   2020-02-01 [3] CRAN (R 4.0.0)
 
-[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/4.0
+[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/4.1
 [2] /usr/local/lib/R/site-library
 [3] /usr/lib/R/site-library
 [4] /usr/lib/R/library</code></pre>
@@ -1855,6 +1854,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 </div>
@@ -1884,7 +1885,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
