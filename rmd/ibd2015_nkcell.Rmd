@@ -560,7 +560,7 @@ reported in [Zhu et al (2021)][] are essentially 684 modified reruns
 of the example above (with different input GWAS and/or network data,
 and different hyper-parameter grids).
 Our full analysis results are publicly available at
-<https://xiangzhu.github.io/rss-peca>.
+<https://suwonglab.github.io/rss-net/results.html>.
 
 ## Appendix
 
@@ -591,6 +591,6 @@ which are consistent with, but smaller than previous results.
 Using optimal [RSS-E baseline model][] results to initialize RSS-NET
 is not required, but highly recommended in practice,
 because this often yields a better fit as shown above.
-Please see [this tutorial](https://stephenslab.github.io/rss/Example-5B)
+Please see [this tutorial](https://stephenslab.github.io/rss/example_5b.html)
 for more details of fitting [RSS-E baseline model][] on GWAS data.
 
