@@ -50,7 +50,7 @@ and/or output data, please modify file paths in the given scripts accordingly.
 
 All data files required to run this example are freely available at Zenodo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3700214.svg)][zenodo-wtcccbcell].
-Please contact me (`xiangzhu[at]stanford.edu`)
+Please contact me (`xiangzhu[at]psu.edu`)
 if you have any trouble accessing these files.
 After a complete download, you should see the following files.
 
