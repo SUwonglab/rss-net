@@ -10,8 +10,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-[(Zhu et al, 2020)]: https://doi.org/10.1101/2020.03.13.990010
-[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010
+[(Zhu et al, 2021)]: https://doi.org/10.1038/s41467-021-22588-0
+[Zhu et al (2021)]: https://doi.org/10.1038/s41467-021-22588-0
 
 Welcome to RSS-NET wiki!
 
@@ -24,19 +24,19 @@ and/or send an email to `xiangzhu[at]psu.edu`.
 The RSS-NET methodology and its application to 38 gene regulatory networks
 and 18 human complex traits are described in the following article:
 
-> Xiang Zhu, Zhana Duren, Wing Hung Wong (2020).
+> Zhu, X., Duren, Z. & Wong, W.H.
 > Modeling regulatory network topology improves genome-wide analyses of complex human traits.
-> *bioRxiv*. <https://doi.org/10.1101/2020.03.13.990010>.
+> *Nat Commun* 12, 2851 (2021). <https://doi.org/10.1038/s41467-021-22588-0>
 
 All 38 gene regulatory networks used in this study are freely available at
 [`suwonglab/rss-net/data`](https://github.com/SUwonglab/rss-net/tree/master/data).
 
 The full RSS-NET analysis results of 38 networks and 18 traits
-are freely available at the [Results Page](results.html).
+are freely available at the [`xiangzhu/rss-net-results`](results.html).
 
 If you find the analysis results, the pre-processed network files,
 the statistical methods, and/or the open-source software useful for your work,
-please kindly cite the research article listed above [(Zhu et al, 2020)][].
+please kindly cite the research article listed above [(Zhu et al, 2021)][].
 
 ## <img src="https://static.thenounproject.com/png/506997-200.png" width="48"/> [Installation](setup.html)
 
@@ -51,7 +51,7 @@ This page gives the following end-to-end examples of using RSS-NET methods and s
 2. RSS-NET analysis of [a real-world dataset](ibd2015_nkcell.html)
 
 These examples are based on simulation studies
-and data analyses reported in [Zhu et al (2020)][]. 
+and data analyses reported in [Zhu et al (2021)][]. 
 
 ## <img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> [Functions](function.html)
 
