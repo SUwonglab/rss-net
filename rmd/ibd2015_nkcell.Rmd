@@ -8,8 +8,8 @@ editor_options:
 ---
 
 [zenodo-ibd2015nkcell]: https://doi.org/10.5281/zenodo.3698240
-[Zhu et al (2020)]: https://doi.org/10.1101/2020.03.13.990010
-[Supplementary Notes]: https://www.biorxiv.org/content/biorxiv/early/2020/03/14/2020.03.13.990010/DC1/embed/media-1.pdf
+[Zhu et al (2021)]: https://doi.org/10.1038/s41467-021-22588-0
+[Supplementary Information]: https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-021-22588-0/MediaObjects/41467_2021_22588_MOESM1_ESM.pdf
 [`ibd2015_nkcell/`]: https://github.com/SUwonglab/rss-net/tree/master/examples/ibd2015_nkcell
 [`analysis_template.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/analysis_template.m
 [`ibd2015_nkcell.m`]: https://github.com/SUwonglab/rss-net/blob/master/examples/ibd2015_nkcell/ibd2015_nkcell.m
@@ -25,7 +25,7 @@ inflammatory bowel disease (IBD) GWAS summary statistics
 [(Liu et al, 2015)](https://doi.org/10.1038/ng.3359)
 and a gene regulatory network inferred for natural killer (NK) cells
 [(ENCODE Project Consortium, 2012)](https://doi.org/10.1038/nature11247).
-This example illustrates the actual data analyses performed in [Zhu et al (2020)][].
+This example illustrates the actual data analyses performed in [Zhu et al (2021)][].
 
 To reproduce results of this example,
 please use scripts in the directory [`ibd2015_nkcell/`][],
@@ -415,14 +415,14 @@ Here `[alpha mu s]` correspond to the optimal variational parameters
 $\{\alpha_j^\star,\mu_j^\star,(\tau_j^\star)^2\}$ for the given hyper-parameters,
 `logw` corresponds to the variational lower bound $F^\star$ and
 `[theta0 theta sigb sige]` corresponds to $\{\theta_0,\theta,\sigma_0,\sigma\}$.
-Please see [Supplementary Notes][] of [Zhu et al (2020)][] for definitions. 
+Please see [Supplementary Information][] of [Zhu et al (2021)][] for definitions. 
 
 ### Summarize RSS-NET results
 
 The RSS-NET result files `${gwas}_${net}_${cis}_out_${id}.mat`
 shown above can be further summarized into
 both network-level and gene-level statistics
-as reported in [Zhu et al (2020)][].
+as reported in [Zhu et al (2021)][].
 To facilitate summarizing RSS-NET results,
 we provide a generic script [`summary_template.m`][].
 For the present example, the RSS-NET summary is
@@ -477,11 +477,11 @@ the following 4 enrichment models against $M_0$.
 - `log10_bf_ts`: $M_{13}:\theta>0~\text{and}~\sigma^2>0$.
 
 Because $M_1$ is more flexible than other models,
-we mainly use `log10_bf` as recommended by [Zhu et al (2020)][].
+we mainly use `log10_bf` as recommended by [Zhu et al (2021)][].
 
 By running this example, we reproduce the enrichment BFs of
 [IBD GWAS and NK cell network](https://xiangzhu.github.io/rss-peca/ibd2015_net.html)
-reported in [Zhu et al (2020)][].
+reported in [Zhu et al (2021)][].
 The NK cell network shows strong enrichment of IBD genetic associations,
 which seems consistent with the role of NK cell in autoimmune diseases like IBD.
 
@@ -516,7 +516,7 @@ one SNP $j$ in the locus is associated with the trait ($\beta_j\neq 0$):
 $$
 P_1^{\sf net}=1-\Pr(\beta_j=0,~\forall j\in\text{locus}~|~\text{data},M_1).
 $$
-As in [Zhu et al (2020)][], a locus is defined as the transcribed region
+As in [Zhu et al (2021)][], a locus is defined as the transcribed region
 of a gene plus 100 kb upstream and downstream.
 The locus definition is provided in `ibd2015_gene_grch37.mat`.
 
@@ -556,7 +556,7 @@ numerically identical answers.
 ## More examples
 
 The RSS-NET analyses of 18 complex traits and 38 gene regulatory networks
-reported in [Zhu et al (2020)][] are essentially 684 modified reruns
+reported in [Zhu et al (2021)][] are essentially 684 modified reruns
 of the example above (with different input GWAS and/or network data,
 and different hyper-parameter grids).
 Our full analysis results are publicly available at
