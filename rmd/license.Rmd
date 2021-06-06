@@ -7,20 +7,17 @@ editor_options:
   chunk_output_type: console
 ---
 
-This wiki and its [GitHub repository](https://github.com/SUwonglab/rss-net)
-are currently licensed under a Creative Commons
+The RSS-NET wiki is currently licensed under a Creative Commons
 Attribution-NonCommercial-NoDerivatives 4.0 International License
 ([CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)).
-A different CC License will be used as soon as
-the following research article becomes a peer-reviewed publication.
 
-If you use any material from this wiki or its
+If you use any material from RSS-NET wiki or its associated
 [GitHub repository](https://github.com/SUwonglab/rss-net),
 please cite the following research article:
 
-> Xiang Zhu, Zhana Duren, Wing Hung Wong (2020).
+> Zhu, X., Duren, Z. & Wong, W.H.
 > Modeling regulatory network topology improves genome-wide analyses of complex human traits.
-> *bioRxiv*. <https://doi.org/10.1101/2020.03.13.990010>.
+> *Nat Commun* 12, 2851 (2021). <https://doi.org/10.1038/s41467-021-22588-0>
 
 [RSS-NET source codes](https://github.com/SUwonglab/rss-net/tree/master/src)
 are licensed under the [MIT License](https://github.com/SUwonglab/rss-net/blob/master/LICENSE).
