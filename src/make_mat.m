@@ -81,6 +81,14 @@ function snp2gene_mat = make_snp2gene_mat(snp2gene_file,snp2gene_par,snp2gene_op
     % Use `snp2gene_opt` to control the window radius (unit: base pair).
     case 'dist_bin'
       snp2gene_out = double(double(snp2gene.val) <= snp2gene_opt);
+
+    % Use pre-determined SNP-gene scores stored in `snp2gene.val`.
+    case 'asis'
+      if isscalar(snp2gene.val)
+        snp2gene_out = double(snp2gene.val) * ones(length(snp2gene.rowid), 1);
+      else
+        snp2gene_out = double(snp2gene.val);
+      end
  
     otherwise
       error('Invalid SNP-gene proximity score mode ...');
