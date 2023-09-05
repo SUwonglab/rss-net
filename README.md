@@ -1,8 +1,10 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4553387.svg)](https://doi.org/10.5281/zenodo.4553387)
+
 # RSS-NET: Regression with Summary Statistics exploiting NEtwork Topology
 
 The present repository contains source codes and documentations of RSS-NET,
 a novel Bayesian framework for simultaneous enrichment and prioritization
-analysis of complex trait GWAS and gene regulatory network. 
+analysis of complex trait GWAS and gene regulatory networks. 
 
 ## Getting started
 
@@ -20,6 +22,21 @@ please kindly cite the following research article:
 > Zhu, X., Duren, Z. & Wong, W.H.
 > Modeling regulatory network topology improves genome-wide analyses of complex human traits.
 > *Nat Commun* 12, 2851 (2021). <https://doi.org/10.1038/s41467-021-22588-0>
+
+We originally developed RSS-NET to integrate GWAS with gene regulatory networks,
+as implemented in [`rss_net.m`](src/rss_net.m).
+We recently extended RSS-NET to integrate GWAS with other genomic annotations such as
+[sequence-conserved enhancers](https://github.com/SUwonglab/m2h-ele),
+and this extension is available as [`rss_gset.m`](src/rss_gset.m).
+If you find this extension useful for your work,
+please kindly cite the following research article,
+in addition to the original [RSS-NET publication](https://doi.org/10.1038/s41467-021-22588-0).
+
+> Zhu, X., Ma, S. & Wong, W.H.
+> Genetic effects of sequence-conserved enhancer-like elements on human complex traits.
+> *bioRxiv* (2022) <https://doi.org/10.1101/2022.08.19.504589>.
+
+Correspondence should be addressed to X.Z. (`xiangzhu[at]psu.edu`) and W.H.W (`whwong[at]stanford.edu`).
 
 ## Support
 
