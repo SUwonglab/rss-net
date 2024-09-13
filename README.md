@@ -36,7 +36,7 @@ in addition to the original [RSS-NET publication](https://doi.org/10.1038/s41467
 > Genetic effects of sequence-conserved enhancer-like elements on human complex traits.
 > *Genome Biol* 25, 1 (2024). <https://doi.org/10.1186/s13059-023-03142-1>
 
-Correspondence should be addressed to X.Z. (`xiangzhu[at]psu.edu`) and W.H.W (`whwong[at]stanford.edu`).
+Correspondence should be addressed to X.Z. and W.H.W.
 
 ## Support
 
@@ -46,11 +46,9 @@ for tutorials and documentations.
 2. Create a new [GitHub issue](https://github.com/SUwonglab/rss-net/issues)
 to report bugs and/or request features.
 
-3. Send an email to `xiangzhu[at]psu.edu`.
-
 ## Contact
 
-[Xiang Zhu](https://github.com/xiangzhu)<br>
+[Xiang Zhu, Ph.D.](https://github.com/xiangzhu)<br>
 [Wing Hung Wong Lab](https://statistics.stanford.edu/people/wing-hung-wong)<br>
 [Department of Statistics](https://statistics.stanford.edu/)<br>
 [Stanford University](https://www.stanford.edu/)
