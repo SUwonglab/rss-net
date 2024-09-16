@@ -22,6 +22,6 @@ output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
-    theme: sandstone
+    theme: flatly
     highlight: pygments
     anchor_sections: false
