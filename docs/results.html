@@ -15,8 +15,8 @@
 
 <title>Full results of Zhu et al (2021)</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -32,10 +32,10 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
@@ -55,6 +55,7 @@ div.section {
     </style>
 
 
+
 <style type="text/css">
   code {
     white-space: pre;
@@ -65,7 +66,7 @@ div.section {
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -102,7 +103,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +116,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -136,13 +137,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -177,6 +185,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -234,11 +245,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -267,8 +282,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -276,16 +291,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -329,7 +337,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -382,7 +390,9 @@ $(document).ready(function () {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -391,7 +401,9 @@ $(document).ready(function () {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -400,17 +412,27 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-06
+<strong>Last updated:</strong> 2024-09-16
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>rss-net/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>rss-net/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -419,104 +441,149 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
 <div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190823code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20190823)</code> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190823code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20190823)</code> </a>
 </p>
 </div>
-<div id="strongSeedstrongcodesetseed20190823code" class="panel-collapse collapse">
+<div id="strongSeedstrongcodesetseed20190823code"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>The command <code>set.seed(20190823)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+<p>The command <code>set.seed(20190823)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
 </p>
 </div>
-<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
 </p>
 </div>
 <div id="strongCachestrongnone" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
 </p>
 </div>
 <div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebf80718391dd13a6cf2b263fe92503c01fec9103targetblankbf80718a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/bf80718391dd13a6cf2b263fe92503c01fec9103" target="_blank">bf80718</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc51e724452a51d18ba65b38a1c53e0de3ffbecetargetblankbc51e72a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/SUwonglab/rss-net/tree/bc51e724452a51d18ba65b38a1c53e0de3ffbece" target="_blank">bc51e72</a>
+</a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebf80718391dd13a6cf2b263fe92503c01fec9103targetblankbf80718a" class="panel-collapse collapse">
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc51e724452a51d18ba65b38a1c53e0de3ffbecetargetblankbc51e72a"
+class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/bf80718391dd13a6cf2b263fe92503c01fec9103" target="_blank">bf80718</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version
+<a href="https://github.com/SUwonglab/rss-net/tree/bc51e724452a51d18ba65b38a1c53e0de3ffbece" target="_blank">bc51e72</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
 </p>
 <p>
-Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
 </p>
 <pre><code>
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
-    Ignored:    examples/ibd2015_nkcell/randinit_results/
-    Ignored:    examples/ibd2015_nkcell/results/
-    Ignored:    examples/wtccc_bcell/results/
 
 </code></pre>
 <p>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
 </p>
 </div>
 </div>
@@ -527,7 +594,12 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>rmd/results.Rmd</code>) and HTML (<code>docs/results.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>rmd/results.Rmd</code>) and HTML
+(<code>docs/results.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -553,6 +625,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/313481e30c369f794e7a4b64cc32bb65ce2b0b8b/docs/results.html" target="_blank">313481e</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2021-06-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -565,7 +654,7 @@ xiangzhu
 2021-06-06
 </td>
 <td>
-wflow_publish(“rmd/results.Rmd”)
+wflow_publish("rmd/results.Rmd")
 </td>
 </tr>
 <tr>
@@ -633,7 +722,7 @@ xiangzhu
 2020-12-02
 </td>
 <td>
-wflow_publish(“rmd/results.Rmd”)
+wflow_publish("rmd/results.Rmd")
 </td>
 </tr>
 <tr>
@@ -667,7 +756,7 @@ xiangzhu
 2020-11-30
 </td>
 <td>
-wflow_publish(“rmd/results.Rmd”)
+wflow_publish("rmd/results.Rmd")
 </td>
 </tr>
 <tr>
@@ -701,7 +790,7 @@ xiangzhu
 2020-11-30
 </td>
 <td>
-wflow_publish(“rmd/results.Rmd”)
+wflow_publish("rmd/results.Rmd")
 </td>
 </tr>
 </tbody>
@@ -711,13 +800,41 @@ wflow_publish(“rmd/results.Rmd”)
 </div>
 </div>
 </div>
-<p>This page provides the full RSS-NET analysis results of 38 gene regulatory networks and 18 human complex traits described in <a href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et al (2021)</a>.</p>
+<p>This page provides the full RSS-NET analysis results of 38 gene
+regulatory networks and 18 human complex traits described in <a
+href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et al
+(2021)</a>.</p>
 <div id="main-results" class="section level2">
 <h2>Main results</h2>
-<p>For each phenotype below, please click <img src="https://static.thenounproject.com/png/1088173-200.png" width="18"/> to view network enrichment results, click <img src="https://static.thenounproject.com/png/1331179-200.png" width="18"/> to view gene prioritization results, and click <img src="https://static.thenounproject.com/png/426445-200.png" width="18"/> to view gene cross-reference results. Please note that loading gene prioritization results may take a while because of the large number of genes displayed.</p>
-<p>The network enrichment results (<img src="https://static.thenounproject.com/png/1088173-200.png" width="18"/>) of each phenotype consist of RSS-NET enrichment Bayes factors of <a href="https://github.com/SUwonglab/rss-net/tree/master/data">38 inferred gene regulatory networks</a> and 1 near-gene control network for the given trait, and enrichment <span class="math inline">\(P\)</span>-values of LDSC and Pascal based on the same networks and GWAS data.</p>
-<p>The gene prioritization results (<img src="https://static.thenounproject.com/png/1331179-200.png" width="18"/>) of each phenotype consist of RSS-NET posterior probabilities of association (<span class="math inline">\(P_1\)</span>) for all network genes under the baseline (<span class="math inline">\(M_0\)</span>) and enrichment (<span class="math inline">\(M_1\)</span>) models for the given trait.</p>
-<p>The gene cross-reference results (<img src="https://static.thenounproject.com/png/426445-200.png" width="18"/>) of each phenotype consist of external information from Therapeutic Target Database (TTD), Mouse Genome Informatics (MGI) and Online Mendelian Inheritance in Man (OMIM).</p>
+<p>For each phenotype below, please click
+<img src="https://static.thenounproject.com/png/1088173-200.png" width="18"/>
+to view network enrichment results, click
+<img src="https://static.thenounproject.com/png/1331179-200.png" width="18"/>
+to view gene prioritization results, and click
+<img src="https://static.thenounproject.com/png/426445-200.png" width="18"/>
+to view gene cross-reference results. Please note that loading gene
+prioritization results may take a while because of the large number of
+genes displayed.</p>
+<p>The network enrichment results
+(<img src="https://static.thenounproject.com/png/1088173-200.png" width="18"/>)
+of each phenotype consist of RSS-NET enrichment Bayes factors of <a
+href="https://github.com/SUwonglab/rss-net/tree/master/data">38 inferred
+gene regulatory networks</a> and 1 near-gene control network for the
+given trait, and enrichment <span
+class="math inline">\(P\)</span>-values of LDSC and Pascal based on the
+same networks and GWAS data.</p>
+<p>The gene prioritization results
+(<img src="https://static.thenounproject.com/png/1331179-200.png" width="18"/>)
+of each phenotype consist of RSS-NET posterior probabilities of
+association (<span class="math inline">\(P_1\)</span>) for all network
+genes under the baseline (<span class="math inline">\(M_0\)</span>) and
+enrichment (<span class="math inline">\(M_1\)</span>) models for the
+given trait.</p>
+<p>The gene cross-reference results
+(<img src="https://static.thenounproject.com/png/426445-200.png" width="18"/>)
+of each phenotype consist of external information from Therapeutic
+Target Database (TTD), Mouse Genome Informatics (MGI) and Online
+Mendelian Inheritance in Man (OMIM).</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -741,10 +858,12 @@ Cross reference
 Adult height (Wood et al. 2014)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/height2014_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/height2014_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/height2014_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/height2014_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
 N/A
@@ -755,13 +874,16 @@ N/A
 Body mass index (Locke et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/bmi2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/bmi2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/bmi2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/bmi2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/bmi2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/bmi2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -769,13 +891,16 @@ Body mass index (Locke et al. 2015)
 Waist-to-hip ratio (Shungin et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/waist2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/waist2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/waist2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/waist2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/waist2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/waist2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -783,13 +908,16 @@ Waist-to-hip ratio (Shungin et al. 2015)
 Breast cancer (Michailidou et al. 2013)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/gameon2012_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/gameon2012_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/gameon2012_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/gameon2012_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/gameon2012_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/gameon2012_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -797,13 +925,16 @@ Breast cancer (Michailidou et al. 2013)
 Rheumatoid arthritis (Okada et al. 2014)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ra2014_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ra2014_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ra2014_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ra2014_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ra2014_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ra2014_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -811,10 +942,12 @@ Rheumatoid arthritis (Okada et al. 2014)
 Crohn’s disease (Liu et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/cd2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/cd2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/cd2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/cd2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
 N/A
@@ -825,13 +958,16 @@ N/A
 Inflammatory bowel disease (Liu et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ibd2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ibd2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ibd2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ibd2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ibd2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ibd2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -839,13 +975,16 @@ Inflammatory bowel disease (Liu et al. 2015)
 Ulcerative colitis (Liu et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/uc2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/uc2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/uc2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/uc2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/uc2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/uc2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -853,13 +992,16 @@ Ulcerative colitis (Liu et al. 2015)
 High-density lipoprotein (Teslovich et al. 2010)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/hdl2010_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/hdl2010_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/hdl2010_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/hdl2010_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/hdl2010_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/hdl2010_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -867,13 +1009,16 @@ High-density lipoprotein (Teslovich et al. 2010)
 Low-density lipoprotein (Teslovich et al. 2010)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ldl2010_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ldl2010_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ldl2010_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ldl2010_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/ldl2010_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/ldl2010_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -881,13 +1026,16 @@ Low-density lipoprotein (Teslovich et al. 2010)
 Type 2 diabetes (Morris et al. 2012)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/t2d2012_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/t2d2012_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/t2d2012_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/t2d2012_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/t2d2012_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/t2d2012_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -895,13 +1043,16 @@ Type 2 diabetes (Morris et al. 2012)
 Heart rate (den Hoed et al. 2013)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/hr2013_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/hr2013_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/hr2013_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/hr2013_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/hr2013_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/hr2013_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -909,13 +1060,16 @@ Heart rate (den Hoed et al. 2013)
 Coronary artery disease (Nikpay et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/cad2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/cad2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/cad2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/cad2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/cad2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/cad2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -923,13 +1077,16 @@ Coronary artery disease (Nikpay et al. 2015)
 Myocardial infarction (Nikpay et al. 2015)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/mi2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/mi2015_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/mi2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/mi2015_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/mi2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/mi2015_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -937,13 +1094,16 @@ Myocardial infarction (Nikpay et al. 2015)
 Atrial fibrillation (Christophersen et al. 2017)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/af2017_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/af2017_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/af2017_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/af2017_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/af2017_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/af2017_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -951,13 +1111,16 @@ Atrial fibrillation (Christophersen et al. 2017)
 Alzheimer’s disease (Lambert et al. 2013)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/load2013_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/load2013_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/load2013_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/load2013_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/load2013_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/load2013_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -965,13 +1128,16 @@ Alzheimer’s disease (Lambert et al. 2013)
 Schizophrenia (Ripke et al. 2014)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/scz2014_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/scz2014_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/scz2014_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/scz2014_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/scz2014_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/scz2014_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 <tr>
@@ -979,13 +1145,16 @@ Schizophrenia (Ripke et al. 2014)
 Neuroticism (Okbay et al. 2016)
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/neu2016_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/neu2016_net.html"><img src="https://static.thenounproject.com/png/1088173-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/neu2016_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/neu2016_gene.html"><img src="https://static.thenounproject.com/png/1331179-200.png" width="28"/></a>
 </td>
 <td style="text-align:right;">
-<a href="https://xiangzhu.github.io/rss-net-results/neu2016_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
+<a
+href="https://xiangzhu.github.io/rss-net-results/neu2016_xref.html"><img src="https://static.thenounproject.com/png/426445-200.png" width="28"/></a>
 </td>
 </tr>
 </tbody>
@@ -993,98 +1162,111 @@ Neuroticism (Okbay et al. 2016)
 </div>
 <div id="additional-results" class="section level2">
 <h2>Additional results</h2>
-<p>The following pages provide numerical values to reproduce Supplementary Figures 13 and 14 of <a href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et al (2021)</a>.</p>
+<p>The following pages provide numerical values to reproduce
+Supplementary Figures 13 and 14 of <a
+href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et al
+(2021)</a>.</p>
 <ul>
-<li><p><a href="https://xiangzhu.github.io/rss-net-results/ne_suppfig.html">Numerical values for Supplementary Figure 13</a></p></li>
-<li><p><a href="https://xiangzhu.github.io/rss-net-results/rc_suppfig.html">Numerical values for Supplementary Figure 14</a></p></li>
+<li><p><a
+href="https://xiangzhu.github.io/rss-net-results/ne_suppfig.html">Numerical
+values for Supplementary Figure 13</a></p></li>
+<li><p><a
+href="https://xiangzhu.github.io/rss-net-results/rc_suppfig.html">Numerical
+values for Supplementary Figure 14</a></p></li>
 </ul>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
-<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
- setting  value                       
- version  R version 4.1.0 (2021-05-18)
- os       Ubuntu 20.04.2 LTS          
- system   x86_64, linux-gnu           
- ui       X11                         
- language (EN)                        
- collate  en_US.UTF-8                 
- ctype    en_US.UTF-8                 
- tz       America/New_York            
- date     2021-06-06                  
+ setting  value
+ version  R version 4.4.1 (2024-06-14)
+ os       macOS Sonoma 14.6.1
+ system   aarch64, darwin20
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       America/Los_Angeles
+ date     2024-09-16
+ pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
- package     * version date       lib source        
- bslib         0.2.5.1 2021-05-18 [3] CRAN (R 4.1.0)
- cachem        1.0.5   2021-05-15 [3] CRAN (R 4.0.5)
- callr         3.7.0   2021-04-20 [3] CRAN (R 4.0.5)
- cli           2.5.0   2021-04-26 [3] CRAN (R 4.0.5)
- crayon        1.4.1   2021-02-08 [3] CRAN (R 4.0.3)
- desc          1.3.0   2021-03-05 [3] CRAN (R 4.0.4)
- devtools      2.4.1   2021-05-05 [3] CRAN (R 4.0.5)
- digest        0.6.27  2020-10-24 [3] CRAN (R 4.0.3)
- ellipsis      0.3.2   2021-04-29 [3] CRAN (R 4.0.5)
- evaluate      0.14    2019-05-28 [3] CRAN (R 4.0.0)
- fansi         0.5.0   2021-05-25 [3] CRAN (R 4.1.0)
- fastmap       1.1.0   2021-01-25 [3] CRAN (R 4.0.3)
- fs            1.5.0   2020-07-31 [3] CRAN (R 4.0.2)
- git2r         0.28.0  2021-01-10 [1] CRAN (R 4.1.0)
- glue          1.4.2   2020-08-27 [3] CRAN (R 4.0.2)
- htmltools     0.5.1.1 2021-01-22 [3] CRAN (R 4.0.3)
- httpuv        1.6.1   2021-05-07 [3] CRAN (R 4.0.5)
- jquerylib     0.1.4   2021-04-26 [3] CRAN (R 4.0.5)
- jsonlite      1.7.2   2020-12-09 [3] CRAN (R 4.0.3)
- knitr         1.33    2021-04-24 [3] CRAN (R 4.0.5)
- later         1.2.0   2021-04-23 [3] CRAN (R 4.0.5)
- lifecycle     1.0.0   2021-02-15 [3] CRAN (R 4.0.4)
- magrittr      2.0.1   2020-11-17 [3] CRAN (R 4.0.3)
- memoise       2.0.0   2021-01-26 [3] CRAN (R 4.0.3)
- pillar        1.6.1   2021-05-16 [3] CRAN (R 4.0.5)
- pkgbuild      1.2.0   2020-12-15 [3] CRAN (R 4.0.3)
- pkgconfig     2.0.3   2019-09-22 [3] CRAN (R 4.0.0)
- pkgload       1.2.1   2021-04-06 [3] CRAN (R 4.0.5)
- prettyunits   1.1.1   2020-01-24 [3] CRAN (R 4.0.0)
- processx      3.5.2   2021-04-30 [3] CRAN (R 4.0.5)
- promises      1.2.0.1 2021-02-11 [3] CRAN (R 4.0.3)
- ps            1.6.0   2021-02-28 [3] CRAN (R 4.0.4)
- purrr         0.3.4   2020-04-17 [3] CRAN (R 4.0.0)
- R6            2.5.0   2020-10-28 [3] CRAN (R 4.0.3)
- Rcpp          1.0.6   2021-01-15 [3] CRAN (R 4.0.5)
- remotes       2.4.0   2021-06-02 [3] CRAN (R 4.1.0)
- rlang         0.4.11  2021-04-30 [3] CRAN (R 4.0.5)
- rmarkdown     2.8     2021-05-07 [3] CRAN (R 4.0.5)
- rprojroot     2.0.2   2020-11-15 [3] CRAN (R 4.0.3)
- sass          0.4.0   2021-05-12 [3] CRAN (R 4.0.5)
- sessioninfo   1.1.1   2018-11-05 [3] CRAN (R 4.0.0)
- stringi       1.6.2   2021-05-17 [3] CRAN (R 4.0.5)
- stringr       1.4.0   2019-02-10 [3] CRAN (R 4.0.0)
- testthat      3.0.2   2021-02-14 [3] CRAN (R 4.0.4)
- tibble        3.1.2   2021-05-16 [3] CRAN (R 4.0.5)
- usethis       2.0.1   2021-02-10 [3] CRAN (R 4.0.3)
- utf8          1.2.1   2021-03-12 [3] CRAN (R 4.0.4)
- vctrs         0.3.8   2021-04-29 [3] CRAN (R 4.0.5)
- whisker       0.4     2019-08-28 [3] CRAN (R 4.0.0)
- withr         2.4.2   2021-04-18 [3] CRAN (R 4.0.5)
- workflowr   * 1.6.2   2020-04-30 [1] CRAN (R 4.1.0)
- xfun          0.23    2021-05-15 [3] CRAN (R 4.0.5)
- yaml          2.2.1   2020-02-01 [3] CRAN (R 4.0.0)
+ package     * version    date (UTC) lib source
+ bslib         0.8.0      2024-07-29 [1] CRAN (R 4.4.0)
+ cachem        1.1.0      2024-05-16 [1] CRAN (R 4.4.0)
+ callr         3.7.6      2024-03-25 [1] CRAN (R 4.4.0)
+ cli           3.6.3      2024-06-21 [1] CRAN (R 4.4.0)
+ devtools      2.4.5      2022-10-11 [1] CRAN (R 4.4.0)
+ digest        0.6.37     2024-08-19 [1] CRAN (R 4.4.1)
+ ellipsis      0.3.2      2021-04-29 [1] CRAN (R 4.4.0)
+ evaluate      0.24.0     2024-06-10 [1] CRAN (R 4.4.0)
+ fansi         1.0.6      2023-12-08 [1] CRAN (R 4.4.0)
+ fastmap       1.2.0      2024-05-15 [1] CRAN (R 4.4.0)
+ fs            1.6.4      2024-04-25 [1] CRAN (R 4.4.0)
+ getPass       0.2-4      2023-12-10 [1] CRAN (R 4.4.0)
+ git2r         0.33.0     2023-11-26 [1] CRAN (R 4.4.0)
+ glue          1.7.0      2024-01-09 [1] CRAN (R 4.4.0)
+ htmltools     0.5.8.1    2024-04-04 [1] CRAN (R 4.4.0)
+ htmlwidgets   1.6.4      2023-12-06 [1] CRAN (R 4.4.0)
+ httpuv        1.6.15     2024-03-26 [1] CRAN (R 4.4.0)
+ httr          1.4.7      2023-08-15 [1] CRAN (R 4.4.0)
+ jquerylib     0.1.4      2021-04-26 [1] CRAN (R 4.4.0)
+ jsonlite      1.8.8      2023-12-04 [1] CRAN (R 4.4.0)
+ knitr         1.48       2024-07-07 [1] CRAN (R 4.4.0)
+ later         1.3.2      2023-12-06 [1] CRAN (R 4.4.0)
+ lifecycle     1.0.4      2023-11-07 [1] CRAN (R 4.4.0)
+ magrittr      2.0.3      2022-03-30 [1] CRAN (R 4.4.0)
+ memoise       2.0.1      2021-11-26 [1] CRAN (R 4.4.0)
+ mime          0.12       2021-09-28 [1] CRAN (R 4.4.0)
+ miniUI        0.1.1.1    2018-05-18 [1] CRAN (R 4.4.0)
+ pillar        1.9.0      2023-03-22 [1] CRAN (R 4.4.0)
+ pkgbuild      1.4.4      2024-03-17 [1] CRAN (R 4.4.0)
+ pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 4.4.0)
+ pkgload       1.4.0      2024-06-28 [1] CRAN (R 4.4.0)
+ processx      3.8.4      2024-03-16 [1] CRAN (R 4.4.0)
+ profvis       0.3.8      2023-05-02 [1] CRAN (R 4.4.0)
+ promises      1.3.0      2024-04-05 [1] CRAN (R 4.4.0)
+ ps            1.8.0      2024-09-12 [1] CRAN (R 4.4.1)
+ purrr         1.0.2      2023-08-10 [1] CRAN (R 4.4.0)
+ R6            2.5.1      2021-08-19 [1] CRAN (R 4.4.0)
+ Rcpp          1.0.13     2024-07-17 [1] CRAN (R 4.4.0)
+ remotes       2.5.0      2024-03-17 [1] CRAN (R 4.4.0)
+ rlang         1.1.4      2024-06-04 [1] CRAN (R 4.4.0)
+ rmarkdown     2.28       2024-08-17 [1] CRAN (R 4.4.0)
+ rprojroot     2.0.4      2023-11-05 [1] CRAN (R 4.4.0)
+ rstudioapi    0.16.0     2024-03-24 [1] CRAN (R 4.4.0)
+ sass          0.4.9.9000 2024-07-11 [1] Github (rstudio/sass@9228fcf)
+ sessioninfo   1.2.2      2021-12-06 [1] CRAN (R 4.4.0)
+ shiny         1.9.1      2024-08-01 [1] CRAN (R 4.4.0)
+ stringi       1.8.4      2024-05-06 [1] CRAN (R 4.4.0)
+ stringr       1.5.1      2023-11-14 [1] CRAN (R 4.4.0)
+ tibble        3.2.1      2023-03-20 [1] CRAN (R 4.4.0)
+ urlchecker    1.0.1      2021-11-30 [1] CRAN (R 4.4.0)
+ usethis       3.0.0      2024-07-29 [1] CRAN (R 4.4.0)
+ utf8          1.2.4      2023-10-22 [1] CRAN (R 4.4.0)
+ vctrs         0.6.5      2023-12-01 [1] CRAN (R 4.4.0)
+ whisker       0.4.1      2022-12-05 [1] CRAN (R 4.4.0)
+ workflowr   * 1.7.1      2023-08-23 [1] CRAN (R 4.4.0)
+ xfun          0.47       2024-08-17 [1] CRAN (R 4.4.0)
+ xtable        1.8-4      2019-04-21 [1] CRAN (R 4.4.0)
+ yaml          2.3.10     2024-07-26 [1] CRAN (R 4.4.0)
 
-[1] /home/maimaizhu/R/x86_64-pc-linux-gnu-library/4.1
-[2] /usr/local/lib/R/site-library
-[3] /usr/lib/R/site-library
-[4] /usr/lib/R/library</code></pre>
+ [1] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 </div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->

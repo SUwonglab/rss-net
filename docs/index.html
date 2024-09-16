@@ -15,8 +15,8 @@
 
 <title>RSS-NET wiki</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -32,10 +32,10 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
@@ -53,6 +53,7 @@ div.section {
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 
@@ -82,6 +83,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -172,8 +180,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -181,16 +189,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -234,7 +235,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -287,7 +288,9 @@ $(document).ready(function () {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -296,7 +299,9 @@ $(document).ready(function () {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -305,17 +310,27 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-06
+<strong>Last updated:</strong> 2024-09-16
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>rss-net/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>rss-net/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -324,44 +339,65 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeaae7cfa15dddd2d4f475be223dc71aea3cc63e5etargetblankaae7cfaa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/SUwonglab/rss-net/tree/aae7cfa15dddd2d4f475be223dc71aea3cc63e5e" target="_blank">aae7cfa</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc51e724452a51d18ba65b38a1c53e0de3ffbecetargetblankbc51e72a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/SUwonglab/rss-net/tree/bc51e724452a51d18ba65b38a1c53e0de3ffbece" target="_blank">bc51e72</a>
+</a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreeaae7cfa15dddd2d4f475be223dc71aea3cc63e5etargetblankaae7cfaa" class="panel-collapse collapse">
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomSUwonglabrssnettreebc51e724452a51d18ba65b38a1c53e0de3ffbecetargetblankbc51e72a"
+class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/SUwonglab/rss-net/tree/aae7cfa15dddd2d4f475be223dc71aea3cc63e5e" target="_blank">aae7cfa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version
+<a href="https://github.com/SUwonglab/rss-net/tree/bc51e724452a51d18ba65b38a1c53e0de3ffbece" target="_blank">bc51e72</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
 </p>
 <p>
-Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
 </p>
 <pre><code>
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    examples/ibd2015_nkcell/ibd2015_Primary_Natural_Killer_cells_from_peripheral_blood_NK_out_66.mat
-    Ignored:    examples/ibd2015_nkcell/randinit_results/
-    Ignored:    examples/ibd2015_nkcell/results/
-    Ignored:    examples/wtccc_bcell/results/
 
 </code></pre>
 <p>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
 </p>
 </div>
 </div>
@@ -372,7 +408,11 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>rmd/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>rmd/index.Rmd</code>) and HTML
+(<code>docs/index.html</code>) files. If you’ve configured a remote Git
+repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
+in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -398,6 +438,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/SUwonglab/rss-net/55e2bbc835ec076e65f93771b75d89d50cb69e7b/docs/index.html" target="_blank">55e2bbc</a>
+</td>
+<td>
+xiangzhu
+</td>
+<td>
+2021-06-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -410,7 +467,7 @@ xiangzhu
 2021-06-06
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -478,7 +535,7 @@ xiangzhu
 2020-11-30
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -529,7 +586,7 @@ xiangzhu
 2020-11-30
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -580,7 +637,7 @@ Xiang Zhu
 2020-06-24
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -614,7 +671,7 @@ xiangzhu
 2020-03-16
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -648,7 +705,7 @@ xiangzhu
 2020-03-15
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -682,7 +739,7 @@ xiangzhu
 2020-03-15
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -750,7 +807,7 @@ xiangzhu
 2020-03-08
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -784,7 +841,7 @@ xiangzhu
 2020-03-08
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -852,7 +909,7 @@ xiangzhu
 2020-03-06
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -886,7 +943,7 @@ xiangzhu
 2020-03-05
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -920,7 +977,7 @@ xiangzhu
 2020-02-29
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -934,7 +991,7 @@ html
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 Build site.
@@ -951,7 +1008,7 @@ html
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 rename doc folder
@@ -968,7 +1025,7 @@ html
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 rename doc folder
@@ -985,7 +1042,7 @@ html
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 Build site.
@@ -1002,10 +1059,10 @@ Rmd
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -1019,7 +1076,7 @@ html
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 Build site.
@@ -1036,10 +1093,10 @@ Rmd
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -1053,7 +1110,7 @@ html
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 Build site.
@@ -1070,10 +1127,10 @@ Rmd
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
-wflow_publish(“rmd/index.Rmd”)
+wflow_publish("rmd/index.Rmd")
 </td>
 </tr>
 <tr>
@@ -1087,7 +1144,7 @@ Rmd
 xiangzhu
 </td>
 <td>
-2019-08-24
+2019-08-23
 </td>
 <td>
 rename rmd folder
@@ -1101,38 +1158,68 @@ rename rmd folder
 </div>
 </div>
 <p>Welcome to RSS-NET wiki!</p>
-<p>This wiki hosts documentations of RSS-NET software. If you have any question or suggestion about RSS-NET, please feel free to create a new <a href="https://github.com/SUwonglab/rss-net/issues">issue</a> and/or send an email to <code>xiangzhu[at]psu.edu</code>.</p>
-<p>The RSS-NET methodology and its application to 38 gene regulatory networks and 18 human complex traits are described in the following article:</p>
+<p>This wiki hosts documentations of RSS-NET software. If you have any
+question or suggestion about RSS-NET, please feel free to create a new
+<a href="https://github.com/SUwonglab/rss-net/issues">issue</a> and/or
+send an email to <code>xiangzhu[at]psu.edu</code>.</p>
+<p>The RSS-NET methodology and its application to 38 gene regulatory
+networks and 18 human complex traits are described in the following
+article:</p>
 <blockquote>
-<p>Zhu, X., Duren, Z. &amp; Wong, W.H. Modeling regulatory network topology improves genome-wide analyses of complex human traits. <em>Nat Commun</em> 12, 2851 (2021). <a href="https://doi.org/10.1038/s41467-021-22588-0" class="uri">https://doi.org/10.1038/s41467-021-22588-0</a></p>
+<p>Zhu, X., Duren, Z. &amp; Wong, W.H. Modeling regulatory network
+topology improves genome-wide analyses of complex human traits. <em>Nat
+Commun</em> 12, 2851 (2021). <a
+href="https://doi.org/10.1038/s41467-021-22588-0"
+class="uri">https://doi.org/10.1038/s41467-021-22588-0</a></p>
 </blockquote>
-<p>All 38 gene regulatory networks used in this study are freely available at <a href="https://github.com/SUwonglab/rss-net/tree/master/data"><code>suwonglab/rss-net/data</code></a>.</p>
-<p>The full RSS-NET analysis results of 38 networks and 18 traits are freely available at the <a href="results.html"><code>xiangzhu/rss-net-results</code></a>.</p>
-<p>If you find the analysis results, the pre-processed network files, the statistical methods, and/or the open-source software useful for your work, please kindly cite the research article listed above <a href="https://doi.org/10.1038/s41467-021-22588-0">(Zhu et al, 2021)</a>.</p>
+<p>All 38 gene regulatory networks used in this study are freely
+available at <a
+href="https://github.com/SUwonglab/rss-net/tree/master/data"><code>suwonglab/rss-net/data</code></a>.</p>
+<p>The full RSS-NET analysis results of 38 networks and 18 traits are
+freely available at the <a
+href="results.html"><code>xiangzhu/rss-net-results</code></a>.</p>
+<p>If you find the analysis results, the pre-processed network files,
+the statistical methods, and/or the open-source software useful for your
+work, please kindly cite the research article listed above <a
+href="https://doi.org/10.1038/s41467-021-22588-0">(Zhu et al,
+2021)</a>.</p>
 <div id="installation" class="section level2">
-<h2><img src="https://static.thenounproject.com/png/506997-200.png" width="48"/> <a href="setup.html">Installation</a></h2>
+<h2><img src="https://static.thenounproject.com/png/506997-200.png" width="48"/>
+<a href="setup.html">Installation</a></h2>
 <p>This page provides instructions for installing RSS-NET software.</p>
 </div>
 <div id="examples" class="section level2">
-<h2><img src="https://static.thenounproject.com/png/2018925-200.png" width="48"/> <a href="index.html">Examples</a></h2>
-<p>This page gives the following end-to-end examples of using RSS-NET methods and software.</p>
+<h2><img src="https://static.thenounproject.com/png/2018925-200.png" width="48"/>
+<a href="index.html">Examples</a></h2>
+<p>This page gives the following end-to-end examples of using RSS-NET
+methods and software.</p>
 <ol style="list-style-type: decimal">
-<li><p>RSS-NET analysis of <a href="wtccc_bcell.html">two synthetic datasets</a></p></li>
-<li><p>RSS-NET analysis of <a href="ibd2015_nkcell.html">a real-world dataset</a></p></li>
+<li><p>RSS-NET analysis of <a href="wtccc_bcell.html">two synthetic
+datasets</a></p></li>
+<li><p>RSS-NET analysis of <a href="ibd2015_nkcell.html">a real-world
+dataset</a></p></li>
 </ol>
-<p>These examples are based on simulation studies and data analyses reported in <a href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et al (2021)</a>.</p>
+<p>These examples are based on simulation studies and data analyses
+reported in <a href="https://doi.org/10.1038/s41467-021-22588-0">Zhu et
+al (2021)</a>.</p>
 </div>
 <div id="functions" class="section level2">
-<h2><img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/> <a href="function.html">Functions</a></h2>
-<p>This page outlines functions and scripts associated with RSS-NET methods.</p>
+<h2><img src="https://static.thenounproject.com/png/2836785-200.png" width="48"/>
+<a href="function.html">Functions</a></h2>
+<p>This page outlines functions and scripts associated with RSS-NET
+methods.</p>
 <hr />
-<p><small> Icons used in this wiki are credited to the <a href="https://thenounproject.com/">Noun Project</a>. This wiki is created using <a href="https://github.com/jdblischak/workflowr">workflowr</a>. </small></p>
+<p><small> Icons used in this wiki are credited to the <a
+href="https://thenounproject.com/">Noun Project</a>. This wiki is
+created using <a
+href="https://github.com/jdblischak/workflowr">workflowr</a>.
+</small></p>
 </div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
