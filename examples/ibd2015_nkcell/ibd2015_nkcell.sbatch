@@ -10,7 +10,6 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=32000
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=xiangzhu.nku@gmail.com
 
 module unload matlab
 module load matlab/R2017b
